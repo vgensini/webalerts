@@ -45,26 +45,6 @@ body.flash-svr{background:#071a3b} body.flash-svr-considerable{background:#17323
 .brand-text .small{font-size:.82rem;color:#cfcfcf;letter-spacing:.08em;text-transform:uppercase;line-height:1.05}
 .brand-text .big{font-size:1.15rem;font-weight:800;letter-spacing:.02em;line-height:1.05;margin-top:4px}
 
-.audio-btn{
-  position:absolute;
-  top:2px;
-  right:0;
-  background:rgba(255,255,255,0.06);
-  color:#bdbdbd;
-  border:1px solid rgba(255,255,255,0.12);
-  padding:3px 7px;
-  font-size:10px;
-  line-height:1.1;
-  border-radius:999px;
-  cursor:pointer;
-  opacity:.88;
-  transition:background .2s ease, color .2s ease, border-color .2s ease, transform .12s ease, opacity .2s ease;
-  pointer-events:auto;
-  z-index:5;
-}
-.audio-btn.visible{opacity:.88}
-.audio-btn:hover{opacity:1;background:rgba(255,255,255,0.14);color:#fff;transform:translateY(-1px)}
-.audio-btn.enabled{color:#8fff8f;border-color:#8fff8f}
 .audio-btn.visible{opacity:.82}
 .audio-btn:hover{opacity:1;background:rgba(255,255,255,0.16);color:#fff;transform:translateY(-1px)}
 .audio-btn.enabled{color:#8fff8f;border-color:#8fff8f}
@@ -442,6 +422,47 @@ body.idle .map-wrap{
   flex-direction:column;
   overflow:hidden;
   position:relative;
+}
+
+
+.history-header{
+  flex:0 0 auto;
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  gap:8px;
+  margin:4px 0 8px 0;
+}
+
+.panel-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:34px;
+  height:28px;
+  padding:0;
+  background:rgba(255,255,255,0.06);
+  color:#bdbdbd;
+  border:1px solid rgba(255,255,255,0.12);
+  border-radius:999px;
+  cursor:pointer;
+  opacity:.92;
+  transition:background .2s ease, color .2s ease, border-color .2s ease, transform .12s ease, opacity .2s ease;
+  white-space:nowrap;
+  font-size:15px;
+  line-height:1;
+}
+
+.panel-btn:hover{
+  opacity:1;
+  background:rgba(255,255,255,0.16);
+  color:#fff;
+  transform:translateY(-1px);
+}
+
+.panel-btn.enabled{
+  color:#8fff8f;
+  border-color:#8fff8f;
 }
 
 .history-expires.expires-active{
@@ -988,15 +1009,6 @@ html,body{
     font-size:13px;
   }
 
-  .audio-btn{
-    top:6px;
-    right:6px;
-    font-size:9px;
-    padding:3px 6px;
-	opacity:1 !important;
-    visibility:visible;
-  }
-
   .idle-banner{
     gap:6px;
     height:auto;
@@ -1122,8 +1134,7 @@ html,body{
     display:block;
     -webkit-line-clamp:unset;
   }
-
-  .countdown-badge{
+.countdown-badge{
     width:36px;
     height:36px;
     left:8px;
@@ -1189,7 +1200,7 @@ html,body{
 
       
       <div id="summaryStrip" class="summary-strip" aria-live="polite">
-        <div class="summary-label">SPC Day 1 Convective Outlook Summary:</div>
+        <div class="summary-label">Latest SPC Day 1 Outlook Summary:</div>
         <div id="summaryMarquee" class="summary-marquee">
           <div id="summaryTrack" class="summary-track">
             <span id="summaryText" class="summary-text"></span>
@@ -1215,8 +1226,11 @@ html,body{
   </div>
 
   <div class="right">
-  <button id="audioBtn" class="audio-btn">Enable Audio</button>
-  <div class="history-title">25 Most Recent NWS Warnings</div>
+  <div class="history-header">
+    <button id="audioBtn" class="panel-btn" aria-label="Audio off" title="Audio off">🔇</button>
+    <div class="history-title">25 Most Recent Warnings</div>
+    <button id="fullscreenBtn" class="panel-btn" aria-label="Enter fullscreen" title="Enter fullscreen">⛶</button>
+  </div>
   <div id="historyList" class="history-column"></div>
 </div>
 </div>
@@ -1237,6 +1251,7 @@ const SUMMARY_REFRESH_MS = 5 * 60 * 1000;
 let idleRefreshTimer = null;
 let summaryRefreshTimer = null;
 let latestSummaryText = '';
+let latestSummaryIssuedUtcText = '';
 
 let audioCtx = null;
 let audioEnabled = false;
@@ -1271,6 +1286,7 @@ const summaryTextEl = document.getElementById('summaryText');
 const historyListEl = document.getElementById('historyList');
 historyListEl.addEventListener('scroll', () => {historyUserPinnedToTop = historyListEl.scrollTop <= 2;});
 const audioBtn = document.getElementById('audioBtn');
+const fullscreenBtn = document.getElementById('fullscreenBtn');
 const mapCanvas = document.getElementById('mapCanvas');
 const idleLoopEl = document.getElementById('idleLoop');
 const mapWrapEl = document.getElementById('mapWrap');
@@ -1279,6 +1295,80 @@ const countdownBadgeEl = document.getElementById('countdownBadge');
 const countdownNumberEl = document.getElementById('countdownNumber');
 const countdownRingProgressEl = document.getElementById('countdownRingProgress');
 
+function parseSpcIssuedLineToUtcText(raw){
+  const lines = String(raw || '').split(/\r?\n/);
+
+  let officeLineIndex = -1;
+  for(let i = 0; i < lines.length; i++){
+    if(lines[i].trim() === 'NWS Storm Prediction Center Norman OK'){
+      officeLineIndex = i;
+      break;
+    }
+  }
+
+  if(officeLineIndex < 0 || officeLineIndex + 1 >= lines.length) return '';
+
+  const issuedLine = lines[officeLineIndex + 1].trim();
+  if(!issuedLine) return '';
+
+  // Example:
+  // 1052 AM CDT Mon Apr 20 2026
+  const m = issuedLine.match(
+    /^(\d{1,4})\s+(AM|PM)\s+(CDT|CST|EDT|EST|MDT|MST|PDT|PST)\s+\w{3}\s+(\w{3})\s+(\d{1,2})\s+(\d{4})$/i
+  );
+  if(!m) return '';
+
+  const rawTime = m[1];
+  const ampm = m[2].toUpperCase();
+  const tzAbbr = m[3].toUpperCase();
+  const monthStr = m[4];
+  const day = Number(m[5]);
+  const year = Number(m[6]);
+
+  let hour = 0;
+  let minute = 0;
+
+  if(rawTime.length <= 2){
+    hour = Number(rawTime);
+    minute = 0;
+  } else if(rawTime.length === 3){
+    hour = Number(rawTime.slice(0, 1));
+    minute = Number(rawTime.slice(1));
+  } else {
+    hour = Number(rawTime.slice(0, rawTime.length - 2));
+    minute = Number(rawTime.slice(-2));
+  }
+
+  if(ampm === 'AM' && hour === 12) hour = 0;
+  if(ampm === 'PM' && hour !== 12) hour += 12;
+
+  const monthMap = {
+    JAN:0, FEB:1, MAR:2, APR:3, MAY:4, JUN:5,
+    JUL:6, AUG:7, SEP:8, OCT:9, NOV:10, DEC:11
+  };
+  const month = monthMap[monthStr.toUpperCase()];
+  if(month === undefined) return '';
+
+  const tzOffsets = {
+    EDT: -4, EST: -5,
+    CDT: -5, CST: -6,
+    MDT: -6, MST: -7,
+    PDT: -7, PST: -8
+  };
+  const offsetHours = tzOffsets[tzAbbr];
+  if(offsetHours === undefined) return '';
+
+  // local time -> UTC
+  const utcMillis = Date.UTC(year, month, day, hour - offsetHours, minute, 0);
+  const d = new Date(utcMillis);
+
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const dd = String(d.getUTCDate()).padStart(2, '0');
+  const hh = String(d.getUTCHours()).padStart(2, '0');
+  const mm = String(d.getUTCMinutes()).padStart(2, '0');
+
+  return `${hh}${mm} UTC ${dd} ${months[d.getUTCMonth()]} ${d.getUTCFullYear()}`;
+}
 
 function extractSpcSummary(raw){
   const lines = String(raw || '').split(/\r?\n/);
@@ -1305,19 +1395,31 @@ function extractSpcSummary(raw){
   return collected.join(' ');
 }
 
-async function fetchLatestSummaryText(){
+async function fetchLatestSummaryData(){
   for(const file of SPC_SUMMARY_FILES){
     try{
       const res = await fetch(file + '?ts=' + Date.now(), {cache:'no-store'});
       if(!res.ok) continue;
+
       const raw = await res.text();
       const summary = extractSpcSummary(raw);
-      if(summary) return summary;
+      const issuedUtcText = parseSpcIssuedLineToUtcText(raw);
+
+      if(summary){
+        return {
+          summary,
+          issuedUtcText
+        };
+      }
     } catch(err){
       console.debug('summary fetch failed for', file, err);
     }
   }
-  return '';
+
+  return {
+    summary: '',
+    issuedUtcText: ''
+  };
 }
 
 function parseUtcString(s){
@@ -1333,9 +1435,16 @@ function isAlertCurrentlyValid(alert){
   return Date.now() <= validTo.getTime();
 }
 
-function applySummaryText(summary){
-  latestSummaryText = summary || '';
-  summaryTextEl.textContent = latestSummaryText;
+function applySummaryData(data){
+  latestSummaryText = (data && data.summary) ? data.summary : '';
+  latestSummaryIssuedUtcText = (data && data.issuedUtcText) ? data.issuedUtcText : '';
+
+  const prefix = latestSummaryIssuedUtcText
+    ? `Issued ${latestSummaryIssuedUtcText} • `
+    : '';
+
+  summaryTextEl.textContent = prefix + (latestSummaryText || '').toUpperCase();
+
   summaryStripEl.classList.toggle('has-summary', !!latestSummaryText);
   updateSummaryVisibility();
   measureSummaryMarquee();
@@ -1363,10 +1472,9 @@ function measureSummaryMarquee(){
 }
 
 async function refreshSummary(){
-  const summary = await fetchLatestSummaryText();
-  applySummaryText(summary);
+  const data = await fetchLatestSummaryData();
+  applySummaryData(data);
 }
-
 function resizeCanvasToDisplaySize(){
   const rect = mapCanvas.getBoundingClientRect();
   const w = Math.max(1, Math.round(rect.width));
@@ -1378,12 +1486,8 @@ function resizeCanvasToDisplaySize(){
 }
 
 function showUI(){
-  audioBtn.classList.add('visible');
-  clearTimeout(uiHideTimer);
-  uiHideTimer = setTimeout(() => audioBtn.classList.remove('visible'), 8000);
+  // controls are always visible in the history header
 }
-showUI();
-['mousemove','keydown','touchstart'].forEach(evt => window.addEventListener(evt, showUI));
 
 mapWrapEl.addEventListener('click', () => {
   if (state.mode === 'idle') {
@@ -1413,15 +1517,45 @@ audioBtn.addEventListener('click', async () => {
 
   if (!audioEnabled) {
     audioEnabled = true;
-    audioBtn.textContent = 'Audio On';
+    audioBtn.textContent = '🔊';
+    audioBtn.setAttribute('aria-label', 'Audio on');
+    audioBtn.setAttribute('title', 'Audio on');
     audioBtn.classList.add('enabled');
     if (audioUnlocked) playEnableBeep();
   } else {
     audioEnabled = false;
-    audioBtn.textContent = 'Audio Off';
+    audioBtn.textContent = '🔇';
+    audioBtn.setAttribute('aria-label', 'Audio off');
+    audioBtn.setAttribute('title', 'Audio off');
     audioBtn.classList.remove('enabled');
   }
 });
+
+
+function updateFullscreenButton(){
+  const isFs = !!document.fullscreenElement;
+  fullscreenBtn.textContent = isFs ? '🗗' : '⛶';
+  fullscreenBtn.setAttribute('aria-label', isFs ? 'Exit fullscreen' : 'Enter fullscreen');
+  fullscreenBtn.setAttribute('title', isFs ? 'Exit fullscreen' : 'Enter fullscreen');
+}
+
+fullscreenBtn.addEventListener('click', async () => {
+  try {
+    if (!document.fullscreenElement) {
+      await document.documentElement.requestFullscreen();
+    } else {
+      await document.exitFullscreen();
+    }
+  } catch (err) {
+    console.error('fullscreen toggle failed', err);
+  }
+});
+
+document.addEventListener('fullscreenchange', updateFullscreenButton);
+updateFullscreenButton();
+audioBtn.textContent = '🔇';
+audioBtn.setAttribute('aria-label', 'Audio off');
+audioBtn.setAttribute('title', 'Audio off');
 
 async function unlockAudioFromGesture() {
   await ensureAudioReady();

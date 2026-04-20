@@ -1,32 +1,33 @@
-596 
-ACUS01 KWNS 200006
+
+256 
+ACUS01 KWNS 201554
 SWODY1
-SPC AC 200004
+SPC AC 201552
 
 Day 1 Convective Outlook  
 NWS Storm Prediction Center Norman OK
-0704 PM CDT Sun Apr 19 2026
+1052 AM CDT Mon Apr 20 2026
 
-Valid 200100Z - 201200Z
+Valid 201630Z - 211200Z
 
 ...NO SEVERE THUNDERSTORM AREAS FORECAST...
 
 ...SUMMARY...
-Severe thunderstorms are not forecast.
+Severe storms are not expected today.
 
 ...Synopsis...
-Scattered thunderstorms currently exist along a cold front mainly
-over the western Atlantic Ocean, and earlier affected Downeast
-Maine. Thunderstorms chances have ended there as the front has now
-pushed through the area.
+An upper impulse will continue to pose a risk of scattered
+thunderstorms over parts of NM and south/west TX through the
+afternoon, with activity spreading into north-central TX late
+tonight.  
 
-To the west, broken arc of elevated thunderstorms extends from near
-El Paso southeastward across the Rio Grande Valley. This area is in
-a zone of theta-e advection just off the surface, with unstable
-parcels rooted in the 850-700 mb layer. Weak instability will
-preclude much of a hail risk, but overall storm chances should
-continue to increase into central TX tonight.
+Other thunderstorms are possible this afternoon and evening over
+south FL in a moist and marginally unstable air mass, along the
+coast of southern New England, and over portions of OR/WA.  In all
+areas, weak instability will preclude the risk of organized severe
+storms.
 
-..Jewell.. 04/20/2026
+..Hart/Flournoy.. 04/20/2026
 
 $$
+
