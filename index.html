@@ -134,7 +134,7 @@ body.flash-svr{background:#071a3b} body.flash-svr-considerable{background:#17323
   min-height:0;
   height:100%;
   display:grid;
-  grid-template-rows:auto auto auto auto minmax(0,1fr);
+  grid-template-rows:auto auto auto auto auto minmax(0,1fr);
   justify-items:stretch;
   align-content:start;
   gap:2px;
@@ -247,6 +247,67 @@ body:not(.idle) .headline{
 .detail.svr{ border-color:#ffd54a; box-shadow:0 0 14px rgba(255,213,74,.30), inset 0 0 6px rgba(255,213,74,.10); }
 .detail.svr-considerable{ border-color:#ffb45a; box-shadow:0 0 14px rgba(255,180,90,.32), inset 0 0 6px rgba(255,180,90,.10); }
 .detail.svr-destructive{ border-color:#c69cff; box-shadow:0 0 14px rgba(198,156,255,.34), inset 0 0 6px rgba(198,156,255,.10); }
+
+
+.summary-strip{
+  width:100%;
+  min-width:0;
+  overflow:hidden;
+  display:none;
+  align-items:center;
+  height:34px;
+  padding:0 12px;
+  border-radius:12px;
+  background:linear-gradient(180deg,#151515,#0f0f0f);
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.03);
+}
+
+.summary-label{
+  flex:0 0 auto;
+  margin-right:10px;
+  font-size:.72rem;
+  font-weight:900;
+  letter-spacing:.08em;
+  color:#ffcc66;
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+
+.summary-marquee{
+  position:relative;
+  flex:1 1 auto;
+  min-width:0;
+  overflow:hidden;
+  height:100%;
+  display:flex;
+  align-items:center;
+}
+
+.summary-track{
+  display:inline-block;
+  white-space:nowrap;
+  will-change:transform;
+  padding-right:36px;
+  transform:translateX(100%);
+}
+
+.summary-track.is-animated{
+  animation:summaryMarquee var(--summary-duration, 24s) linear infinite;
+}
+
+.summary-text{
+  font-size:.94rem;
+  color:#f0f0f0;
+  font-family: Consolas, "courier new", monospace;
+  letter-spacing:.01em;
+  white-space:nowrap;
+}
+
+@keyframes summaryMarquee{
+  from{transform:translateX(var(--summary-start, 100%));}
+  to{transform:translateX(calc(-1 * var(--summary-distance, 100%)));}
+}
 
 .radar-block{
   margin-top:0;
@@ -741,6 +802,7 @@ body.idle .utc{display:none}
 body.idle .status-note{display:none}
 body.idle #tagRow{display:none !important}
 body.idle #hazardText{display:none !important}
+body.idle #summaryStrip.has-summary{display:flex !important}
 
 @media (max-width: 1100px){
 html,body{
@@ -772,6 +834,21 @@ html,body{
   .content{
     grid-template-rows:auto auto auto auto auto;
     gap:6px;
+  }
+
+
+  .summary-strip{
+    height:32px;
+    padding:0 10px;
+  }
+
+  .summary-label{
+    font-size:.64rem;
+    margin-right:8px;
+  }
+
+  .summary-text{
+    font-size:.82rem;
   }
 
   .map-wrap{
@@ -889,6 +966,21 @@ html,body{
   .idle-scan-line{
     font-size:10px;
     letter-spacing:.08em;
+  }
+
+
+  .summary-strip{
+    height:30px;
+    padding:0 8px;
+    border-radius:10px;
+  }
+
+  .summary-label{
+    display:none;
+  }
+
+  .summary-text{
+    font-size:.76rem;
   }
 
   .headline{
@@ -1030,6 +1122,16 @@ html,body{
       <div id="tagRow" class="tag-row" style="display:none;"></div>
       <div id="hazardText" class="detail" style="display:none;"></div>
 
+      
+      <div id="summaryStrip" class="summary-strip" aria-live="polite">
+        <div class="summary-label">SPC Day 1 Summary</div>
+        <div id="summaryMarquee" class="summary-marquee">
+          <div id="summaryTrack" class="summary-track">
+            <span id="summaryText" class="summary-text"></span>
+          </div>
+        </div>
+      </div>
+
       <div class="radar-block">
         <div class="map-label" style="display:none;"></div>
         <div class="map-wrap" id="mapWrap" title="Open SPC website">
@@ -1065,7 +1167,11 @@ const PREVIEW_DISPLAY_MS = 5000; // history clicks always 5 sec
 const MAX_HISTORY = 25;
 const MAP_SIZE = 320;
 const IDLE_LOOP_REFRESH_DELAY_SEC = 45;
+const SPC_SUMMARY_FILES = ['latest_day1.txt','latest_dy1.txt'];
+const SUMMARY_REFRESH_MS = 5 * 60 * 1000;
 let idleRefreshTimer = null;
+let summaryRefreshTimer = null;
+let latestSummaryText = '';
 
 let audioCtx = null;
 let audioEnabled = false;
@@ -1093,6 +1199,10 @@ const utcEl = document.getElementById('utc');
 const statusNoteEl = document.getElementById('statusNote');
 const tagRowEl = document.getElementById('tagRow');
 const hazardEl = document.getElementById('hazardText');
+const summaryStripEl = document.getElementById('summaryStrip');
+const summaryMarqueeEl = document.getElementById('summaryMarquee');
+const summaryTrackEl = document.getElementById('summaryTrack');
+const summaryTextEl = document.getElementById('summaryText');
 const historyListEl = document.getElementById('historyList');
 historyListEl.addEventListener('scroll', () => {historyUserPinnedToTop = historyListEl.scrollTop <= 2;});
 const audioBtn = document.getElementById('audioBtn');
@@ -1103,6 +1213,81 @@ const mapCtx = mapCanvas.getContext('2d');
 const countdownBadgeEl = document.getElementById('countdownBadge');
 const countdownNumberEl = document.getElementById('countdownNumber');
 const countdownRingProgressEl = document.getElementById('countdownRingProgress');
+
+
+function extractSpcSummary(raw){
+  const lines = String(raw || '').split(/\r?\n/);
+  let inSummary = false;
+  const collected = [];
+
+  for(const line of lines){
+    const trimmed = line.trim();
+    if(!inSummary){
+      if(trimmed.toUpperCase() === '...SUMMARY...'){
+        inSummary = true;
+      }
+      continue;
+    }
+
+    if(trimmed.startsWith('...') && trimmed.toUpperCase() !== '...SUMMARY...') break;
+    if(!trimmed){
+      if(collected.length) break;
+      continue;
+    }
+    collected.push(trimmed);
+  }
+
+  return collected.join(' ');
+}
+
+async function fetchLatestSummaryText(){
+  for(const file of SPC_SUMMARY_FILES){
+    try{
+      const res = await fetch(file + '?ts=' + Date.now(), {cache:'no-store'});
+      if(!res.ok) continue;
+      const raw = await res.text();
+      const summary = extractSpcSummary(raw);
+      if(summary) return summary;
+    } catch(err){
+      console.debug('summary fetch failed for', file, err);
+    }
+  }
+  return '';
+}
+
+function applySummaryText(summary){
+  latestSummaryText = summary || '';
+  summaryTextEl.textContent = latestSummaryText;
+  summaryStripEl.classList.toggle('has-summary', !!latestSummaryText);
+  updateSummaryVisibility();
+  measureSummaryMarquee();
+}
+
+function updateSummaryVisibility(){
+  const show = state.mode === 'idle' && !!latestSummaryText;
+  summaryStripEl.style.display = show ? 'flex' : 'none';
+}
+
+function measureSummaryMarquee(){
+  summaryTrackEl.classList.remove('is-animated');
+  if(!latestSummaryText || summaryStripEl.style.display === 'none') return;
+
+  const containerWidth = Math.max(1, summaryMarqueeEl.clientWidth);
+  const textWidth = Math.max(1, summaryTrackEl.scrollWidth);
+  const duration = Math.max(14, (containerWidth + textWidth) / 80);
+
+  summaryTrackEl.style.setProperty('--summary-start', containerWidth + 'px');
+  summaryTrackEl.style.setProperty('--summary-distance', textWidth + 'px');
+  summaryTrackEl.style.setProperty('--summary-duration', duration + 's');
+
+  void summaryTrackEl.offsetWidth;
+  summaryTrackEl.classList.add('is-animated');
+}
+
+async function refreshSummary(){
+  const summary = await fetchLatestSummaryText();
+  applySummaryText(summary);
+}
 
 function resizeCanvasToDisplaySize(){
   const rect = mapCanvas.getBoundingClientRect();
@@ -1173,6 +1358,7 @@ window.addEventListener('resize', () => {
   if (state.mode === 'idle') {
     renderIdleImage();
     scheduleIdleLoopRefresh();
+    measureSummaryMarquee();
   } else if (state.alert) {
     drawMap(state.alert);
   }
@@ -1184,6 +1370,7 @@ window.addEventListener('orientationchange', () => {
     if (state.mode === 'idle') {
       renderIdleImage();
       scheduleIdleLoopRefresh();
+      measureSummaryMarquee();
     } else if (state.alert) {
       drawMap(state.alert);
     }
@@ -1392,7 +1579,10 @@ function setIdle(){
   scheduleIdleLoopRefresh();
   updateActiveTile();
   stopCountdown();
+  updateSummaryVisibility();
+  measureSummaryMarquee();
 }
+
 function renderAlert(alert){
   if(!alert){ setIdle(); return; }
   clearTimeout(idleRefreshTimer);
@@ -1452,6 +1642,7 @@ function renderAlert(alert){
 
   drawMap(alert);
   updateActiveTile();
+  updateSummaryVisibility();
 }
 function startExpiryTimer(expectedKey){
   const duration = (state.mode === 'preview')
@@ -1916,6 +2107,8 @@ async function drawMap(alert){
 
 setInterval(pollAlerts, POLL_MS);
 setInterval(updateIdleClock, 1000);
+summaryRefreshTimer = setInterval(refreshSummary, SUMMARY_REFRESH_MS);
+refreshSummary();
 pollAlerts();
 setIdle();
 updateIdleClock();

@@ -1,114 +1,6 @@
 [
   {
     "type": "TOR",
-    "wfo": "AKQ",
-    "office": "AKQ",
-    "issued": "2026-04-20 13:39:02 UTC",
-    "hazard_text": "Tornado.",
-    "source_text": "Radar indicated rotation.",
-    "impact_text": "Flying debris will be dangerous to those caught without shelter. Mobile homes will be damaged or destroyed. Damage to roofs, windows, and vehicles will occur. Tree damage is likely.",
-    "office_name": "Wakefield, VA",
-    "etn": "0019",
-    "vtec_action": "NEW",
-    "source_file": "latest_warn.txt",
-    "polygon": [
-      [
-        -77.23,
-        38.25
-      ],
-      [
-        -77.23,
-        38.24
-      ],
-      [
-        -77.25,
-        38.23
-      ],
-      [
-        -77.24,
-        38.21
-      ],
-      [
-        -77.25,
-        38.19
-      ],
-      [
-        -77.23,
-        38.19
-      ],
-      [
-        -77.22,
-        38.2
-      ],
-      [
-        -77.18,
-        38.17
-      ],
-      [
-        -77.13,
-        38.17
-      ],
-      [
-        -77.06,
-        38.07
-      ],
-      [
-        -77.44,
-        37.96
-      ],
-      [
-        -77.52,
-        38.07
-      ],
-      [
-        -77.34,
-        38.25
-      ],
-      [
-        -77.31,
-        38.24
-      ],
-      [
-        -77.29,
-        38.24
-      ],
-      [
-        -77.29,
-        38.22
-      ],
-      [
-        -77.28,
-        38.23
-      ],
-      [
-        -77.27,
-        38.25
-      ],
-      [
-        -77.23,
-        38.25
-      ]
-    ],
-    "centroid": [
-      -77.3058,
-      38.1012
-    ],
-    "tornado_tag": "Radar Indicated",
-    "tornado_damage_threat": "",
-    "thunderstorm_damage_threat": "",
-    "emergency": false,
-    "confirmed_tornado": false,
-    "radar_image": "radar_snapshots/20260420133902_TOR_AKQ_0019.png",
-    "radar_crop": {
-      "sx": 9326,
-      "sy": 2130,
-      "sw": 826,
-      "sh": 500
-    },
-    "snapshot_cropped": true
-  },
-  {
-    "type": "TOR",
     "wfo": "DVN",
     "office": "DVN",
     "issued": "2026-04-20 13:40:06 UTC",
@@ -1971,6 +1863,122 @@
     "emergency": false,
     "confirmed_tornado": false,
     "radar_image": "radar_snapshots/20260420142613_SVR_AKQ_0147.png",
+    "radar_crop": {
+      "sx": 9435,
+      "sy": 2161,
+      "sw": 743,
+      "sh": 450
+    },
+    "snapshot_cropped": true
+  },
+  {
+    "type": "SVR",
+    "wfo": "AKQ",
+    "office": "AKQ",
+    "issued": "2026-04-20 15:02:35 UTC",
+    "hazard_text": "70 mph wind gusts and quarter size hail.",
+    "source_text": "Radar indicated.",
+    "impact_text": "Minor damage to vehicles is possible. Expect considerable tree damage. Wind damage is also likely to mobile homes, roofs, and outbuildings.",
+    "office_name": "Wakefield, VA",
+    "etn": "0147",
+    "vtec_action": "NEW",
+    "source_file": "latest_warn.txt",
+    "polygon": [
+      [
+        -76.96,
+        38.26
+      ],
+      [
+        -76.95,
+        38.21
+      ],
+      [
+        -76.88,
+        38.18
+      ],
+      [
+        -76.84,
+        38.16
+      ],
+      [
+        -76.76,
+        38.17
+      ],
+      [
+        -76.61,
+        38.15
+      ],
+      [
+        -76.59,
+        38.1
+      ],
+      [
+        -76.64,
+        38.0
+      ],
+      [
+        -76.79,
+        37.9
+      ],
+      [
+        -77.45,
+        38.05
+      ],
+      [
+        -77.27,
+        38.15
+      ],
+      [
+        -77.25,
+        38.19
+      ],
+      [
+        -77.23,
+        38.19
+      ],
+      [
+        -77.23,
+        38.2
+      ],
+      [
+        -77.12,
+        38.15
+      ],
+      [
+        -77.09,
+        38.16
+      ],
+      [
+        -77.07,
+        38.14
+      ],
+      [
+        -77.05,
+        38.18
+      ],
+      [
+        -77.05,
+        38.26
+      ],
+      [
+        -76.98,
+        38.28
+      ],
+      [
+        -76.96,
+        38.26
+      ]
+    ],
+    "centroid": [
+      -76.9673,
+      38.0712
+    ],
+    "tornado_tag": "",
+    "tornado_damage_threat": "",
+    "thunderstorm_damage_threat": "",
+    "emergency": false,
+    "confirmed_tornado": false,
+    "radar_image": "radar_snapshots/20260420150235_SVR_AKQ_0147.png",
     "radar_crop": {
       "sx": 9435,
       "sy": 2161,
