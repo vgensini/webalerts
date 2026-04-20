@@ -1,0 +1,1925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NWS Warning Alerts</title>
+<style>
+:root{
+  --bg:#050505; --fg:#fff; --line:#2b2b2b; --panel:#111; --panel2:#171717;
+  --tor-bg:#7a0000; --tor-accent:#ff4b4b; --tor-confirmed-bg:#c400c9; --tor-confirmed-accent:#ff89ff; --radar-speed: 2.8s;
+  --tor-emergency-bg:#ff4cff; --tor-emergency-accent:#ffffff; --svr-bg:#0b3d91; --svr-accent:#63b3ff;
+  --svr-considerable-bg:#38a5ab; --svr-considerable-accent:#85edf2; --svr-destructive-bg:#e3dc10; --svr-destructive-accent:#fcf75b;
+}
+*{box-sizing:border-box}
+html,body{
+  margin:0;
+  width:100%;
+  height:100%;
+  background:var(--bg);
+  color:var(--fg);
+  font-family:Arial,Helvetica,sans-serif;
+  overflow:hidden;
+}
+body.flash-tor{background:#220000} body.flash-tor-confirmed{background:#310031} body.flash-tor-emergency{background:#4d0f4d}
+body.flash-svr{background:#071a3b} body.flash-svr-considerable{background:#173233} body.flash-svr-destructive{background:#363106}
+
+.shell{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) clamp(380px, 20vw, 460px);
+  gap:18px;
+  width:100%;
+  height:100%;
+  padding:8px 18px 6px 18px;
+}
+.left{
+  min-width:0;
+  min-height:0;
+  display:grid;
+  grid-template-rows:auto 1fr;
+  gap:4px;
+}
+
+.brand{display:flex;align-items:center;gap:14px;color:#ddd}
+.brand img{width:56px;height:56px;object-fit:contain;border-radius:50%;background:#fff;padding:2px}
+.brand-text .small{font-size:.82rem;color:#cfcfcf;letter-spacing:.08em;text-transform:uppercase;line-height:1.05}
+.brand-text .big{font-size:1.15rem;font-weight:800;letter-spacing:.02em;line-height:1.05;margin-top:4px}
+
+.audio-btn{
+  position:absolute;
+  top:2px;
+  right:0;
+  background:rgba(255,255,255,0.06);
+  color:#bdbdbd;
+  border:1px solid rgba(255,255,255,0.12);
+  padding:3px 7px;
+  font-size:10px;
+  line-height:1.1;
+  border-radius:999px;
+  cursor:pointer;
+  opacity:.88;
+  transition:background .2s ease, color .2s ease, border-color .2s ease, transform .12s ease, opacity .2s ease;
+  pointer-events:auto;
+  z-index:5;
+}
+.audio-btn.visible{opacity:.88}
+.audio-btn:hover{opacity:1;background:rgba(255,255,255,0.14);color:#fff;transform:translateY(-1px)}
+.audio-btn.enabled{color:#8fff8f;border-color:#8fff8f}
+.audio-btn.visible{opacity:.82}
+.audio-btn:hover{opacity:1;background:rgba(255,255,255,0.16);color:#fff;transform:translateY(-1px)}
+.audio-btn.enabled{color:#8fff8f;border-color:#8fff8f}
+
+.right-brand{
+  margin-top:0;
+  margin-bottom:5px;
+  padding-top:0;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  opacity:.92;
+  align-self:center;
+  max-width:100%;
+  gap:12px;
+}
+
+.right-brand .brand-text{
+  text-align:center;
+}
+.right-brand img{width:46px;height:46px}
+.right-brand .big{font-size:.94rem}
+.right-brand .small{font-size:.70rem}
+
+.niu-brand-mark{
+  width:56px !important;
+  height:auto !important;
+  object-fit:contain;
+  border-radius:0 !important;
+  background:none !important;
+  padding:0 !important;
+  flex:0 0 auto;
+  filter:drop-shadow(0 2px 4px rgba(0,0,0,.35));
+}
+
+.idle-logo{
+  height:100%;
+  width:auto;
+  object-fit:contain;
+  display:block;
+  align-self:center;
+  opacity:.95;
+}
+
+.idle-logo.nws{
+  border-radius:50%;
+  background:#fff;
+  padding:2px;
+}
+
+.idle-logo.niu{
+  border-radius:0;
+  background:none;
+  padding:0;
+}
+
+.idle-title{
+  font-size:12px;
+  color:white;
+  font-weight:800;
+  letter-spacing:.05em;
+  margin:0;
+  line-height:1;
+}
+
+.content{
+  min-height:0;
+  height:100%;
+  display:grid;
+  grid-template-rows:auto auto auto auto minmax(0,1fr);
+  justify-items:stretch;
+  align-content:start;
+  gap:2px;
+  padding-top:0;
+}
+
+.headline{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  min-width:0;
+  padding:.08em .30em;
+  border-radius:24px;
+  font-size:min(6.8vw,112px);
+  line-height:1;
+  font-weight:900;
+  letter-spacing:.08em;
+  text-align:center;
+  border:6px solid #fff;
+  background:#1a1a1a;
+  color:#9d9d9d;
+  box-shadow:inset 0 0 0 2px rgba(255,255,255,.06);
+}
+.headline.tor{background:var(--tor-bg);box-shadow:0 0 26px rgba(255,75,75,.45)}
+.headline.tor-confirmed{background:var(--tor-confirmed-bg);box-shadow:0 0 30px rgba(255,137,255,.55)}
+.headline.tor-emergency{background:var(--tor-emergency-bg);border-color:#fff;box-shadow:0 0 34px rgba(255,255,255,.78)}
+.headline.svr{background:var(--svr-bg);box-shadow:0 0 26px rgba(255,213,74,.32)}
+.headline.svr-considerable{background:var(--svr-considerable-bg);box-shadow:0 0 26px rgba(255,180,90,.38)}
+.headline.svr-destructive{background:var(--svr-destructive-bg);box-shadow:0 0 30px rgba(255,217,255,.45)}
+
+body:not(.idle) .headline{
+  color:#ffffff;
+  text-shadow:0 0 8px rgba(255,255,255,.22);
+}
+
+.flash{animation:flashPulse .65s linear infinite}
+@keyframes flashPulse{0%{transform:scale(1);opacity:1}50%{transform:scale(1.03);opacity:.48}100%{transform:scale(1);opacity:1}}
+
+.utc{
+  font-size:.98rem;
+  font-weight:700;
+  color:#efefef;
+  letter-spacing:.03em;
+  min-height:1.0em;
+  margin-top:-2px;
+}
+
+.status-note{
+  font-size:.82rem;
+  color:#bdbdbd;
+  letter-spacing:.05em;
+  line-height:1.02;
+  min-height:0;
+  text-align:center;
+}
+
+.tag-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:3px;
+  justify-content:center;
+  align-items:center;
+  width:100%;
+  margin:0;
+  text-align:center;
+  position:relative;
+  z-index:3;
+  line-height:1;
+}
+
+.tag{
+  padding:2px 10px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.16);
+  background:#1a1a1a;
+  color:#f4f4f4;
+  font-size:.84rem;
+  font-weight:800;
+  letter-spacing:.01em;
+  line-height:1.0;
+  min-height:0;
+}
+.tag.preview{background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.28)}
+.tag.tor-confirmed{background:rgba(196,0,201,.24);border-color:rgba(255,137,255,.55)}
+.tag.tor-considerable{background:rgba(255,100,100,.22);border-color:rgba(255,170,170,.58)}
+.tag.tor-emergency{background:rgba(255,76,255,.30);border-color:#fff}
+.tag.svr-considerable{background:rgba(21,87,192,.32);border-color:rgba(140,200,255,.55)}
+.tag.svr-destructive{background:rgba(63,45,168,.30);border-color:rgba(184,178,255,.55)}
+
+.detail{
+  padding:6px 16px;
+  border-radius:14px;
+  background:linear-gradient(180deg, #1c1c1c, #121212);
+  border:2px solid rgba(255,215,90,.55);
+  font-size:1.00rem;
+  line-height:1.12;
+  width:fit-content;
+  min-width:0;
+  max-width:min(100%, 1100px);
+  text-align:center;
+  margin:0 auto;
+  position:relative;
+  z-index:3;
+  box-shadow:0 0 14px rgba(255,215,90,.25), inset 0 0 6px rgba(255,215,90,.12);
+}
+.detail.tor{ border-color:#ff4b4b; box-shadow:0 0 16px rgba(255,75,75,.35), inset 0 0 6px rgba(255,75,75,.10); }
+.detail.tor-confirmed{ border-color:#ff89ff; box-shadow:0 0 18px rgba(255,137,255,.40), inset 0 0 6px rgba(255,137,255,.10); }
+.detail.tor-emergency{ border-color:#ffffff; box-shadow:0 0 20px rgba(255,255,255,.55), inset 0 0 6px rgba(255,255,255,.10); }
+.detail.svr{ border-color:#ffd54a; box-shadow:0 0 14px rgba(255,213,74,.30), inset 0 0 6px rgba(255,213,74,.10); }
+.detail.svr-considerable{ border-color:#ffb45a; box-shadow:0 0 14px rgba(255,180,90,.32), inset 0 0 6px rgba(255,180,90,.10); }
+.detail.svr-destructive{ border-color:#c69cff; box-shadow:0 0 14px rgba(198,156,255,.34), inset 0 0 6px rgba(198,156,255,.10); }
+
+.radar-block{
+  margin-top:0;
+  display:flex;
+  flex-direction:column;
+  gap:0;
+  align-items:center;
+  width:100%;
+  min-height:0;
+  height:100%;
+  overflow:hidden;
+  position:relative;
+  z-index:1;
+}
+
+/* groups */
+.topbar-left,
+.topbar-right{
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+
+/* base icon */
+.icon{
+  font-size:16px;
+  line-height:1;
+  opacity:.75;
+  transition:all .2s ease;
+}
+
+/* glow styles */
+.icon.scan{
+  color:#9ddcff;
+  text-shadow:0 0 6px rgba(120,220,255,.5);
+}
+
+.icon.radar{
+  color:#8cffb0;
+  text-shadow:0 0 6px rgba(120,255,170,.5);
+}
+
+.icon.tor{
+  color:#ff6b6b;
+  text-shadow:0 0 8px rgba(255,80,80,.6);
+}
+
+.icon.svr{
+  color:#ffd84d;
+  text-shadow:0 0 8px rgba(255,220,80,.6);
+}
+
+/* subtle animation */
+.icon.scan{
+  animation:scanPulse 2.2s infinite;
+}
+
+.icon.radar{
+  animation:scanPulse 2.8s infinite;
+}
+
+@keyframes scanPulse{
+  0%{opacity:.5; transform:scale(1)}
+  50%{opacity:1; transform:scale(1.12)}
+  100%{opacity:.5; transform:scale(1)}
+}
+
+.map-label{display:none}
+
+.map-wrap{
+  position:relative;
+  width:100%;
+  height:100%;
+  min-height:280px;
+  max-height:100%;
+  overflow:hidden;
+  background:#050505;
+  border:none;
+  box-shadow:none;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+body.idle .map-wrap{
+  height:calc(100vh - 128px);
+  min-height:560px;
+  max-height:calc(100vh - 10px);
+}
+
+body.flash-tor .map-wrap,
+body.flash-tor-confirmed .map-wrap,
+body.flash-tor-emergency .map-wrap,
+body.flash-svr .map-wrap,
+body.flash-svr-considerable .map-wrap,
+body.flash-svr-destructive .map-wrap{
+  height:calc(100vh - 185px);
+  min-height:300px;
+  max-height:calc(100vh - 20px);
+}
+
+#mapCanvas{
+  width:100%;
+  height:100%;
+  display:block;
+  background:#000;
+  position:absolute;
+  inset:0;
+  z-index:2;
+}
+
+#idleLoop{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  object-position:center center;
+  display:none;
+  z-index:1;
+  background:#000;
+}
+
+body.idle .map-wrap{
+  cursor:pointer;
+}
+
+.right{
+  min-width:0;
+  min-height:0;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+  position:relative;
+}
+
+.history-title{
+  flex:0 0 auto;
+  font-weight: bold;
+  color:#bdbdbd;
+  font-size:.74rem;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  margin:4px 0 8px 0;
+  text-align:center;
+}
+
+.history-column{
+  flex:1 1 auto;
+  min-height:0;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  overflow-y:auto;
+  overflow-x:hidden;
+  padding-right:4px;
+  align-items:stretch;
+}
+
+.history-card{
+  background:#121212;
+  border:1px solid #2c2c2c;
+  border-top:4px solid #555;
+  border-radius:16px;
+  padding:10px 12px 11px;
+  min-width:0;
+  overflow:hidden;
+  cursor:pointer;
+  transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+  flex:0 0 auto;   /* critical: do not shrink */
+}
+.history-card:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(0,0,0,.28)}
+.history-card.active{box-shadow:0 0 0 2px rgba(255,255,255,.16) inset}
+.history-card.tor{border-top-color:var(--tor-accent)}
+.history-card.tor-confirmed{border-top-color:var(--tor-confirmed-accent);background:rgba(196,0,201,.10)}
+.history-card.tor-emergency{border-top-color:#fff;background:rgba(255,76,255,.14)}
+.history-card.svr{border-top-color:var(--svr-accent)}
+.history-card.svr-considerable{border-top-color:var(--svr-considerable-accent);background:rgba(21,87,192,.14)}
+.history-card.svr-destructive{border-top-color:var(--svr-destructive-accent);background:rgba(63,45,168,.14)}
+.history-head{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.icon-pill{flex:0 0 auto;min-width:48px;text-align:center;padding:6px 8px;border-radius:999px;font-size:.82rem;font-weight:900;letter-spacing:.08em;color:#fff;background:#333}
+.history-card.tor .icon-pill{background:var(--tor-bg)}
+.history-card.tor-confirmed .icon-pill{background:var(--tor-confirmed-bg)}
+.history-card.tor-emergency .icon-pill{background:var(--tor-emergency-bg)}
+.history-card.svr .icon-pill{background:var(--svr-bg)}
+.history-card.svr-considerable .icon-pill{background:var(--svr-considerable-bg)}
+.history-card.svr-destructive .icon-pill{background:var(--svr-destructive-bg)}
+.history-office{font-size:.98rem;font-weight:900;line-height:1}
+.history-office-name{font-size:.72rem;font-weight:600;color:#9d9d9d;margin-left:6px;opacity:.88}
+.history-time{margin-top:2px;font-size:.74rem;color:#bdbdbd;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.history-tags{font-size:.73rem;color:#ededed;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
+.history-hazard{
+  margin-top:8px;
+  font-size:.84rem;
+  line-height:1.25;
+  color:#f0f0f0;
+  display:-webkit-box;
+  -webkit-line-clamp:4;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+
+.history-source{
+  margin-top:2px;
+  font-size:.70rem;
+  color:#949494;
+  line-height:1.1;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.warning-banner{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  text-align:center;
+}
+.warning-banner-text{
+  display:block;
+  width:100%;
+}
+.warning-banner-time{
+  display:block;
+  margin-top:.08em;
+  font-family:Arial, Helvetica, sans-serif;
+  font-size:.14em;
+  font-weight:700;
+  line-height:1.0;
+  letter-spacing:0 !important;
+  word-spacing:0 !important;
+  white-space:nowrap;
+  opacity:.96;
+}
+
+.idle-banner{
+  display:flex;
+  align-items:center;            /* vertical centering */
+  justify-content:center;
+  gap:10px;
+  width:100%;
+  padding:0;                     /* remove extra height */
+  height:56px;                   /* fixed compact height */
+  line-height:1;
+}
+
+.idle-banner-center{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:0;                         /* tighter */
+  height:100%;
+}
+
+.countdown-badge{
+  position:absolute;
+  left:12px;
+  bottom:12px;
+  width:44px;
+  height:44px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:6;
+  pointer-events:none;
+}
+
+.countdown-ring{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  transform:rotate(-90deg);
+}
+
+.countdown-ring-bg{
+  fill:rgba(0,0,0,.35);
+  stroke:rgba(255,255,255,.18);
+  stroke-width:4;
+}
+
+.countdown-ring-progress{
+  fill:none;
+  stroke:#ffffff;
+  stroke-width:4;
+  stroke-linecap:round;
+  stroke-dasharray:100.53;
+  stroke-dashoffset:0;
+  filter:drop-shadow(0 0 4px rgba(255,255,255,.35));
+}
+
+.countdown-number{
+  position:relative;
+  z-index:1;
+  font-size:14px;
+  font-weight:900;
+  line-height:1;
+  color:#fff;
+  text-shadow:0 0 6px rgba(0,0,0,.65);
+}
+
+body.idle #countdownBadge{
+  display:none !important;
+}
+
+.idle-time-line{
+  display:block;
+  font-family:Arial, Helvetica, sans-serif;
+  font-size:48%;
+  font-weight:600;
+  line-height:1.0;
+  letter-spacing:0 !important;
+  word-spacing:0 !important;
+  white-space:nowrap;
+  text-align:center;
+  font-kerning:normal;
+  text-rendering:optimizeLegibility;
+}
+.idle-scan-line{
+  display:block;
+  margin-top:2px;
+  font-family:"Segoe UI", Arial, sans-serif;
+  font-size:18px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  text-align:center;
+  color:#de1818;
+  text-shadow:0 0 6px rgba(120,220,255,.35);
+  animation:scanSync var(--radar-speed) linear infinite;
+}
+
+@keyframes scanPulse{
+  0%   { opacity:.55; letter-spacing:.08em; text-shadow:0 0 4px rgba(120,220,255,.2); }
+  50%  { opacity:1;   letter-spacing:.16em; text-shadow:0 0 12px rgba(120,220,255,.6); }
+  100% { opacity:.55; letter-spacing:.08em; text-shadow:0 0 4px rgba(120,220,255,.2); }
+}
+
+.radar-sweep{
+  position:relative;
+  width:54px;
+  height:54px;
+  align-self:center;
+  border-radius:50%;
+  border:1px solid rgba(90,255,140,.34);
+  background:
+    radial-gradient(circle at center, rgba(255,60,60,.95) 0 5%, transparent 6% 100%),
+    radial-gradient(circle at center,
+      transparent 0 43%,
+      rgba(80,255,140,.16) 44% 46%,
+      transparent 47% 69%,
+      rgba(80,255,140,.12) 70% 72%,
+      transparent 73% 100%);
+  box-shadow:
+    0 0 12px rgba(80,255,140,.18),
+    inset 0 0 10px rgba(80,255,140,.10);
+  flex:0 0 auto;
+  overflow:hidden;
+}
+
+.radar-sweep::before{
+  content:"";
+  position:absolute;
+  inset:-18%;
+  border-radius:50%;
+  background:conic-gradient(from 0deg,
+    rgba(90,255,140,0.00) 0deg,
+    rgba(90,255,140,0.00) 300deg,
+    rgba(120,255,170,0.30) 325deg,
+    rgba(90,255,140,0.95) 342deg,
+    rgba(90,255,140,0.00) 360deg);
+  animation:radarSpin var(--radar-speed) linear infinite;
+  filter:blur(.2px);
+}
+
+.radar-sweep::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  transform:translate(-50%,-50%);
+  background:#ff2a2a;
+  box-shadow:
+    0 0 8px rgba(255,60,60,.8),
+    0 0 14px rgba(255,60,60,.45);
+}
+
+@keyframes radarSpin{
+  from{transform:rotate(0deg)}
+  to{transform:rotate(360deg)}
+}
+
+.idle-banner a{
+  height:100%;
+  display:flex;
+  align-items:center;
+}
+
+.idle-title{
+  font-size:12px;
+  color:white;
+  font-weight:800;
+  letter-spacing:.05em;
+  margin:0;
+  line-height:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:4px;
+  flex-wrap:wrap;
+  text-align:center;
+}
+
+.idle-hazard-mark{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  font-size:13px;
+  line-height:1;
+  vertical-align:middle;
+}
+
+.idle-hazard-mark.tor{
+  filter:drop-shadow(0 0 4px rgba(255,90,90,.45));
+}
+
+.idle-hazard-mark.svr{
+  filter:drop-shadow(0 0 4px rgba(255,220,90,.45));
+}
+
+.idle-scan-line{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:4px;
+  margin-top:2px;
+  font-family:"Segoe UI", Arial, sans-serif;
+  font-size:18px;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  text-align:center;
+  color:#de1818;
+  text-shadow:0 0 6px rgba(120,220,255,.35);
+  animation:scanSync var(--radar-speed) linear infinite;
+}
+
+.idle-scan-icon{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  line-height:1;
+  font-size:.95em;
+  letter-spacing:0;
+}
+
+.idle-scan-icon.search{
+  filter:drop-shadow(0 0 5px rgba(120,220,255,.45));
+}
+
+.idle-scan-icon.radar{
+  filter:drop-shadow(0 0 5px rgba(120,255,170,.45));
+}
+
+.idle-scan-text{
+  display:inline-block;
+}
+
+@keyframes scanSync{
+  0%   { opacity:.45; letter-spacing:.10em; text-shadow:0 0 4px rgba(120,220,255,.2); }
+  25%  { opacity:.75; }
+  50%  { opacity:1;   letter-spacing:.16em; text-shadow:0 0 14px rgba(120,220,255,.7); }
+  75%  { opacity:.75; }
+  100% { opacity:.45; letter-spacing:.10em; text-shadow:0 0 4px rgba(120,220,255,.2); }
+}
+
+body.idle .warningBannerText{display:none}
+body.idle .idle-banner{display:flex !important}
+body.idle .headline{
+  width:100%;
+  min-width:0;
+  letter-spacing:0 !important;
+  padding:.18em .34em;
+}
+body.idle .utc{display:none}
+body.idle .status-note{display:none}
+body.idle #tagRow{display:none !important}
+body.idle #hazardText{display:none !important}
+
+@media (max-width: 1100px){
+html,body{
+    height:auto;
+    min-height:100%;
+    overflow-x:hidden;
+    overflow-y:auto;
+  }
+
+  .shell{
+    grid-template-columns:1fr;
+    height:auto;
+    min-height:100vh;
+    padding:8px 10px 12px;
+    gap:10px;
+  }
+
+  .right{
+    display:flex;
+    overflow:visible;
+  }
+
+  .left,
+  .right{
+    min-height:0;
+    height:auto;
+  }
+
+  .content{
+    grid-template-rows:auto auto auto auto auto;
+    gap:6px;
+  }
+
+  .map-wrap{
+    min-height:300px;
+    height:46vh;
+    max-height:none;
+    border-radius:14px;
+  }
+
+  body.idle .map-wrap,
+  body.flash-tor .map-wrap,
+  body.flash-tor-confirmed .map-wrap,
+  body.flash-tor-emergency .map-wrap,
+  body.flash-svr .map-wrap,
+  body.flash-svr-considerable .map-wrap,
+  body.flash-svr-destructive .map-wrap{
+    height:46vh;
+    min-height:300px;
+    max-height:none;
+  }
+
+  .history-title{
+    margin:8px 0 6px;
+  }
+
+  .history-column{
+    max-height:38vh;
+    overflow-y:auto;
+  }
+
+  .detail{
+    max-width:100%;
+    width:100%;
+    font-size:.95rem;
+    padding:8px 12px;
+  }
+
+  .headline{
+    font-size:min(12vw,64px);
+    border-width:4px;
+    padding:.16em .26em;
+  }
+}
+
+@media (max-width: 780px){
+  .shell{
+    padding:6px 8px 10px;
+    gap:8px;
+  }
+  
+  .idle-title{
+  font-size:10px;
+  gap:3px;
+  line-height:1.1;
+}
+
+.idle-hazard-mark{
+  font-size:11px;
+}
+
+.idle-scan-line{
+  gap:3px;
+  font-size:10px;
+  letter-spacing:.08em;
+}
+
+.idle-scan-icon{
+  font-size:.9em;
+}
+
+  .icon{
+    font-size:13px;
+  }
+
+  .audio-btn{
+    top:6px;
+    right:6px;
+    font-size:9px;
+    padding:3px 6px;
+	opacity:1 !important;
+    visibility:visible;
+  }
+
+  .idle-banner{
+    gap:6px;
+    height:auto;
+    min-height:54px;
+    padding:4px 0;
+  }
+
+  .idle-banner-center{
+    min-width:0;
+  }
+
+  .idle-logo{
+    width:28px;
+    height:auto;
+  }
+
+  .radar-sweep{
+    width:34px;
+    height:34px;
+  }
+
+  .idle-title{
+    font-size:10px;
+    line-height:1.1;
+    text-align:center;
+  }
+
+  .idle-time-line{
+    font-size:17px;
+  }
+
+  .idle-scan-line{
+    font-size:10px;
+    letter-spacing:.08em;
+  }
+
+  .headline{
+    font-size:min(13vw,44px);
+    line-height:.95;
+    padding:.18em .20em;
+    border-width:3px;
+    border-radius:16px;
+  }
+
+  .warning-banner-time{
+    font-size:.20em;
+    line-height:1.05;
+    white-space:normal;
+  }
+
+  .tag-row{
+    gap:4px;
+  }
+
+  .tag{
+    font-size:.72rem;
+    padding:4px 8px;
+  }
+
+  .detail{
+    font-size:.88rem;
+    line-height:1.2;
+    padding:8px 10px;
+    border-radius:12px;
+  }
+
+  .map-wrap{
+    height:40vh;
+    min-height:240px;
+  }
+
+  body.idle .map-wrap,
+  body.flash-tor .map-wrap,
+  body.flash-tor-confirmed .map-wrap,
+  body.flash-tor-emergency .map-wrap,
+  body.flash-svr .map-wrap,
+  body.flash-svr-considerable .map-wrap,
+  body.flash-svr-destructive .map-wrap{
+    height:40vh;
+    min-height:240px;
+  }
+
+  .history-column{
+    max-height:32vh;
+    gap:8px;
+  }
+
+  .history-card{
+    padding:9px 10px 10px;
+    border-radius:12px;
+  }
+
+  .history-office{
+    font-size:.90rem;
+  }
+
+  .history-office-name{
+    font-size:.66rem;
+  }
+
+  .history-time,
+  .history-tags,
+  .history-source,
+  .history-hazard{
+    white-space:normal;
+    overflow:visible;
+    text-overflow:clip;
+    display:block;
+    -webkit-line-clamp:unset;
+  }
+
+  .countdown-badge{
+    width:36px;
+    height:36px;
+    left:8px;
+    bottom:8px;
+  }
+
+  .countdown-number{
+    font-size:11px;
+  }
+}
+</style>
+</head>
+<body>
+<div class="shell">
+  <div class="left">
+    <div class="topbar"></div>
+
+    <div class="content">
+      <div id="headline" class="headline">
+        <div id="idleBanner" class="idle-banner" style="display:none;">
+          <a href="https://www.weather.gov" target="_blank" rel="noopener noreferrer" aria-label="Open weather.gov">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/US-NationalWeatherService-Logo.svg" alt="NWS logo" class="idle-logo nws">
+          </a>
+
+          <div class="radar-sweep" aria-hidden="true"></div>
+
+          <div class="idle-banner-center">
+  <div class="idle-title">
+    National Weather Service
+    <span class="idle-hazard-mark tor">🌪️</span>
+    TOR
+    /
+    SVR
+    <span class="idle-hazard-mark svr">⚡</span>
+    Warning Alerts
+  </div>
+
+  <div id="idleTimeLine" class="idle-time-line"></div>
+
+  <div id="idleScanLine" class="idle-scan-line">
+    <span class="idle-scan-icon search">🔍</span>
+    <span class="idle-scan-text"> - scanning for new warnings -</span>
+	<span class="idle-scan-icon radar">📡</span>
+  </div>
+</div>
+
+          <div class="radar-sweep" aria-hidden="true"></div>
+
+          <a href="https://www.niu.edu" target="_blank" rel="noopener noreferrer" aria-label="Open niu.edu">
+            <img src="niu_alt_logo.png" alt="NIU logo" class="idle-logo niu">
+          </a>
+        </div>
+        <div id="warningBanner" class="warning-banner" style="display:none;">
+          <div id="warningBannerText" class="warning-banner-text">IDLE</div>
+          <div id="warningBannerTime" class="warning-banner-time"></div>
+        </div>
+      </div>
+
+      <div class="utc" id="utc"></div>
+      <div class="status-note" id="statusNote">Waiting for new warnings.</div>
+      <div id="tagRow" class="tag-row" style="display:none;"></div>
+      <div id="hazardText" class="detail" style="display:none;"></div>
+
+      <div class="radar-block">
+        <div class="map-label" style="display:none;"></div>
+        <div class="map-wrap" id="mapWrap" title="Open SPC website">
+          <img id="idleLoop" src="https://www.spc.noaa.gov/products/activity_loop.gif" alt="SPC activity loop">
+          <canvas id="mapCanvas"></canvas>
+		  <div id="countdownBadge" class="countdown-badge" style="display:none;">
+  <svg class="countdown-ring" viewBox="0 0 40 40" aria-hidden="true">
+    <circle class="countdown-ring-bg" cx="20" cy="20" r="16"></circle>
+    <circle id="countdownRingProgress" class="countdown-ring-progress" cx="20" cy="20" r="16"></circle>
+  </svg>
+  <div id="countdownNumber" class="countdown-number">5</div>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="right">
+  <button id="audioBtn" class="audio-btn">Enable Audio</button>
+  <div class="history-title">25 Most Recent Warnings</div>
+  <div id="historyList" class="history-column"></div>
+</div>
+</div>
+
+<script>
+const ALERTS_URL = 'alerts.json';
+const IDLE_IMAGE_URL = 'https://www.spc.noaa.gov/products/activity_loop.gif';
+const SPC_URL = 'https://www.spc.noaa.gov/';
+const POLL_MS = 1000;
+const MIN_DISPLAY_MS = 5000;
+const MAX_DISPLAY_MS = 30000;   // live alerts only
+const PREVIEW_DISPLAY_MS = 5000; // history clicks always 5 sec
+const MAX_HISTORY = 25;
+const MAP_SIZE = 320;
+const IDLE_LOOP_REFRESH_DELAY_SEC = 45;
+let idleRefreshTimer = null;
+
+let audioCtx = null;
+let audioEnabled = false;
+let audioUnlocked = false;
+let uiHideTimer = null;
+let knownKeys = new Set();
+let lastAlerts = [];
+let liveQueue = [];
+let state = { mode:'idle', alert:null, startedAt:0, preemptTimer:null, expiryTimer:null };
+let initialSeeded = false;
+let mapToken = 0;
+let lastRenderedHistorySignature = '';
+let historyUserPinnedToTop = true;
+let countdownTimer = null;
+let countdownEndTs = 0;
+let countdownDurationMs = 0;
+
+const headlineEl = document.getElementById('headline');
+const warningBannerEl = document.getElementById('warningBanner');
+const warningBannerTextEl = document.getElementById('warningBannerText');
+const warningBannerTimeEl = document.getElementById('warningBannerTime');
+const idleBannerEl = document.getElementById('idleBanner');
+const idleTimeLineEl = document.getElementById('idleTimeLine');
+const utcEl = document.getElementById('utc');
+const statusNoteEl = document.getElementById('statusNote');
+const tagRowEl = document.getElementById('tagRow');
+const hazardEl = document.getElementById('hazardText');
+const historyListEl = document.getElementById('historyList');
+historyListEl.addEventListener('scroll', () => {historyUserPinnedToTop = historyListEl.scrollTop <= 2;});
+const audioBtn = document.getElementById('audioBtn');
+const mapCanvas = document.getElementById('mapCanvas');
+const idleLoopEl = document.getElementById('idleLoop');
+const mapWrapEl = document.getElementById('mapWrap');
+const mapCtx = mapCanvas.getContext('2d');
+const countdownBadgeEl = document.getElementById('countdownBadge');
+const countdownNumberEl = document.getElementById('countdownNumber');
+const countdownRingProgressEl = document.getElementById('countdownRingProgress');
+
+function resizeCanvasToDisplaySize(){
+  const rect = mapCanvas.getBoundingClientRect();
+  const w = Math.max(1, Math.round(rect.width));
+  const h = Math.max(1, Math.round(rect.height));
+  if (mapCanvas.width !== w || mapCanvas.height !== h) {
+    mapCanvas.width = w;
+    mapCanvas.height = h;
+  }
+}
+
+function showUI(){
+  audioBtn.classList.add('visible');
+  clearTimeout(uiHideTimer);
+  uiHideTimer = setTimeout(() => audioBtn.classList.remove('visible'), 8000);
+}
+showUI();
+['mousemove','keydown','touchstart'].forEach(evt => window.addEventListener(evt, showUI));
+
+mapWrapEl.addEventListener('click', () => {
+  if (state.mode === 'idle') {
+    window.open(SPC_URL, '_blank', 'noopener,noreferrer');
+  }
+});
+
+async function ensureAudioReady() {
+  if (!audioCtx) {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  }
+
+  try {
+    if (audioCtx.state === 'suspended') {
+      await audioCtx.resume();
+    }
+    audioUnlocked = (audioCtx.state === 'running');
+  } catch (err) {
+    console.error('audio resume failed', err);
+  }
+
+  return audioUnlocked;
+}
+
+audioBtn.addEventListener('click', async () => {
+  await ensureAudioReady();
+
+  if (!audioEnabled) {
+    audioEnabled = true;
+    audioBtn.textContent = 'Audio On';
+    audioBtn.classList.add('enabled');
+    if (audioUnlocked) playEnableBeep();
+  } else {
+    audioEnabled = false;
+    audioBtn.textContent = 'Audio Off';
+    audioBtn.classList.remove('enabled');
+  }
+});
+
+async function unlockAudioFromGesture() {
+  await ensureAudioReady();
+}
+
+['touchstart','pointerdown','click'].forEach(evt => {
+  window.addEventListener(evt, unlockAudioFromGesture, { passive:true, once:true });
+});
+
+window.addEventListener('resize', () => {
+  resizeCanvasToDisplaySize();
+  if (state.mode === 'idle') {
+    renderIdleImage();
+    scheduleIdleLoopRefresh();
+  } else if (state.alert) {
+    drawMap(state.alert);
+  }
+});
+
+window.addEventListener('orientationchange', () => {
+  setTimeout(() => {
+    resizeCanvasToDisplaySize();
+    if (state.mode === 'idle') {
+      renderIdleImage();
+      scheduleIdleLoopRefresh();
+    } else if (state.alert) {
+      drawMap(state.alert);
+    }
+  }, 150);
+});
+
+function getNextIdleLoopRefreshTime(fromDate = new Date()){
+  const d = new Date(fromDate.getTime());
+  d.setSeconds(0, 0);
+
+  const minute = d.getMinutes();
+  const hour = d.getHours();
+  const refreshMinutes = [2, 14, 26, 38, 50];
+
+  for (const m of refreshMinutes) {
+    const candidate = new Date(d.getTime());
+    candidate.setMinutes(m, IDLE_LOOP_REFRESH_DELAY_SEC, 0);
+    if (candidate > fromDate) return candidate;
+  }
+
+  const nextHour = new Date(d.getTime());
+  nextHour.setHours(hour + 1, 2, IDLE_LOOP_REFRESH_DELAY_SEC, 0);
+  return nextHour;
+}
+
+function stopCountdown(){
+  clearInterval(countdownTimer);
+  countdownTimer = null;
+  countdownEndTs = 0;
+  countdownDurationMs = 0;
+  countdownBadgeEl.style.display = 'none';
+}
+
+function updateCountdownVisual(){
+  if (!countdownEndTs || !countdownDurationMs) return;
+
+  const remainingMs = Math.max(0, countdownEndTs - Date.now());
+  const remainingSec = Math.ceil(remainingMs / 1000);
+  const progress = remainingMs / countdownDurationMs;
+
+  const circumference = 2 * Math.PI * 16; // r=16
+  const dashOffset = circumference * (1 - progress);
+
+  countdownNumberEl.textContent = remainingSec;
+  countdownRingProgressEl.style.strokeDasharray = `${circumference}`;
+  countdownRingProgressEl.style.strokeDashoffset = `${dashOffset}`;
+
+  if (remainingMs <= 0) {
+    stopCountdown();
+  }
+}
+
+function startCountdown(durationMs){
+  clearInterval(countdownTimer);
+  countdownDurationMs = durationMs;
+  countdownEndTs = Date.now() + durationMs;
+  countdownBadgeEl.style.display = 'flex';
+  updateCountdownVisual();
+  countdownTimer = setInterval(updateCountdownVisual, 200);
+}
+
+function getHistorySignature(alerts){
+  return alerts
+    .slice(-MAX_HISTORY)
+    .map(a => alertKey(a))
+    .join('||');
+}
+
+function scheduleIdleLoopRefresh(){
+  clearTimeout(idleRefreshTimer);
+
+  if (state.mode !== 'idle') return;
+
+  const now = new Date();
+  const nextRefresh = getNextIdleLoopRefreshTime(now);
+  const delay = Math.max(1000, nextRefresh.getTime() - now.getTime());
+
+  idleRefreshTimer = setTimeout(() => {
+    if (state.mode === 'idle') {
+      renderIdleImage();
+      scheduleIdleLoopRefresh();
+    }
+  }, delay);
+}
+
+function playEnableBeep(){
+  if (!audioCtx) return;
+  const now = audioCtx.currentTime;
+  const osc = audioCtx.createOscillator();
+  const gain = audioCtx.createGain();
+
+  osc.type = 'sine';
+  osc.frequency.setValueAtTime(880, now);
+
+  gain.gain.setValueAtTime(0.0001, now);
+  gain.gain.exponentialRampToValueAtTime(0.08, now + 0.015);
+  gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.18);
+
+  osc.connect(gain);
+  gain.connect(audioCtx.destination);
+  osc.start(now);
+  osc.stop(now + 0.2);
+}
+
+function escapeHtml(s){
+  return String(s || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+function alertKey(a){
+  return [a.issued || '', a.type || '', a.wfo || '', a.etn || '', a.hazard_text || ''].join('|');
+}
+function getSeverityClass(a){
+  if(!a) return '';
+  const type=(a.type || '').toUpperCase();
+  const torThreat=(a.tornado_damage_threat || '').toUpperCase();
+  const svrThreat=(a.thunderstorm_damage_threat || '').toUpperCase();
+  const emergency=!!a.emergency || torThreat === 'CATASTROPHIC';
+  const confirmed=!!a.confirmed_tornado || (a.tornado_tag || '').toUpperCase() === 'OBSERVED' || torThreat === 'CONSIDERABLE';
+  if(type === 'TOR'){ if(emergency) return 'tor-emergency'; if(confirmed) return 'tor-confirmed'; return 'tor'; }
+  if(type === 'SVR'){ if(svrThreat === 'DESTRUCTIVE') return 'svr-destructive'; if(svrThreat === 'CONSIDERABLE') return 'svr-considerable'; return 'svr'; }
+  return '';
+}
+function getFlashClass(a){ const sev=getSeverityClass(a); return sev ? 'flash-' + sev : ''; }
+function buildTags(a){
+  const tags=[];
+  const sev=getSeverityClass(a);
+  const tornadoThreat=(a.tornado_damage_threat || '').toUpperCase();
+
+  if(sev==='tor-confirmed') tags.push({label:'Confirmed Tornado', cls:'tor-confirmed'});
+  if(tornadoThreat==='CONSIDERABLE') tags.push({label:'Damage Threat: Considerable', cls:'tor-considerable'});
+  if(sev==='tor-emergency' || tornadoThreat==='CATASTROPHIC') tags.push({label:'Tornado Emergency', cls:'tor-emergency'});
+  if((a.thunderstorm_damage_threat || '').toUpperCase()==='CONSIDERABLE') tags.push({label:'Damage Threat: Considerable', cls:'svr-considerable'});
+  if((a.thunderstorm_damage_threat || '').toUpperCase()==='DESTRUCTIVE') tags.push({label:'Damage Threat: Destructive', cls:'svr-destructive'});
+  return tags;
+}
+
+function formatUtcBannerTimeFromDate(d){
+  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const day = days[d.getUTCDay()];
+  const date = String(d.getUTCDate()).padStart(2,'0');
+  const month = months[d.getUTCMonth()];
+  const year = d.getUTCFullYear();
+  const hh = String(d.getUTCHours()).padStart(2,'0');
+  const mm = String(d.getUTCMinutes()).padStart(2,'0');
+  const ss = String(d.getUTCSeconds()).padStart(2,'0');
+  return `${day} ${date} ${month} ${year} ${hh}:${mm}:${ss} UTC`;
+}
+function formatWarningIssuedText(s){
+  if(!s) return '';
+  const m = String(s).match(/^(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2}) UTC$/);
+  if(!m) return s;
+  const d = new Date(Date.UTC(
+    Number(m[1]), Number(m[2]) - 1, Number(m[3]),
+    Number(m[4]), Number(m[5]), Number(m[6])
+  ));
+  return formatUtcBannerTimeFromDate(d);
+}
+function formatUtcBannerTime(){
+  return formatUtcBannerTimeFromDate(new Date());
+}
+function updateIdleClock(){
+  if(state.mode !== 'idle') return;
+  idleTimeLineEl.textContent = formatUtcBannerTime();
+}
+
+function clearMap(){
+  resizeCanvasToDisplaySize();
+  mapCtx.clearRect(0,0,mapCanvas.width,mapCanvas.height);
+  mapCtx.fillStyle='#000';
+  mapCtx.fillRect(0,0,mapCanvas.width,mapCanvas.height);
+}
+
+function renderIdleImage(){
+  clearMap();
+  mapCanvas.style.display = 'none';
+  idleLoopEl.style.display = 'block';
+  idleLoopEl.src = IDLE_IMAGE_URL + '?ts=' + Date.now();
+}
+
+function clearTimers(){
+  if(state.preemptTimer){ clearTimeout(state.preemptTimer); state.preemptTimer = null; }
+  if(state.expiryTimer){ clearTimeout(state.expiryTimer); state.expiryTimer = null; }
+}
+function setIdle(){
+  clearTimers();
+  clearTimeout(idleRefreshTimer);
+
+  state.mode = 'idle';
+  state.alert = null;
+  state.startedAt = 0;
+  document.body.className='idle';
+  headlineEl.className='headline';
+  warningBannerEl.style.display='none';
+  warningBannerTextEl.textContent='';
+  warningBannerTimeEl.textContent='';
+  idleBannerEl.style.display='flex';
+  utcEl.textContent='';
+  statusNoteEl.textContent='';
+  statusNoteEl.style.display='none';
+  updateIdleClock();
+  tagRowEl.style.display='none';
+  tagRowEl.innerHTML='';
+  hazardEl.style.display='none';
+  hazardEl.innerHTML='';
+  renderIdleImage();
+  scheduleIdleLoopRefresh();
+  updateActiveTile();
+  stopCountdown();
+}
+function renderAlert(alert){
+  if(!alert){ setIdle(); return; }
+  clearTimeout(idleRefreshTimer);
+  const sev=getSeverityClass(alert);
+  document.body.className=getFlashClass(alert) || '';
+  headlineEl.className='headline ' + sev + ' flash';
+  idleBannerEl.style.display='none';
+  warningBannerEl.style.display='flex';
+  warningBannerTextEl.textContent=`${alert.type || ''} ${alert.wfo || ''}`.trim();
+  const officeName = (alert.office_name || '').trim();
+  const issuedText = formatWarningIssuedText(alert.issued || '');
+  warningBannerTimeEl.textContent = officeName ? `${officeName} • ${issuedText}` : issuedText;
+  utcEl.textContent='';
+  statusNoteEl.textContent = '';
+  statusNoteEl.style.display = 'none';
+
+  const tags=buildTags(alert);
+  if(tags.length){
+    tagRowEl.style.display='flex';
+    tagRowEl.innerHTML=tags.map(t=>`<span class="tag ${t.cls}">${escapeHtml(t.label)}</span>`).join('');
+  } else {
+    tagRowEl.style.display='none';
+    tagRowEl.innerHTML='';
+  }
+
+  const tornadoTag = (alert.tornado_tag || '').trim();
+  const tornadoThreat = (alert.tornado_damage_threat || '').trim();
+  const sourceText = (alert.source_text || '').trim();
+  const isTor = (alert.type || '').toUpperCase() === 'TOR';
+
+  hazardEl.className = 'detail ' + sev;
+
+  if (alert.hazard_text || (isTor && tornadoTag) || (isTor && tornadoThreat) || sourceText) {
+    hazardEl.style.display = 'block';
+
+    const parts = [];
+    let line = '';
+
+    if (alert.hazard_text) {
+      line += `<span style="color:#ffd84d;font-weight:900;letter-spacing:.05em;">HAZARD(s):</span> ${escapeHtml(alert.hazard_text)}`;
+    }
+
+    if (sourceText) {
+      if (line) line += ` <span style="opacity:.6;">•</span> `;
+      line += `<span style="color:#ffd84d;font-weight:900;letter-spacing:.05em;">SOURCE:</span> ${escapeHtml(sourceText)}`;
+    }
+
+    if (line) {
+      parts.push(`<div>${line}</div>`);
+    }
+
+    hazardEl.innerHTML = parts.join('');
+  } else {
+    hazardEl.style.display='none';
+    hazardEl.innerHTML='';
+  }
+
+  drawMap(alert);
+  updateActiveTile();
+}
+function startExpiryTimer(expectedKey){
+  const duration = (state.mode === 'preview')
+    ? PREVIEW_DISPLAY_MS
+    : MAX_DISPLAY_MS;
+
+  startCountdown(duration);
+
+  state.expiryTimer = setTimeout(() => {
+    if(!state.alert || alertKey(state.alert) !== expectedKey) return;
+
+    if(state.mode === 'preview'){
+      if(liveQueue.length) activateLive(liveQueue.shift(), true);
+      else setIdle();
+      return;
+    }
+
+    if(state.mode === 'live'){
+      if(liveQueue.length) activateLive(liveQueue.shift(), true);
+      else setIdle();
+    }
+  }, duration);
+}
+function activateLive(alert, playAudio=true){
+  clearTimers();
+  state.mode = 'live';
+  state.alert = alert;
+  state.startedAt = Date.now();
+  renderAlert(alert);
+  if(playAudio) playTone(alert);
+  startExpiryTimer(alertKey(alert));
+}
+function activatePreview(alert){
+  clearTimers();
+  state.mode = 'preview';
+  state.alert = alert;
+  state.startedAt = Date.now();
+  renderAlert(alert);
+  startExpiryTimer(alertKey(alert));
+}
+
+function maybeInterruptForLive(){
+  if(!liveQueue.length) return;
+  if(state.mode === 'idle'){
+    activateLive(liveQueue.shift(), true);
+    return;
+  }
+  const elapsed = Date.now() - state.startedAt;
+  if(elapsed >= MIN_DISPLAY_MS){
+    activateLive(liveQueue.shift(), true);
+  } else if(!state.preemptTimer) {
+    state.preemptTimer = setTimeout(() => {
+      state.preemptTimer = null;
+      if(liveQueue.length){
+        activateLive(liveQueue.shift(), true);
+      }
+    }, MIN_DISPLAY_MS - elapsed);
+  }
+}
+function updateActiveTile(){
+  const activeKey = state.mode === 'preview' && state.alert ? alertKey(state.alert) : '';
+  document.querySelectorAll('.history-card').forEach(el => {
+    el.classList.toggle('active', !!activeKey && el.dataset.key === activeKey);
+  });
+}
+function renderHistory(alerts){
+  const historyItems = alerts.slice(-MAX_HISTORY).reverse();
+  const signature = getHistorySignature(alerts);
+
+  if (signature === lastRenderedHistorySignature) {
+    updateActiveTile();
+    return;
+  }
+
+  const isNewData = signature !== lastRenderedHistorySignature;
+  const keepAtTop = isNewData || historyUserPinnedToTop || historyListEl.scrollTop <= 2;
+  const previousScrollTop = historyListEl.scrollTop;
+
+  lastRenderedHistorySignature = signature;
+
+  if(!historyItems.length){
+    historyListEl.innerHTML = '<div style="color:#888;padding:10px 4px;">No warnings yet.</div>';
+    historyListEl.scrollTop = 0;
+    historyUserPinnedToTop = true;
+    return;
+  }
+
+  historyListEl.innerHTML = historyItems.map(a => {
+    const cls = getSeverityClass(a);
+    const tags = buildTags(a).map(t => t.label).join(' • ');
+    const key = alertKey(a);
+
+    return `<div class="history-card ${cls}" data-key="${escapeHtml(key)}">
+      <div class="history-head">
+        <div class="icon-pill">${escapeHtml(a.type || '')}</div>
+        <div style="min-width:0;">
+          <div class="history-office">
+            ${escapeHtml(a.wfo || '')}
+            ${a.office_name ? `<span class="history-office-name">${escapeHtml(a.office_name)}</span>` : ''}
+          </div>
+          <div class="history-time">${escapeHtml(a.issued || '')}</div>
+          ${a.source_text ? `<div class="history-source">Source: ${escapeHtml(a.source_text)}</div>` : ''}
+        </div>
+      </div>
+      ${tags ? `<div class="history-tags">${escapeHtml(tags)}</div>` : ''}
+      ${a.hazard_text ? `<div class="history-hazard">${escapeHtml(a.hazard_text)}</div>` : ''}
+    </div>`;
+  }).join('');
+
+  historyListEl.querySelectorAll('.history-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const found = lastAlerts.find(a => alertKey(a) === card.dataset.key);
+      if(found) activatePreview(found);
+    });
+  });
+
+  if (keepAtTop) {
+    historyListEl.scrollTop = 0;
+    historyUserPinnedToTop = true;
+  } else {
+    historyListEl.scrollTop = previousScrollTop;
+  }
+
+  updateActiveTile();
+}
+
+
+function playFallbackTone(sev){
+  if(!audioEnabled || !audioCtx) return;
+
+  const now = audioCtx.currentTime;
+
+  function makeMaster(endTime, peak){
+    const master = audioCtx.createGain();
+    master.gain.setValueAtTime(0.0001, now);
+    master.gain.exponentialRampToValueAtTime(peak, now + 0.03);
+    master.gain.exponentialRampToValueAtTime(0.0001, endTime);
+    master.connect(audioCtx.destination);
+    return master;
+  }
+
+  function dualTone(master, freq1, freq2, type, start, end, detune){
+    const osc1 = audioCtx.createOscillator();
+    const osc2 = audioCtx.createOscillator();
+
+    osc1.type = type || 'square';
+    osc2.type = type || 'square';
+
+    osc1.frequency.value = freq1;
+    osc2.frequency.value = freq2;
+    osc2.detune.value = detune || 0;
+
+    osc1.connect(master);
+    osc2.connect(master);
+
+    osc1.start(start);
+    osc2.start(start);
+    osc1.stop(end);
+    osc2.stop(end);
+  }
+
+  function modulate(master, freqA, freqB, speed, start, end){
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    const lfo = audioCtx.createOscillator();
+    const lfoGain = audioCtx.createGain();
+
+    osc.type = 'sine';
+    osc.frequency.value = freqA;
+
+    lfo.type = 'sine';
+    lfo.frequency.value = speed;
+    lfoGain.gain.value = freqB - freqA;
+
+    lfo.connect(lfoGain);
+    lfoGain.connect(osc.frequency);
+
+    gain.gain.value = 0.55;
+
+    osc.connect(gain);
+    gain.connect(master);
+
+    osc.start(start);
+    lfo.start(start);
+    osc.stop(end);
+    lfo.stop(end);
+  }
+
+  function longBeep(start, duration, f1, f2, amp){
+    const master = audioCtx.createGain();
+    master.gain.setValueAtTime(0.0001, start);
+    master.gain.exponentialRampToValueAtTime(amp, start + 0.02);
+    master.gain.exponentialRampToValueAtTime(0.0001, start + duration);
+    master.connect(audioCtx.destination);
+
+    const osc1 = audioCtx.createOscillator();
+    const osc2 = audioCtx.createOscillator();
+
+    osc1.type = 'sine';
+    osc2.type = 'triangle';
+
+    osc1.frequency.value = f1;
+    osc2.frequency.value = f2;
+
+    osc1.connect(master);
+    osc2.connect(master);
+
+    osc1.start(start);
+    osc2.start(start);
+    osc1.stop(start + duration + 0.05);
+    osc2.stop(start + duration + 0.05);
+  }
+
+  if (sev === 'svr' || sev === 'svr-considerable' || sev === 'svr-destructive') {
+    longBeep(now + 0.00, 0.50, 850, 1100, 0.12);
+    longBeep(now + 0.65, 0.50, 850, 1100, 0.12);
+    longBeep(now + 1.30, 0.60, 850, 1100, 0.13);
+    return;
+  }
+
+  if (sev === 'tor') {
+    const end = now + 5.5;
+    const master = makeMaster(end, 0.23);
+    dualTone(master, 850, 960, 'square', now, end, 5);
+    return;
+  }
+
+  if (sev === 'tor-confirmed') {
+    const end = now + 5.5;
+    const master = makeMaster(end, 0.26);
+    dualTone(master, 900, 1100, 'square', now, end, 10);
+    modulate(master, 850, 1200, 1.2, now, end);
+    return;
+  }
+
+  if (sev === 'tor-emergency') {
+    const end = now + 6.0;
+    const master = makeMaster(end, 0.30);
+    dualTone(master, 950, 1400, 'square', now, end, 15);
+    dualTone(master, 600, 720, 'sawtooth', now, end, -10);
+    modulate(master, 700, 1600, 2.5, now, end);
+    return;
+  }
+
+  longBeep(now + 0.00, 0.22, 700, 900, 0.08);
+}
+
+async function playTone(alert){
+  if(!audioEnabled || !alert) return;
+
+  await ensureAudioReady();
+  if(!audioCtx || audioCtx.state !== 'running') return;
+
+  const sev = getSeverityClass(alert);
+
+  const config = {
+    severity: sev,
+    type: String(alert.type || '').toUpperCase(),
+    enabled: audioEnabled,
+    now: audioCtx.currentTime
+  };
+
+  if (window.AlertToneLab && typeof window.AlertToneLab.play === 'function') {
+    try {
+      window.AlertToneLab.play(audioCtx, config);
+      return;
+    } catch (e) {
+      console.error("ToneLab failed, falling back:", e);
+    }
+  }
+
+  console.log("Fallback tone used:", sev);
+  playFallbackTone(sev);
+}
+
+function seedKnownKeys(alerts){ knownKeys = new Set(alerts.map(alertKey)); }
+function enqueueNewAlerts(alerts){
+  for(const a of alerts){
+    const key = alertKey(a);
+    if(!knownKeys.has(key)){
+      knownKeys.add(key);
+      liveQueue.push(a);
+    }
+  }
+  maybeInterruptForLive();
+}
+async function pollAlerts(){
+  try{
+    const res=await fetch(ALERTS_URL + '?ts=' + Date.now(), {cache:'no-store'});
+    const alerts=await res.json();
+    if(Array.isArray(alerts)){
+      lastAlerts = alerts;
+      renderHistory(alerts);
+      if(!initialSeeded){
+        seedKnownKeys(alerts);
+        initialSeeded = true;
+        setIdle();
+      } else {
+        enqueueNewAlerts(alerts);
+      }
+    }
+  } catch(err){
+    console.error('poll failed', err);
+  }
+}
+
+function lonLatToPixel(lon, lat){
+  return { x:(lon - (-126.0))/0.005, y:(50.0 - lat)/0.005 };
+}
+function shiftPointToCrop(p, crop){
+  return {
+    x:(p.x - Number(crop.sx || 0))*(mapCanvas.width/Number(crop.sw || MAP_SIZE)),
+    y:(p.y - Number(crop.sy || 0))*(mapCanvas.height/Number(crop.sh || MAP_SIZE))
+  };
+}
+
+function getCSSVar(name){
+  return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+}
+
+function hexToRgba(hex, alpha){
+  let h = String(hex || '').replace('#', '').trim();
+  if (h.length === 3) {
+    h = h.split('').map(ch => ch + ch).join('');
+  }
+  if (h.length !== 6) return `rgba(255,255,255,${alpha})`;
+
+  const r = parseInt(h.slice(0,2), 16);
+  const g = parseInt(h.slice(2,4), 16);
+  const b = parseInt(h.slice(4,6), 16);
+  return `rgba(${r},${g},${b},${alpha})`;
+}
+
+function getPolygonStyle(sev){
+  const styles = {
+    'tor': {
+      stroke: getCSSVar('--tor-accent'),
+      fillAlpha: 0.14,
+      lineWidth: 4,
+      shadowBlur: 12,
+      pointRadius: 3.5
+    },
+    'tor-confirmed': {
+      stroke: getCSSVar('--tor-confirmed-accent'),
+      fillAlpha: 0.18,
+      lineWidth: 5,
+      shadowBlur: 16,
+      pointRadius: 4
+    },
+    'tor-emergency': {
+      stroke: getCSSVar('--tor-emergency-accent'),
+      fillAlpha: 0.22,
+      lineWidth: 6,
+      shadowBlur: 22,
+      pointRadius: 4.5
+    },
+    'svr': {
+      stroke: getCSSVar('--svr-accent'),
+      fillAlpha: 0.12,
+      lineWidth: 4,
+      shadowBlur: 10,
+      pointRadius: 3.5
+    },
+    'svr-considerable': {
+      stroke: getCSSVar('--svr-considerable-accent'),
+      fillAlpha: 0.16,
+      lineWidth: 4,
+      shadowBlur: 12,
+      pointRadius: 3.5
+    },
+    'svr-destructive': {
+      stroke: getCSSVar('--svr-destructive-accent'),
+      fillAlpha: 0.18,
+      lineWidth: 5,
+      shadowBlur: 15,
+      pointRadius: 4
+    }
+  };
+
+  return styles[sev] || {
+    stroke: '#ffffff',
+    fillAlpha: 0.12,
+    lineWidth: 4,
+    shadowBlur: 10,
+    pointRadius: 3.5
+  };
+}
+
+function drawPolygon(ctx, pts, sev){
+  if(!pts || pts.length < 2) return;
+
+  const style = getPolygonStyle(sev);
+  const stroke = style.stroke;
+  const fill = hexToRgba(stroke, style.fillAlpha);
+
+  ctx.save();
+
+  ctx.setLineDash([]);
+
+  ctx.beginPath();
+  ctx.moveTo(pts[0].x, pts[0].y);
+  for(let i = 1; i < pts.length; i++) ctx.lineTo(pts[i].x, pts[i].y);
+  if(pts.length >= 3) ctx.closePath();
+
+  ctx.fillStyle = fill;
+  ctx.strokeStyle = stroke;
+  ctx.lineWidth = style.lineWidth;
+  ctx.shadowColor = stroke;
+  ctx.shadowBlur = style.shadowBlur;
+
+  if(pts.length >= 3) ctx.fill();
+  ctx.stroke();
+
+  ctx.shadowBlur = 0;
+  ctx.setLineDash([]);
+
+  ctx.fillStyle = stroke;
+  for (const p of pts){
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, style.pointRadius, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  ctx.restore();
+}
+function loadSnapshot(path){
+  return new Promise((resolve,reject) => {
+    if(!path){ reject(new Error('no radar image')); return; }
+    const img=new Image();
+    img.onload=() => resolve(img);
+    img.onerror=reject;
+    img.src=path + (path.includes('?') ? '&' : '?') + 'ts=' + Date.now();
+  });
+}
+async function drawMap(alert){
+  resizeCanvasToDisplaySize();
+  idleLoopEl.style.display = 'none';
+  mapCanvas.style.display = 'block';
+  clearMap();
+  if(!alert || !alert.radar_image || !alert.radar_crop || !alert.polygon || !alert.polygon.length || !alert.centroid){
+    return;
+  }
+  const token = ++mapToken;
+  try{
+    const img = await loadSnapshot(alert.radar_image);
+    if(token !== mapToken) return;
+    mapCtx.clearRect(0,0,mapCanvas.width,mapCanvas.height);
+
+    const crop = alert.radar_crop;
+    mapCtx.drawImage(img, 0, 0, mapCanvas.width, mapCanvas.height);
+
+    const polygonPx = alert.polygon.map(pt => lonLatToPixel(Number(pt[0]), Number(pt[1])));
+    const shiftedPoly = polygonPx.map(p => shiftPointToCrop(p, crop));
+
+    drawPolygon(mapCtx, shiftedPoly, getSeverityClass(alert));
+  } catch(err){
+    if(token !== mapToken) return;
+    console.error('snapshot draw failed', err);
+    clearMap();
+  }
+}
+
+setInterval(pollAlerts, POLL_MS);
+setInterval(updateIdleClock, 1000);
+pollAlerts();
+setIdle();
+updateIdleClock();
+</script>
+<script src="tone_alert_export.js"></script>
+</body>
+</html>

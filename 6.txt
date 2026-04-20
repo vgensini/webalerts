@@ -1,0 +1,69 @@
+796 
+WFUS53 KPAH 110305
+TORPAH
+KYC083-157-110345-
+/O.NEW.KPAH.TO.W.0036.211211T0305Z-211211T0345Z/
+
+BULLETIN - EAS ACTIVATION REQUESTED
+Tornado Warning
+National Weather Service Paducah KY
+905 PM CST Fri Dec 10 2021
+
+The National Weather Service in Paducah has issued a
+
+* Tornado Warning for...
+  Marshall County in western Kentucky...
+  Central Graves County in western Kentucky...
+
+* Until 945 PM CST.
+    
+* At 904 PM CST, a confirmed large and extremely dangerous tornado
+  was located near Cayce, or near Clinton, moving northeast at 55
+  mph.
+
+  This is a PARTICULARLY DANGEROUS SITUATION. TAKE COVER NOW!
+
+  HAZARD...Damaging tornado.
+
+  SOURCE...Radar confirmed tornado.
+
+  IMPACT...You are in a life-threatening situation. Flying debris 
+           may be deadly to those caught without shelter. Mobile 
+           homes will be destroyed. Considerable damage to homes, 
+           businesses, and vehicles is likely and complete 
+           destruction is possible.
+
+* The tornado will be near...
+  Mayfield around 930 PM CST.
+  Benton around 945 PM CST.
+
+Other locations impacted by this tornadic thunderstorm include Fancy
+Farm, Brewers, Symsonia, Wingo and Water Valley.
+
+This includes the following highways...
+ Interstate 24 in Kentucky between Mile Markers 18 and 25.
+ Interstate 69 in Kentucky between Mile Markers 9 and 51.
+
+PRECAUTIONARY/PREPAREDNESS ACTIONS...
+
+To repeat, a large, extremely dangerous and potentially deadly
+tornado is on the ground. To protect your life, TAKE COVER NOW! Move
+to a basement or an interior room on the lowest floor of a sturdy
+building. Avoid windows. If you are outdoors, in a mobile home, or in
+a vehicle, move to the closest substantial shelter and protect
+yourself from flying debris.
+
+&&
+
+LAT...LON 3679 8881 3694 8857 3694 8849 3699 8849
+      3705 8839 3682 8820 3675 8835 3675 8848
+      3669 8849 3654 8881
+TIME...MOT...LOC 0304Z 236DEG 46KT 3659 8898 
+
+TORNADO...OBSERVED
+TORNADO DAMAGE THREAT...CONSIDERABLE
+MAX HAIL SIZE...2.50 IN
+
+$$
+
+PS

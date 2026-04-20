@@ -1,0 +1,67 @@
+347 
+WFUS53 KDVN 180044
+TORDVN
+ILC011-155-180145-
+/O.NEW.KDVN.TO.W.0049.260418T0044Z-260418T0145Z/
+
+BULLETIN - EAS ACTIVATION REQUESTED
+Tornado Warning
+National Weather Service Quad Cities IA/IL
+744 PM CDT Fri Apr 17 2026
+
+The National Weather Service in the Quad Cities has issued a
+
+* Tornado Warning for...
+  Putnam County in north central Illinois...
+  Eastern Bureau County in north central Illinois...
+
+* Until 845 PM CDT.
+
+* At 744 PM CDT, a severe thunderstorm capable of producing a tornado
+  was located over Providence, or 10 miles southwest of Princeton,
+  moving northeast at 65 mph.
+
+  HAZARD...Tornado.
+
+  SOURCE...Radar indicated rotation.
+
+  IMPACT...Flying debris will be dangerous to those caught without 
+           shelter. Mobile homes will be damaged or destroyed. 
+           Damage to roofs, windows, and vehicles will occur.  Tree 
+           damage is likely.
+
+* This dangerous storm will be near...
+  Princeton, Hennepin, DePue, Tiskilwa, Bureau Junction, Lake 
+  Thunderbird, Coal Hollow, and Bureau  County Fairgrounds around 
+  750 PM CDT.
+  Spring Valley, Ladd, Mark, Malden, Seatonville, Dover, 
+  Hollowayville, Ottville, and Zearing around 755 PM CDT.
+  Dalzell, Cherry, and Arlington around 800 PM CDT.
+
+Other locations in the path of this tornadic thunderstorm include La
+Moille.
+
+This includes the following highways...
+ Interstate 80 in Illinois between mile markers 54 and 72.
+ Interstate 180 between mile markers 1 and 13.
+
+PRECAUTIONARY/PREPAREDNESS ACTIONS...
+
+TAKE COVER NOW! Move to a basement or an interior room on the lowest
+floor of a sturdy building. Avoid windows. If you are outdoors, in a
+mobile home, or in a vehicle, move to the closest substantial shelter
+and protect yourself from flying debris.
+
+&&
+
+LAT...LON 4110 8936 4112 8934 4115 8933 4115 8963
+      4116 8964 4123 8964 4124 8970 4159 8928
+      4158 8917 4111 8916
+TIME...MOT...LOC 0044Z 236DEG 55KT 4125 8958 
+
+TORNADO...RADAR INDICATED
+MAX HAIL SIZE...<.75 IN
+
+$$
+
+Gunkel

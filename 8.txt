@@ -1,0 +1,58 @@
+249 
+WFUS53 KPAH 090332
+TORPAH
+KYC083-090415-
+/O.NEW.KPAH.TO.W.0057.240509T0332Z-240509T0415Z/
+
+BULLETIN - EAS ACTIVATION REQUESTED
+Tornado Warning
+National Weather Service Paducah KY
+1032 PM CDT Wed May 8 2024
+
+The National Weather Service in Paducah has issued a
+
+* Tornado Warning for...
+  Central Graves County in western Kentucky...
+
+* Until 1115 PM CDT.
+
+* At 1032 PM CDT, a severe thunderstorm capable of producing a
+  tornado was located 7 miles west of Mayfield, moving east at 20
+  mph.
+
+  HAZARD...Tornado and half dollar size hail.
+
+  SOURCE...Radar indicated rotation.
+
+  IMPACT...Flying debris will be dangerous to those caught without 
+           shelter. Mobile homes will be damaged or destroyed. 
+           Damage to roofs, windows, and vehicles will occur.  Tree 
+           damage is likely.
+
+* This dangerous storm will be near...
+  Mayfield around 1040 PM CDT.
+
+Other locations impacted by this tornadic thunderstorm include Fancy
+Farm.
+
+This includes Interstate 69 in Kentucky between Mile Markers 18 and
+33.
+ 
+PRECAUTIONARY/PREPAREDNESS ACTIONS...
+
+TAKE COVER NOW! Move to a basement or an interior room on the lowest
+floor of a sturdy building. Avoid windows. If you are outdoors, in a
+mobile home, or in a vehicle, move to the closest substantial shelter
+and protect yourself from flying debris.
+
+&&
+
+LAT...LON 3669 8881 3679 8881 3687 8849 3670 8849
+TIME...MOT...LOC 0332Z 260DEG 19KT 3672 8877 
+
+TORNADO...RADAR INDICATED
+MAX HAIL SIZE...1.25 IN
+
+$$
+
+RJP

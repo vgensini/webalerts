@@ -1,0 +1,24 @@
+WFUS53 KLOT 182125
+TORLOT
+ILC031-043-182200-
+/O.NEW.KLOT.TO.W.0022.260418T2125Z-260418T2200Z/
+
+BULLETIN - EAS ACTIVATION REQUESTED
+Tornado Emergency
+National Weather Service Chicago/Romeoville IL
+
+* Tornado Warning for...
+  Kendall County in northeastern Illinois...
+
+* Until 500 PM CDT.
+
+* At 425 PM CDT, a large and destructive tornado was confirmed near Yorkville.
+
+  HAZARD...Damaging tornado.
+
+  IMPACT...You are in a life-threatening situation. Catastrophic damage likely.
+
+  TORNADO...OBSERVED
+  TORNADO DAMAGE THREAT...CATASTROPHIC
+
+THIS IS A TORNADO EMERGENCY FOR YORKVILLE.

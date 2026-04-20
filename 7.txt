@@ -1,0 +1,60 @@
+757 
+WFUS53 KPAH 261317
+TORPAH
+KYC035-083-157-261345-
+/O.NEW.KPAH.TO.W.0070.240526T1317Z-240526T1345Z/
+
+BULLETIN - EAS ACTIVATION REQUESTED
+Tornado Warning
+National Weather Service Paducah KY
+817 AM CDT Sun May 26 2024
+
+The National Weather Service in Paducah has issued a
+
+* Tornado Warning for...
+  Northwestern Calloway County in western Kentucky...
+  Southwestern Marshall County in western Kentucky...
+  Central Graves County in western Kentucky...
+
+* Until 845 AM CDT.
+
+* At 817 AM CDT, a tornado producing storm was located near Mayfield,
+  moving east at 50 mph.
+
+  HAZARD...Damaging tornado.
+
+  SOURCE...Radar confirmed tornado.
+
+  IMPACT...Flying debris will be dangerous to those caught without 
+           shelter. Mobile homes will be damaged or destroyed. 
+           Damage to roofs, windows, and vehicles will occur.  Tree 
+           damage is likely.
+
+* This tornadic storm will be near...
+  Mayfield around 825 AM CDT.
+
+Other locations impacted by this tornadic thunderstorm include
+Kirksey, Brewers, and Wingo.
+
+This includes Interstate 69 in Kentucky between Mile Markers 13 and
+40.
+ 
+PRECAUTIONARY/PREPAREDNESS ACTIONS...
+
+To repeat, a tornado is on the ground. TAKE COVER NOW! Move to a
+basement or an interior room on the lowest floor of a sturdy
+building. Avoid windows. If you are outdoors, in a mobile home, or in
+a vehicle, move to the closest substantial shelter and protect
+yourself from flying debris.
+
+&&
+
+LAT...LON 3662 8877 3673 8879 3687 8840 3669 8835
+TIME...MOT...LOC 1317Z 255DEG 44KT 3672 8871 
+
+TORNADO...OBSERVED
+MAX HAIL SIZE...<.75 IN
+
+$$
+
+CN

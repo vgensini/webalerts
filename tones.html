@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alert Tone Lab</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tone/15.3.5/Tone.js"></script>
+<style>
+  body{
+    background:#111;
+    color:#eee;
+    font-family:Arial,Helvetica,sans-serif;
+    margin:0;
+    padding:20px;
+  }
+  .wrap{
+    max-width:1000px;
+    margin:0 auto;
+  }
+  h1{
+    margin:0 0 14px 0;
+    font-size:28px;
+  }
+  .panel{
+    background:#1a1a1a;
+    border:1px solid #333;
+    border-radius:14px;
+    padding:16px;
+    margin-bottom:16px;
+  }
+  .row{
+    display:grid;
+    grid-template-columns:220px minmax(0,1fr) 140px;
+    gap:12px;
+    align-items:center;
+    margin:10px 0;
+  }
+  .row select,
+  .row input[type="range"]{
+    width:100%;
+  }
+  .value{
+    color:#7fdfff;
+    font-weight:700;
+    text-align:right;
+    white-space:nowrap;
+  }
+  .buttons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:12px;
+  }
+  button{
+    background:#222;
+    color:#fff;
+    border:1px solid #444;
+    border-radius:10px;
+    padding:10px 14px;
+    cursor:pointer;
+  }
+  button:hover{
+    background:#2c2c2c;
+  }
+  textarea{
+    width:100%;
+    min-height:380px;
+    background:#0f0f0f;
+    color:#d8f6ff;
+    border:1px solid #333;
+    border-radius:10px;
+    padding:12px;
+    font-family:Consolas,Menlo,monospace;
+    font-size:13px;
+    line-height:1.4;
+    box-sizing:border-box;
+  }
+  .small{
+    color:#bbb;
+    font-size:13px;
+    margin-top:8px;
+  }
+  .preset-note{
+    color:#cfcfcf;
+    font-size:14px;
+    margin-top:6px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Alert Tone Lab</h1>
+
+  <div class="panel">
+    <div class="buttons">
+      <button id="enableBtn" type="button">Enable Audio</button>
+      <button id="previewBtn" type="button">Play Selected Hazard</button>
+      <button id="copyBtn" type="button">Copy JS</button>
+      <button id="downloadBtn" type="button">Download JS</button>
+    </div>
+    <div class="small">Each hazard now supports either Pulse mode or Sustained mode. Exported JS matches the wall display contract: <code>window.AlertToneLab.play(audioCtx, config)</code>.</div>
+  </div>
+
+  <div class="panel">
+    <div class="row">
+      <label for="hazard">Selected hazard</label>
+      <select id="hazard">
+        <option value="svr">SVR</option>
+        <option value="tor">TOR</option>
+        <option value="tor-confirmed">Confirmed TOR</option>
+        <option value="tor-emergency">Tornado Emergency</option>
+      </select>
+      <div class="value" id="hazardValue">SVR</div>
+    </div>
+
+    <div class="row">
+      <label for="mode">Playback mode</label>
+      <select id="mode">
+        <option value="pulse">Pulse</option>
+        <option value="sustained">Sustained</option>
+      </select>
+      <div class="value" id="modeValue">pulse</div>
+    </div>
+
+    <div class="preset-note" id="presetNote"></div>
+
+    <div class="row">
+      <label for="wave1">Waveform 1</label>
+      <select id="wave1">
+        <option value="sine">sine</option>
+        <option value="triangle">triangle</option>
+        <option value="square">square</option>
+        <option value="sawtooth">sawtooth</option>
+      </select>
+      <div class="value" id="wave1Value">sine</div>
+    </div>
+
+    <div class="row">
+      <label for="wave2">Waveform 2</label>
+      <select id="wave2">
+        <option value="sine">sine</option>
+        <option value="triangle">triangle</option>
+        <option value="square">square</option>
+        <option value="sawtooth">sawtooth</option>
+      </select>
+      <div class="value" id="wave2Value">triangle</div>
+    </div>
+
+    <div class="row">
+      <label for="f1">Frequency 1</label>
+      <input type="range" id="f1" min="100" max="2000" step="1">
+      <div class="value" id="f1Value"></div>
+    </div>
+
+    <div class="row">
+      <label for="f2">Frequency 2</label>
+      <input type="range" id="f2" min="100" max="2000" step="1">
+      <div class="value" id="f2Value"></div>
+    </div>
+
+    <div class="row">
+      <label for="amp">Amplitude</label>
+      <input type="range" id="amp" min="0.02" max="0.50" step="0.01">
+      <div class="value" id="ampValue"></div>
+    </div>
+
+    <div class="row">
+      <label for="dur">Tone duration</label>
+      <input type="range" id="dur" min="0.10" max="8.00" step="0.05">
+      <div class="value" id="durValue"></div>
+    </div>
+
+    <div class="row" id="gapRow">
+      <label for="gap">Gap / spacing</label>
+      <input type="range" id="gap" min="0.05" max="3.00" step="0.05">
+      <div class="value" id="gapValue"></div>
+    </div>
+
+    <div class="row" id="countRow">
+      <label for="count">Beep count</label>
+      <input type="range" id="count" min="1" max="8" step="1">
+      <div class="value" id="countValue"></div>
+    </div>
+
+    <div class="row">
+      <label for="detune">Detune (osc 2 cents)</label>
+      <input type="range" id="detune" min="-50" max="50" step="1">
+      <div class="value" id="detuneValue"></div>
+    </div>
+
+    <div class="row">
+      <label for="attack">Attack</label>
+      <input type="range" id="attack" min="0.005" max="0.20" step="0.005">
+      <div class="value" id="attackValue"></div>
+    </div>
+
+    <div class="row">
+      <label for="release">Release</label>
+      <input type="range" id="release" min="0.01" max="0.50" step="0.01">
+      <div class="value" id="releaseValue"></div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="small">Exported <code>tone_alert_export.js</code></div>
+    <textarea id="output" spellcheck="false"></textarea>
+  </div>
+</div>
+
+<script>
+let audioStarted = false;
+
+const hazardEl = document.getElementById('hazard');
+const modeEl = document.getElementById('mode');
+const wave1El = document.getElementById('wave1');
+const wave2El = document.getElementById('wave2');
+const f1El = document.getElementById('f1');
+const f2El = document.getElementById('f2');
+const ampEl = document.getElementById('amp');
+const durEl = document.getElementById('dur');
+const gapEl = document.getElementById('gap');
+const countEl = document.getElementById('count');
+const detuneEl = document.getElementById('detune');
+const attackEl = document.getElementById('attack');
+const releaseEl = document.getElementById('release');
+
+const hazardValueEl = document.getElementById('hazardValue');
+const modeValueEl = document.getElementById('modeValue');
+const wave1ValueEl = document.getElementById('wave1Value');
+const wave2ValueEl = document.getElementById('wave2Value');
+const f1ValueEl = document.getElementById('f1Value');
+const f2ValueEl = document.getElementById('f2Value');
+const ampValueEl = document.getElementById('ampValue');
+const durValueEl = document.getElementById('durValue');
+const gapValueEl = document.getElementById('gapValue');
+const countValueEl = document.getElementById('countValue');
+const detuneValueEl = document.getElementById('detuneValue');
+const attackValueEl = document.getElementById('attackValue');
+const releaseValueEl = document.getElementById('releaseValue');
+const presetNoteEl = document.getElementById('presetNote');
+const outputEl = document.getElementById('output');
+const gapRowEl = document.getElementById('gapRow');
+const countRowEl = document.getElementById('countRow');
+
+const settingsByHazard = {
+  'svr': {
+    mode:'pulse',
+    wave1:'sine', wave2:'triangle',
+    f1:850, f2:1100, amp:0.12,
+    dur:0.55, gap:0.70, count:3,
+    detune:0, attack:0.02, release:0.05,
+    note:'TV-style long beeps.'
+  },
+  'tor': {
+    mode:'sustained',
+    wave1:'square', wave2:'square',
+    f1:850, f2:960, amp:0.22,
+    dur:5.50, gap:0.25, count:1,
+    detune:5, attack:0.03, release:0.08,
+    note:'Broadcast-style sustained dual tone.'
+  },
+  'tor-confirmed': {
+    mode:'pulse',
+    wave1:'square', wave2:'square',
+    f1:900, f2:1100, amp:0.26,
+    dur:1.00, gap:0.18, count:5,
+    detune:10, attack:0.03, release:0.08,
+    note:'Sharper, faster repeated beeps.'
+  },
+  'tor-emergency': {
+    mode:'pulse',
+    wave1:'square', wave2:'sawtooth',
+    f1:950, f2:1400, amp:0.30,
+    dur:0.90, gap:0.12, count:6,
+    detune:15, attack:0.03, release:0.10,
+    note:'Layered aggressive beep train.'
+  }
+};
+
+function saveCurrentHazardSettings(){
+  const key = hazardEl.value;
+  settingsByHazard[key] = {
+    mode: modeEl.value,
+    wave1: wave1El.value,
+    wave2: wave2El.value,
+    f1: Number(f1El.value),
+    f2: Number(f2El.value),
+    amp: Number(ampEl.value),
+    dur: Number(durEl.value),
+    gap: Number(gapEl.value),
+    count: Number(countEl.value),
+    detune: Number(detuneEl.value),
+    attack: Number(attackEl.value),
+    release: Number(releaseEl.value),
+    note: settingsByHazard[key].note || ''
+  };
+}
+
+function loadHazardSettings(key){
+  const s = settingsByHazard[key];
+  modeEl.value = s.mode;
+  wave1El.value = s.wave1;
+  wave2El.value = s.wave2;
+  f1El.value = s.f1;
+  f2El.value = s.f2;
+  ampEl.value = s.amp;
+  durEl.value = s.dur;
+  gapEl.value = s.gap;
+  countEl.value = s.count;
+  detuneEl.value = s.detune;
+  attackEl.value = s.attack;
+  releaseEl.value = s.release;
+  presetNoteEl.textContent = s.note || '';
+  updateModeUI();
+}
+
+function updateModeUI(){
+  const isPulse = modeEl.value === 'pulse';
+  gapRowEl.style.display = isPulse ? 'grid' : 'none';
+  countRowEl.style.display = isPulse ? 'grid' : 'none';
+}
+
+function updateValueLabels(){
+  hazardValueEl.textContent = hazardEl.options[hazardEl.selectedIndex].text;
+  modeValueEl.textContent = modeEl.value;
+  wave1ValueEl.textContent = wave1El.value;
+  wave2ValueEl.textContent = wave2El.value;
+  f1ValueEl.textContent = `${f1El.value} Hz`;
+  f2ValueEl.textContent = `${f2El.value} Hz`;
+  ampValueEl.textContent = Number(ampEl.value).toFixed(2);
+  durValueEl.textContent = `${Number(durEl.value).toFixed(2)} s`;
+  gapValueEl.textContent = `${Number(gapEl.value).toFixed(2)} s`;
+  countValueEl.textContent = countEl.value;
+  detuneValueEl.textContent = `${detuneEl.value} cents`;
+  attackValueEl.textContent = `${Number(attackEl.value).toFixed(3)} s`;
+  releaseValueEl.textContent = `${Number(releaseEl.value).toFixed(2)} s`;
+}
+
+async function enableAudio(){
+  await Tone.start();
+  audioStarted = true;
+  document.getElementById('enableBtn').textContent = 'Audio Enabled';
+}
+
+function fireOneTone(start, duration, f1, f2, wave1, wave2, amp, detune, attack, release){
+  const gain = new Tone.Gain(0).toDestination();
+
+  const osc1 = new Tone.Oscillator({
+    type: wave1,
+    frequency: f1
+  }).connect(gain);
+
+  const osc2 = new Tone.Oscillator({
+    type: wave2,
+    frequency: f2,
+    detune: detune
+  }).connect(gain);
+
+  gain.gain.setValueAtTime(0.0001, start);
+  gain.gain.exponentialRampToValueAtTime(Math.max(0.0002, amp), start + attack);
+  gain.gain.exponentialRampToValueAtTime(0.0001, Math.max(start + attack + 0.01, start + duration - release));
+
+  osc1.start(start);
+  osc2.start(start);
+  osc1.stop(start + duration);
+  osc2.stop(start + duration);
+}
+
+function previewSelectedHazard(){
+  if(!audioStarted) return;
+
+  const key = hazardEl.value;
+  const s = settingsByHazard[key];
+  const now = Tone.now();
+
+  if (s.mode === 'sustained') {
+    fireOneTone(now, s.dur, s.f1, s.f2, s.wave1, s.wave2, s.amp, s.detune, s.attack, s.release);
+    if (key === 'tor-emergency') {
+      fireOneTone(now, s.dur, Math.max(100, s.f1 - 300), Math.max(100, s.f2 - 600), 'sawtooth', 'sawtooth', Math.max(0.05, s.amp * 0.70), -10, s.attack, s.release);
+    }
+    return;
+  }
+
+  for(let i = 0; i < s.count; i++){
+    let thisAmp = s.amp;
+    let thisF1 = s.f1;
+    let thisF2 = s.f2;
+    let thisWave1 = s.wave1;
+    let thisWave2 = s.wave2;
+
+    if (key === 'tor-emergency' && i % 2 === 1) {
+      thisF1 = Math.max(100, s.f1 - 300);
+      thisF2 = Math.max(100, s.f2 - 600);
+      thisWave1 = 'sawtooth';
+      thisWave2 = 'sawtooth';
+      thisAmp = Math.max(0.05, s.amp * 0.75);
+    }
+
+    fireOneTone(
+      now + i * s.gap,
+      s.dur,
+      thisF1,
+      thisF2,
+      thisWave1,
+      thisWave2,
+      thisAmp,
+      s.detune,
+      s.attack,
+      s.release
+    );
+  }
+}
+
+function generateExportJS(){
+  const packed = JSON.stringify(settingsByHazard, null, 2);
+
+  return `window.AlertToneLab = {
+  play: function(audioCtx, config){
+    if(!audioCtx || !config) return;
+
+    const presets = ${packed};
+    const now = audioCtx.currentTime;
+    const sev = config.severity;
+
+    let key = 'svr';
+    if (sev === 'tor') key = 'tor';
+    else if (sev === 'tor-confirmed') key = 'tor-confirmed';
+    else if (sev === 'tor-emergency') key = 'tor-emergency';
+    else if (sev === 'svr' || sev === 'svr-considerable' || sev === 'svr-destructive') key = 'svr';
+
+    const s = presets[key];
+
+    function playVoice(start, duration, f1, f2, wave1, wave2, amp, detune, attack, release){
+      const gain = audioCtx.createGain();
+      gain.gain.setValueAtTime(0.0001, start);
+      gain.gain.exponentialRampToValueAtTime(Math.max(0.0002, amp), start + attack);
+      gain.gain.exponentialRampToValueAtTime(0.0001, Math.max(start + attack + 0.01, start + duration - release));
+      gain.connect(audioCtx.destination);
+
+      const osc1 = audioCtx.createOscillator();
+      const osc2 = audioCtx.createOscillator();
+
+      osc1.type = wave1;
+      osc2.type = wave2;
+      osc1.frequency.value = f1;
+      osc2.frequency.value = f2;
+      osc2.detune.value = detune;
+
+      osc1.connect(gain);
+      osc2.connect(gain);
+
+      osc1.start(start);
+      osc2.start(start);
+      osc1.stop(start + duration + 0.02);
+      osc2.stop(start + duration + 0.02);
+    }
+
+    if (s.mode === 'sustained') {
+      playVoice(
+        now,
+        Number(s.dur),
+        Number(s.f1),
+        Number(s.f2),
+        s.wave1,
+        s.wave2,
+        Number(s.amp),
+        Number(s.detune),
+        Number(s.attack),
+        Number(s.release)
+      );
+
+      if (key === 'tor-emergency') {
+        playVoice(
+          now,
+          Number(s.dur),
+          Math.max(100, Number(s.f1) - 300),
+          Math.max(100, Number(s.f2) - 600),
+          'sawtooth',
+          'sawtooth',
+          Math.max(0.05, Number(s.amp) * 0.70),
+          -10,
+          Number(s.attack),
+          Number(s.release)
+        );
+      }
+      return;
+    }
+
+    for (let i = 0; i < Number(s.count || 1); i++) {
+      let thisAmp = Number(s.amp);
+      let thisF1 = Number(s.f1);
+      let thisF2 = Number(s.f2);
+      let thisWave1 = s.wave1;
+      let thisWave2 = s.wave2;
+
+      if (key === 'tor-emergency' && i % 2 === 1) {
+        thisF1 = Math.max(100, Number(s.f1) - 300);
+        thisF2 = Math.max(100, Number(s.f2) - 600);
+        thisWave1 = 'sawtooth';
+        thisWave2 = 'sawtooth';
+        thisAmp = Math.max(0.05, Number(s.amp) * 0.75);
+      }
+
+      playVoice(
+        now + i * Number(s.gap || 0.7),
+        Number(s.dur),
+        thisF1,
+        thisF2,
+        thisWave1,
+        thisWave2,
+        thisAmp,
+        Number(s.detune),
+        Number(s.attack),
+        Number(s.release)
+      );
+    }
+  }
+};
+`;
+}
+
+function refreshOutput(){
+  outputEl.value = generateExportJS();
+}
+
+function onHazardChange(){
+  loadHazardSettings(hazardEl.value);
+  updateValueLabels();
+  refreshOutput();
+}
+
+function onControlChange(){
+  saveCurrentHazardSettings();
+  updateModeUI();
+  updateValueLabels();
+  refreshOutput();
+}
+
+async function copyJS(){
+  try{
+    await navigator.clipboard.writeText(outputEl.value);
+    document.getElementById('copyBtn').textContent = 'Copied';
+    setTimeout(() => { document.getElementById('copyBtn').textContent = 'Copy JS'; }, 1200);
+  } catch(err){
+    outputEl.select();
+    document.execCommand('copy');
+  }
+}
+
+function downloadJS(){
+  const blob = new Blob([outputEl.value], { type: 'text/javascript;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'tone_alert_export.js';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+}
+
+document.getElementById('enableBtn').addEventListener('click', enableAudio);
+document.getElementById('previewBtn').addEventListener('click', previewSelectedHazard);
+document.getElementById('copyBtn').addEventListener('click', copyJS);
+document.getElementById('downloadBtn').addEventListener('click', downloadJS);
+
+hazardEl.addEventListener('change', onHazardChange);
+
+[
+  modeEl, wave1El, wave2El, f1El, f2El, ampEl, durEl, gapEl,
+  countEl, detuneEl, attackEl, releaseEl
+].forEach(el => {
+  el.addEventListener('input', onControlChange);
+  el.addEventListener('change', onControlChange);
+});
+
+loadHazardSettings(hazardEl.value);
+updateValueLabels();
+refreshOutput();
+</script>
+</body>
+</html>

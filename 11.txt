@@ -1,0 +1,72 @@
+320 
+WUUS53 KDVN 152254
+SVRDVN
+IAC011-031-045-055-061-097-103-105-113-160000-
+/O.NEW.KDVN.SV.W.0307.240715T2254Z-240716T0000Z/
+
+BULLETIN - EAS ACTIVATION REQUESTED
+Severe Thunderstorm Warning
+National Weather Service Quad Cities IA/IL
+554 PM CDT Mon Jul 15 2024
+
+The National Weather Service in the Quad Cities has issued a
+
+* Severe Thunderstorm Warning for...
+  Southern Jackson County in east central Iowa...
+  Northern Cedar County in east central Iowa...
+  Southwestern Dubuque County in northeastern Iowa...
+  Northeastern Johnson County in east central Iowa...
+  Southeastern Benton County in east central Iowa...
+  Jones County in east central Iowa...
+  Southeastern Delaware County in northeastern Iowa...
+  Linn County in east central Iowa...
+  Western Clinton County in east central Iowa...
+
+* Until 700 PM CDT.
+
+* At 554 PM CDT, severe thunderstorms were located along a line
+  extending from near Langworthy to near Cedar Rapids Municipal
+  Airport, moving east at 15 mph.
+
+  HAZARD...80 mph wind gusts.
+
+  SOURCE...Radar indicated.
+
+  IMPACT...Flying debris will be dangerous to those caught without 
+           shelter. Mobile homes will be heavily damaged. Expect 
+           considerable damage to roofs, windows, and vehicles. 
+           Extensive tree damage and power outages are likely.
+
+* Locations impacted include...
+  Cedar Rapids, Maquoketa, Anamosa, Tipton, Mechanicsville, Stanwood,
+  Marion, Hiawatha, Mount Vernon, Monticello, Robins, Cascade,
+  Lisbon, Fairfax, Ely, Atkins, Central City, Springville, Palo, and
+  Preston.
+
+This includes Interstate 380 between mile markers 13 and 31.
+ 
+PRECAUTIONARY/PREPAREDNESS ACTIONS...
+
+Remain alert for a possible tornado! Tornadoes can develop quickly
+from severe thunderstorms. If you spot a tornado go at once into the
+basement or small central room in a sturdy structure.
+
+For your protection move to an interior room on the lowest floor of a
+sturdy building.
+
+&&
+
+LAT...LON 4215 9031 4174 9069 4174 9073 4177 9079
+      4177 9090 4168 9090 4193 9192 4238 9145
+TIME...MOT...LOC 2254Z 285DEG 15KT 4219 9128 4192 9171 
+
+TORNADO...POSSIBLE
+THUNDERSTORM DAMAGE THREAT...DESTRUCTIVE
+HAIL THREAT...RADAR INDICATED
+MAX HAIL SIZE...<.75 IN
+WIND THREAT...OBSERVED
+MAX WIND GUST...80 MPH
+
+$$
+
+DC

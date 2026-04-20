@@ -1,0 +1,60 @@
+322 
+WUUS51 KOKX 032139
+SVROKX
+CTC001-NYC119-032230-
+/O.NEW.KOKX.SV.W.0021.230703T2139Z-230703T2230Z/
+
+BULLETIN - IMMEDIATE BROADCAST REQUESTED
+Severe Thunderstorm Warning
+National Weather Service New York NY
+539 PM EDT Mon Jul 3 2023
+
+The National Weather Service in Upton NY has issued a
+
+* Severe Thunderstorm Warning for...
+  Southern Fairfield County in southern Connecticut...
+  Northern Westchester County in southeastern New York...
+
+* Until 630 PM EDT.
+
+* At 539 PM EDT, a severe thunderstorm was located near Bedford, or 7
+  miles east of Mount Kisco, moving east at 20 mph.
+
+  HAZARD...Golf ball size hail and 60 mph wind gusts.
+
+  SOURCE...Radar indicated.
+
+  IMPACT...People and animals outdoors will be injured. Expect hail 
+           damage to roofs, siding, windows, and vehicles. Expect 
+           wind damage to trees and power lines.
+
+* This severe thunderstorm will be near...
+  Stamford around 545 PM EDT.
+  New Canaan around 555 PM EDT.
+  Darien and Wilton around 600 PM EDT.
+  Norwalk around 605 PM EDT.
+  Weston around 610 PM EDT.
+  Westport around 620 PM EDT.
+  Bridgeport and Fairfield around 630 PM EDT.
+
+PRECAUTIONARY/PREPAREDNESS ACTIONS...
+
+For your protection move to an interior room on the lowest floor of a
+building.
+
+&&
+
+LAT...LON 4128 7320 4111 7329 4112 7330 4109 7334
+      4105 7338 4119 7371 4133 7366
+TIME...MOT...LOC 2139Z 285DEG 18KT 4123 7359 
+
+TORNADO...POSSIBLE
+THUNDERSTORM DAMAGE THREAT...CONSIDERABLE
+HAIL THREAT...RADAR INDICATED
+MAX HAIL SIZE...1.75 IN
+WIND THREAT...RADAR INDICATED
+MAX WIND GUST...60 MPH
+
+$$
+
+JT

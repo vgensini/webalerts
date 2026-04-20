@@ -1,0 +1,62 @@
+377 
+WFUS53 KPAH 110326
+TORPAH
+KYC083-110415-
+/O.NEW.KPAH.TO.W.0038.211211T0326Z-211211T0415Z/
+
+BULLETIN - EAS ACTIVATION REQUESTED
+Tornado Warning
+National Weather Service Paducah KY
+926 PM CST Fri Dec 10 2021
+
+...TORNADO EMERGENCY FOR Mayfield...
+
+The National Weather Service in Paducah has issued a
+
+* Tornado Warning for...
+  Central Graves County in western Kentucky...
+
+* Until 1015 PM CST.
+    
+* At 925 PM CST, a confirmed large and destructive tornado was
+  observed over Mayfield, moving northeast at 60 mph.
+
+  TORNADO EMERGENCY for Mayfield! This is a PARTICULARLY DANGEROUS 
+SITUATION. TAKE COVER NOW!
+
+  HAZARD...Deadly tornado.
+
+  SOURCE...Weather spotters confirmed tornado.
+
+  IMPACT...You are in a life-threatening situation. Flying debris 
+           may be deadly to those caught without shelter. Mobile 
+           homes will be destroyed. Considerable damage to homes, 
+           businesses, and vehicles is likely and complete 
+           destruction is possible.
+
+* This tornadic thunderstorm will remain over mainly rural areas of
+  central Graves County.
+
+This includes Interstate 69 in Kentucky between Mile Markers 18 and
+25.
+ 
+PRECAUTIONARY/PREPAREDNESS ACTIONS...
+
+To repeat, a large, extremely dangerous and potentially deadly
+tornado is on the ground. To protect your life, TAKE COVER NOW! Move
+to an interior room on the lowest floor of a sturdy building. Avoid
+windows. If in a mobile home, a vehicle or outdoors, move to the
+closest substantial shelter and protect yourself from flying debris.
+
+&&
+
+LAT...LON 3667 8869 3672 8875 3679 8865 3672 8857
+TIME...MOT...LOC 0325Z 240DEG 52KT 3672 8868 
+
+TORNADO...OBSERVED
+TORNADO DAMAGE THREAT...CATASTROPHIC
+MAX HAIL SIZE...2.50 IN
+
+$$
+
+PS

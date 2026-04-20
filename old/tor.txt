@@ -1,0 +1,38 @@
+WFUS53 KLOT 182045
+TORLOT
+ILC031-043-089-182130-
+/O.NEW.KLOT.TO.W.0012.260418T2045Z-260418T2130Z/
+
+BULLETIN - EAS ACTIVATION REQUESTED
+Tornado Warning
+National Weather Service Chicago/Romeoville IL
+345 PM CDT Sat Apr 18 2026
+
+The National Weather Service in Chicago has issued a
+
+* Tornado Warning for...
+  Kendall County in northeastern Illinois...
+  Southeastern Kane County in northeastern Illinois...
+  Northwestern Will County in northeastern Illinois...
+
+* Until 430 PM CDT.
+
+* At 345 PM CDT, a severe thunderstorm capable of producing a tornado
+  was located near Yorkville, moving northeast at 45 mph.
+
+  HAZARD...Radar indicated tornado.
+
+  SOURCE...Radar indicated rotation.
+
+  IMPACT...Flying debris will be dangerous to those caught without
+           shelter. Mobile homes will be damaged or destroyed.
+           Damage to roofs, windows, and vehicles will occur. Tree
+           damage is likely.
+
+* This dangerous storm will be near...
+  Yorkville around 350 PM CDT.
+  Oswego around 355 PM CDT.
+
+PRECAUTIONARY/PREPAREDNESS ACTIONS...
+
+TAKE COVER NOW!

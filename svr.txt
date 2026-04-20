@@ -1,0 +1,59 @@
+827 
+WUUS54 KSHV 151024
+SVRSHV
+TXC347-365-401-419-151115-
+/O.NEW.KSHV.SV.W.0057.250315T1024Z-250315T1115Z/
+
+BULLETIN - EAS ACTIVATION REQUESTED
+Severe Thunderstorm Warning
+National Weather Service Shreveport LA
+524 AM CDT Sat Mar 15 2025
+
+The National Weather Service in Shreveport has issued a
+
+* Severe Thunderstorm Warning for...
+  North Central Nacogdoches County in eastern Texas...
+  Northwestern Shelby County in eastern Texas...
+  Southwestern Panola County in northeastern Texas...
+  Rusk County in northeastern Texas...
+
+* Until 615 AM CDT.
+
+* At 524 AM CDT, a severe thunderstorm was located near Sacul, or 16 
+  miles east of Rusk, moving northeast at 50 mph.
+
+  HAZARD...Two inch hail and 60 mph wind gusts.
+
+  SOURCE...Radar indicated.
+
+  IMPACT...People and animals outdoors will be injured. Expect
+           hail damage to roofs, siding, windows, and vehicles.
+           Expect wind damage to roofs, siding, and trees.
+
+* Locations impacted include...
+  Nacogdoches, Henderson, Carthage, Tenaha, Timpson, Garrison, 
+  Minden, Pinehill, Trawick, New Salem, Cushing, Appleby, Mount 
+  Enterprise, Reklaw, Gary City, Lawsonville, Dotson, Chapman, 
+  Fairplay and Laneville.
+
+PRECAUTIONARY/PREPAREDNESS ACTIONS...
+
+Anyone outdoors should move to shelter inside a well-built structure 
+and stay away from windows. This storm is capable of producing 
+dangerous hail and damaging winds.
+
+&&
+
+LAT...LON 3184 9494 3187 9499 3198 9499 3231 9469
+      3201 9408 3165 9460
+TIME...MOT...LOC 1024Z 231DEG 44KT 3176 9489
+
+THUNDERSTORM DAMAGE THREAT...CONSIDERABLE
+HAIL THREAT...RADAR INDICATED
+MAX HAIL SIZE...2.00 IN
+WIND THREAT...RADAR INDICATED
+MAX WIND GUST...60 MPH
+
+$$
+
+20
