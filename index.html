@@ -444,13 +444,46 @@ body.idle .map-wrap{
   position:relative;
 }
 
+.history-expires.expires-active{
+  color:#39d353;   /* green */
+}
+
+.history-expires.expires-expired{
+  color:#ff5c5c;   /* red */
+}
+
+.history-times{
+  margin-top:2px;
+  display:flex;
+  flex-direction:column;
+  gap:1px;
+}
+
+.history-issued,
+.history-expires{
+  font-size:.70rem;
+  line-height:1.1;
+  color:#bdbdbd;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.history-issued{
+  color:#cfcfcf;
+}
+
+.history-expires{
+  color:#9aa3ff;   /* subtle blue */
+}
+
 .history-title{
   flex:0 0 auto;
   font-weight: bold;
   color:#bdbdbd;
   font-size:.74rem;
   text-transform:uppercase;
-  letter-spacing:.1em;
+  letter-spacing:0.06em;
   margin:4px 0 8px 0;
   text-align:center;
 }
@@ -479,6 +512,38 @@ body.idle .map-wrap{
   transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
   flex:0 0 auto;   /* critical: do not shrink */
 }
+
+.history-head{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:6px;
+}
+
+.history-status{
+  flex:0 0 auto;
+  width:12px;
+  height:12px;
+  border-radius:50%;
+  margin-left:auto;
+  align-self:flex-start;
+  box-shadow:0 0 0 1px rgba(255,255,255,.18) inset, 0 0 8px rgba(0,0,0,.35);
+}
+
+.history-status.active{
+  background:#39d353;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.18) inset,
+    0 0 10px rgba(57,211,83,.55);
+}
+
+.history-status.expired{
+  background:#ff5c5c;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.18) inset,
+    0 0 10px rgba(255,92,92,.45);
+}
+
 .history-card:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(0,0,0,.28)}
 .history-card.active{box-shadow:0 0 0 2px rgba(255,255,255,.16) inset}
 .history-card.tor{border-top-color:var(--tor-accent)}
@@ -1124,7 +1189,7 @@ html,body{
 
       
       <div id="summaryStrip" class="summary-strip" aria-live="polite">
-        <div class="summary-label">SPC Day 1 Summary</div>
+        <div class="summary-label">SPC Day 1 Convective Outlook Summary:</div>
         <div id="summaryMarquee" class="summary-marquee">
           <div id="summaryTrack" class="summary-track">
             <span id="summaryText" class="summary-text"></span>
@@ -1151,7 +1216,7 @@ html,body{
 
   <div class="right">
   <button id="audioBtn" class="audio-btn">Enable Audio</button>
-  <div class="history-title">25 Most Recent Warnings</div>
+  <div class="history-title">25 Most Recent NWS Warnings</div>
   <div id="historyList" class="history-column"></div>
 </div>
 </div>
@@ -1253,6 +1318,19 @@ async function fetchLatestSummaryText(){
     }
   }
   return '';
+}
+
+function parseUtcString(s){
+  if(!s) return null;
+  const iso = String(s).replace(' UTC', 'Z').replace(' ', 'T');
+  const d = new Date(iso);
+  return Number.isNaN(d.getTime()) ? null : d;
+}
+
+function isAlertCurrentlyValid(alert){
+  const validTo = parseUtcString(alert.valid_to || alert.expires || '');
+  if(!validTo) return false;
+  return Date.now() <= validTo.getTime();
 }
 
 function applySummaryText(summary){
@@ -1591,7 +1669,23 @@ function renderAlert(alert){
   headlineEl.className='headline ' + sev + ' flash';
   idleBannerEl.style.display='none';
   warningBannerEl.style.display='flex';
-  warningBannerTextEl.textContent=`${alert.type || ''} ${alert.wfo || ''}`.trim();
+  const alertType = (alert.type || '').toUpperCase().trim();
+const wfo = (alert.wfo || '').trim();
+
+let leftIcon = '';
+let rightIcon = '';
+
+if (alertType === 'TOR') {
+  leftIcon = '🌪️';
+  rightIcon = '🌪️';
+} else if (alertType === 'SVR') {
+  leftIcon = '⚡';
+  rightIcon = '⚡';
+}
+
+warningBannerTextEl.textContent = [leftIcon, `${alertType} ${wfo}`.trim(), rightIcon]
+  .filter(Boolean)
+  .join(' ');
   const officeName = (alert.office_name || '').trim();
   const issuedText = formatWarningIssuedText(alert.issued || '');
   warningBannerTimeEl.textContent = officeName ? `${officeName} • ${issuedText}` : issuedText;
@@ -1712,11 +1806,6 @@ function renderHistory(alerts){
   const historyItems = alerts.slice(-MAX_HISTORY).reverse();
   const signature = getHistorySignature(alerts);
 
-  if (signature === lastRenderedHistorySignature) {
-    updateActiveTile();
-    return;
-  }
-
   const isNewData = signature !== lastRenderedHistorySignature;
   const keepAtTop = isNewData || historyUserPinnedToTop || historyListEl.scrollTop <= 2;
   const previousScrollTop = historyListEl.scrollTop;
@@ -1734,19 +1823,43 @@ function renderHistory(alerts){
     const cls = getSeverityClass(a);
     const tags = buildTags(a).map(t => t.label).join(' • ');
     const key = alertKey(a);
+    const isValid = isAlertCurrentlyValid(a);
+    const expiresClass = isValid ? 'expires-active' : 'expires-expired';
+    const statusCls = isValid ? 'active' : 'expired';
+    const statusTitle = isValid ? 'Currently valid' : 'Expired';
+    const type = (a.type || '').toUpperCase().trim();
 
+    let icon = '';
+    if (type === 'TOR') icon = '🌪️';
+    else if (type === 'SVR') icon = '⚡';
+
+    const pillLabel = icon ? `${type}${icon}` : type;
     return `<div class="history-card ${cls}" data-key="${escapeHtml(key)}">
       <div class="history-head">
-        <div class="icon-pill">${escapeHtml(a.type || '')}</div>
-        <div style="min-width:0;">
+        <div class="icon-pill">${escapeHtml(pillLabel)}</div>
+        <div style="min-width:0; flex:1 1 auto;">
           <div class="history-office">
             ${escapeHtml(a.wfo || '')}
             ${a.office_name ? `<span class="history-office-name">${escapeHtml(a.office_name)}</span>` : ''}
           </div>
-          <div class="history-time">${escapeHtml(a.issued || '')}</div>
+
+          <div class="history-times">
+  <div class="history-issued">
+    Issued: ${escapeHtml(a.issued || '')}
+  </div>
+  ${a.valid_to ? `
+    <div class="history-expires ${expiresClass}">
+      Expires: ${escapeHtml(a.valid_to)}
+    </div>
+  ` : ''}
+</div>
+
           ${a.source_text ? `<div class="history-source">Source: ${escapeHtml(a.source_text)}</div>` : ''}
         </div>
+
+        <div class="history-status ${statusCls}" title="${statusTitle}" aria-label="${statusTitle}"></div>
       </div>
+
       ${tags ? `<div class="history-tags">${escapeHtml(tags)}</div>` : ''}
       ${a.hazard_text ? `<div class="history-hazard">${escapeHtml(a.hazard_text)}</div>` : ''}
     </div>`;

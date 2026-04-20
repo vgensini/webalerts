@@ -1,68 +1,62 @@
-063 
-WUUS51 KAKQ 070001
-SVRAKQ
-VAC033-057-159-193-070045-
-/O.NEW.KAKQ.SV.W.0147.170707T0001Z-170707T0045Z/
+377 
+WFUS53 KPAH 110326
+TORPAH
+KYC083-110415-
+/O.NEW.KPAH.TO.W.0038.211211T0326Z-211211T0415Z/
 
-BULLETIN - IMMEDIATE BROADCAST REQUESTED
-Severe Thunderstorm Warning
-National Weather Service Wakefield VA
-801 PM EDT THU JUL 6 2017
+BULLETIN - EAS ACTIVATION REQUESTED
+Tornado Warning
+National Weather Service Paducah KY
+926 PM CST Fri Dec 10 2021
 
-The National Weather Service in Wakefield has issued a
+...TORNADO EMERGENCY FOR Mayfield...
 
-* Severe Thunderstorm Warning for...
-  Northwestern Richmond County in east central Virginia...
-  Northeastern Caroline County in north central Virginia...
-  Westmoreland County in east central Virginia...
-  Northwestern Essex County in east central Virginia...
+The National Weather Service in Paducah has issued a
 
-* Until 845 PM EDT
+* Tornado Warning for...
+  Central Graves County in western Kentucky...
 
-* At 758 PM EDT, severe thunderstorms were located along a line
-  extending from near King George to near Port Royal to Bowling
-  Green, moving east at 30 mph.
+* Until 1015 PM CST.
+    
+* At 925 PM CST, a confirmed large and destructive tornado was
+  observed over Mayfield, moving northeast at 60 mph.
 
-  HAZARD...70 mph wind gusts and quarter size hail. 
+  TORNADO EMERGENCY for Mayfield! This is a PARTICULARLY DANGEROUS 
+SITUATION. TAKE COVER NOW!
 
-  SOURCE...Radar indicated. 
+  HAZARD...Deadly tornado.
 
-  IMPACT...Minor damage to vehicles is possible. Expect considerable 
-           tree damage. Wind damage is also likely to mobile homes, 
-           roofs, and outbuildings. 
+  SOURCE...Weather spotters confirmed tornado.
 
-* Locations impacted include...
-  Colonial Beach, Tappahannock, Warsaw, Bowling Green, Montross,
-  Champlain, Port Royal, Newland, Coles Point, Hague, Loretto,
-  Leedstown, Fort A.p. Hill, Beazley, Currioman Landing, Threeway,
-  Hustle, Potomac Beach, Elevon and Supply.
+  IMPACT...You are in a life-threatening situation. Flying debris 
+           may be deadly to those caught without shelter. Mobile 
+           homes will be destroyed. Considerable damage to homes, 
+           businesses, and vehicles is likely and complete 
+           destruction is possible.
 
+* This tornadic thunderstorm will remain over mainly rural areas of
+  central Graves County.
+
+This includes Interstate 69 in Kentucky between Mile Markers 18 and
+25.
+ 
 PRECAUTIONARY/PREPAREDNESS ACTIONS...
 
-For your protection move to an interior room on the lowest floor of a
-building.
+To repeat, a large, extremely dangerous and potentially deadly
+tornado is on the ground. To protect your life, TAKE COVER NOW! Move
+to an interior room on the lowest floor of a sturdy building. Avoid
+windows. If in a mobile home, a vehicle or outdoors, move to the
+closest substantial shelter and protect yourself from flying debris.
 
-This is a DANGEROUS SITUATION. This storm has a history of producing 
-wind damage across Spotsylvania and Caroline Counties. SEEK SHELTER 
-NOW inside a sturdy structure and stay away from windows! 
-
-Please send your reports of hail and or wind damage...including 
-trees or large limbs downed...by calling NOAA'S National Weather 
-Service in Wakefield at
-...7 5 7...8 9 9...2 4 1 5.
 &&
 
-LAT...LON 3826 7696 3821 7695 3818 7688 3816 7684
-      3817 7676 3815 7661 3810 7659 3800 7664
-      3790 7679 3805 7745 3815 7727 3819 7725
-      3819 7723 3820 7723 3815 7712 3816 7709
-      3814 7707 3818 7705 3826 7705 3828 7698
-TIME...MOT...LOC 2358Z 284DEG 25KT 3822 7713 3812 7719 3803 7734 
+LAT...LON 3667 8869 3672 8875 3679 8865 3672 8857
+TIME...MOT...LOC 0325Z 240DEG 52KT 3672 8868 
 
-TORNADO...POSSIBLE
-HAIL...1.00IN
-WIND...70MPH
- 
+TORNADO...OBSERVED
+TORNADO DAMAGE THREAT...CATASTROPHIC
+MAX HAIL SIZE...2.50 IN
+
 $$
 
-SEYMOUR
+PS

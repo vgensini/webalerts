@@ -834,6 +834,18 @@ def cleanup_snapshots(alerts):
         pass
 
 
+def parse_vtec_utc(vtec_time):
+    try:
+        dt = datetime.strptime(vtec_time, "%y%m%dT%H%MZ")
+        return dt.replace(tzinfo=timezone.utc)
+    except Exception:
+        return None
+
+def fmt_utc(dt):
+    if not dt:
+        return ""
+    return dt.strftime("%Y-%m-%d %H:%M:%S UTC")
+
 def parse_alert(text):
     upper = text.upper()
 
@@ -845,16 +857,19 @@ def parse_alert(text):
     else:
         return None
 
-    m = re.search(r"/O\.(NEW|CON|EXT|EXA|EXB|UPG|CAN|EXP)\.K([A-Z]{3})\.([A-Z]{2})\.W\.([0-9]{4})\.", upper)
+    m = re.search(
+    r"/O\.(NEW|CON|EXT|EXA|EXB|UPG|CAN|EXP)\.K([A-Z]{3})\.([A-Z]{2})\.W\.([0-9]{4})\.([0-9]{6}T[0-9]{4}Z)-([0-9]{6}T[0-9]{4}Z)/",upper)
     if not m:
         return None
 
     vtec = {
-        "action": m.group(1),
-        "office": m.group(2),
-        "phen_sig": m.group(3),
-        "etn": m.group(4),
-    }
+    "action": m.group(1),
+    "office": m.group(2),
+    "phen_sig": m.group(3),
+    "etn": m.group(4),
+    "begin": m.group(5),
+    "end": m.group(6),
+}
     if vtec["action"] != "NEW":
         return None
 
@@ -885,31 +900,39 @@ def parse_alert(text):
     polygon = parse_polygon(text)
     centroid = polygon_centroid(polygon) if polygon else None
 
-    issued_utc_str = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
+    valid_from_dt = parse_vtec_utc(vtec["begin"])
+    valid_to_dt = parse_vtec_utc(vtec["end"])
+
+    issued_utc_str = fmt_utc(valid_from_dt) or datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
+    expires_utc_str = fmt_utc(valid_to_dt)
 
     return {
-        "type": hazard_type,
-        "wfo": office or "UNK",
-        "office": office or "UNK",
-        "issued": issued_utc_str,
-        "hazard_text": hazard_text,
-        "source_text": source_text,
-        "impact_text": impact_text,
-        "office_name": office_name,
-        "etn": vtec["etn"],
-        "vtec_action": vtec["action"],
-        "source_file": os.path.basename(LATEST_WARN),
-        "polygon": polygon,
-        "centroid": centroid,
-        "tornado_tag": tornado_tag,
-        "tornado_damage_threat": tornado_damage_threat,
-        "thunderstorm_damage_threat": thunderstorm_damage_threat,
-        "emergency": emergency,
-        "confirmed_tornado": confirmed_tornado,
-        "radar_image": "",
-        "radar_crop": None,
-        "snapshot_cropped": True
-    }
+    "type": hazard_type,
+    "wfo": office or "UNK",
+    "office": office or "UNK",
+    "issued": issued_utc_str,
+    "valid_from": issued_utc_str,
+    "valid_to": expires_utc_str,
+    "vtec_begin": vtec["begin"],
+    "vtec_end": vtec["end"],
+    "hazard_text": hazard_text,
+    "source_text": source_text,
+    "impact_text": impact_text,
+    "office_name": office_name,
+    "etn": vtec["etn"],
+    "vtec_action": vtec["action"],
+    "source_file": os.path.basename(LATEST_WARN),
+    "polygon": polygon,
+    "centroid": centroid,
+    "tornado_tag": tornado_tag,
+    "tornado_damage_threat": tornado_damage_threat,
+    "thunderstorm_damage_threat": thunderstorm_damage_threat,
+    "emergency": emergency,
+    "confirmed_tornado": confirmed_tornado,
+    "radar_image": "",
+    "radar_crop": None,
+    "snapshot_cropped": True
+}
 
 
 def main():
