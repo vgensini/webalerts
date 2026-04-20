@@ -34,7 +34,7 @@ RADAR_WORLD = {
     "yOrigin": 50.0,
 }
 
-MIN_CROP_HEIGHT = 300
+MIN_CROP_HEIGHT = 450
 CROP_PADDING = 40
 SNAPSHOT_WIDTH = 1140
 SNAPSHOT_HEIGHT = 690
@@ -53,7 +53,7 @@ COUNTY_DRAW_BUFFER = 50
 # -------------------------------------------------------------------
 CITY_SHP = "/var/www/atlas_html/alerts/shapefiles/DomesticNames.shp"
 
-CITY_MAX_LABELS = 80
+CITY_MAX_LABELS = 20
 CITY_DOT_RADIUS = 0.05
 
 CITY_DOT_COLOR = (128, 71, 71, 20)
@@ -62,8 +62,8 @@ CITY_SHADOW_COLOR = (0, 0, 0, 200)
 
 CITY_LABEL_OFFSET_X = 4
 CITY_LABEL_OFFSET_Y = -2
-CITY_FONT_SIZE = 7
-CITY_EDGE_PAD = 8
+CITY_FONT_SIZE = 12
+CITY_EDGE_PAD = 2
 
 # -------------------------------------------------------------------
 # STATE OVERLAY SETTINGS

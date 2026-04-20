@@ -1,217 +1,261 @@
 [
   {
-    "type": "SVR",
-    "wfo": "CRP",
-    "office": "CRP",
-    "issued": "2026-04-20 04:19:13 UTC",
-    "hazard_text": "70 mph wind gusts and penny size hail.",
-    "source_text": "Radar indicated.",
-    "impact_text": "Expect considerable tree damage. Damage is likely to mobile homes, roofs, and outbuildings.",
-    "office_name": "Corpus Christi, TX",
-    "etn": "0032",
-    "vtec_action": "NEW",
-    "source_file": "latest_warn.txt",
-    "polygon": [
-      [
-        -97.99,
-        27.26
-      ],
-      [
-        -98.16,
-        27.26
-      ],
-      [
-        -98.44,
-        27.87
-      ],
-      [
-        -97.96,
-        28.06
-      ],
-      [
-        -97.89,
-        28.06
-      ],
-      [
-        -97.45,
-        27.26
-      ],
-      [
-        -97.52,
-        27.23
-      ],
-      [
-        -97.63,
-        27.24
-      ],
-      [
-        -97.65,
-        27.28
-      ],
-      [
-        -97.73,
-        27.26
-      ],
-      [
-        -97.76,
-        27.28
-      ],
-      [
-        -97.81,
-        27.27
-      ],
-      [
-        -97.81,
-        27.26
-      ],
-      [
-        -97.84,
-        27.24
-      ],
-      [
-        -97.92,
-        27.24
-      ],
-      [
-        -97.95,
-        27.23
-      ],
-      [
-        -97.98,
-        27.23
-      ],
-      [
-        -97.99,
-        27.26
-      ]
-    ],
-    "centroid": [
-      -97.9664,
-      27.6103
-    ],
-    "tornado_tag": "",
-    "tornado_damage_threat": "",
-    "thunderstorm_damage_threat": "",
-    "emergency": false,
-    "confirmed_tornado": false,
-    "radar_image": "radar_snapshots/20260420041913_SVR_CRP_0032.png",
-    "radar_crop": {
-      "sx": 5359,
-      "sy": 4328,
-      "sw": 496,
-      "sh": 300
-    },
-    "snapshot_cropped": true
-  },
-  {
-    "type": "SVR",
-    "wfo": "CRP",
-    "office": "CRP",
-    "issued": "2026-04-20 04:19:23 UTC",
-    "hazard_text": "70 mph wind gusts.",
-    "source_text": "Radar indicated.",
-    "impact_text": "Expect considerable tree damage. Damage is likely to mobile homes, roofs, and outbuildings.",
-    "office_name": "Corpus Christi, TX",
-    "etn": "0074",
-    "vtec_action": "NEW",
-    "source_file": "latest_warn.txt",
-    "polygon": [
-      [
-        -97.74,
-        28.3
-      ],
-      [
-        -97.59,
-        28.1
-      ],
-      [
-        -97.6,
-        27.83
-      ],
-      [
-        -98.16,
-        27.86
-      ],
-      [
-        -98.27,
-        28.0
-      ],
-      [
-        -98.31,
-        28.11
-      ],
-      [
-        -97.74,
-        28.3
-      ]
-    ],
-    "centroid": [
-      -97.9066,
-      28.037
-    ],
-    "tornado_tag": "",
-    "tornado_damage_threat": "",
-    "thunderstorm_damage_threat": "Considerable",
-    "emergency": false,
-    "confirmed_tornado": false,
-    "radar_image": "radar_snapshots/20260420041923_SVR_CRP_0074.png",
-    "radar_crop": {
-      "sx": 5371,
-      "sy": 4243,
-      "sw": 496,
-      "sh": 300
-    },
-    "snapshot_cropped": true
-  },
-  {
     "type": "TOR",
-    "wfo": "PAH",
-    "office": "PAH",
-    "issued": "2026-04-20 04:19:32 UTC",
-    "hazard_text": "Damaging tornado.",
-    "source_text": "Radar confirmed tornado.",
+    "wfo": "AKQ",
+    "office": "AKQ",
+    "issued": "2026-04-20 13:39:02 UTC",
+    "hazard_text": "Tornado.",
+    "source_text": "Radar indicated rotation.",
     "impact_text": "Flying debris will be dangerous to those caught without shelter. Mobile homes will be damaged or destroyed. Damage to roofs, windows, and vehicles will occur. Tree damage is likely.",
-    "office_name": "Paducah, KY",
-    "etn": "0070",
+    "office_name": "Wakefield, VA",
+    "etn": "0019",
     "vtec_action": "NEW",
     "source_file": "latest_warn.txt",
     "polygon": [
       [
-        -88.77,
-        36.62
+        -77.23,
+        38.25
       ],
       [
-        -88.79,
-        36.73
+        -77.23,
+        38.24
       ],
       [
-        -88.4,
-        36.87
+        -77.25,
+        38.23
       ],
       [
-        -88.35,
-        36.69
+        -77.24,
+        38.21
       ],
       [
-        -88.77,
-        36.62
+        -77.25,
+        38.19
+      ],
+      [
+        -77.23,
+        38.19
+      ],
+      [
+        -77.22,
+        38.2
+      ],
+      [
+        -77.18,
+        38.17
+      ],
+      [
+        -77.13,
+        38.17
+      ],
+      [
+        -77.06,
+        38.07
+      ],
+      [
+        -77.44,
+        37.96
+      ],
+      [
+        -77.52,
+        38.07
+      ],
+      [
+        -77.34,
+        38.25
+      ],
+      [
+        -77.31,
+        38.24
+      ],
+      [
+        -77.29,
+        38.24
+      ],
+      [
+        -77.29,
+        38.22
+      ],
+      [
+        -77.28,
+        38.23
+      ],
+      [
+        -77.27,
+        38.25
+      ],
+      [
+        -77.23,
+        38.25
       ]
     ],
     "centroid": [
-      -88.5604,
-      36.7315
+      -77.3058,
+      38.1012
     ],
-    "tornado_tag": "Observed",
+    "tornado_tag": "Radar Indicated",
     "tornado_damage_threat": "",
     "thunderstorm_damage_threat": "",
     "emergency": false,
-    "confirmed_tornado": true,
-    "radar_image": "radar_snapshots/20260420041932_TOR_PAH_0070.png",
+    "confirmed_tornado": false,
+    "radar_image": "radar_snapshots/20260420133902_TOR_AKQ_0019.png",
     "radar_crop": {
-      "sx": 7240,
-      "sy": 2504,
-      "sw": 496,
-      "sh": 300
+      "sx": 9326,
+      "sy": 2130,
+      "sw": 826,
+      "sh": 500
+    },
+    "snapshot_cropped": true
+  },
+  {
+    "type": "TOR",
+    "wfo": "DVN",
+    "office": "DVN",
+    "issued": "2026-04-20 13:40:06 UTC",
+    "hazard_text": "Tornado.",
+    "source_text": "Radar indicated rotation.",
+    "impact_text": "Flying debris will be dangerous to those caught without shelter. Mobile homes will be damaged or destroyed. Damage to roofs, windows, and vehicles will occur. Tree damage is likely.",
+    "office_name": "Quad Cities IA/IL",
+    "etn": "0049",
+    "vtec_action": "NEW",
+    "source_file": "latest_warn.txt",
+    "polygon": [
+      [
+        -89.36,
+        41.1
+      ],
+      [
+        -89.34,
+        41.12
+      ],
+      [
+        -89.33,
+        41.15
+      ],
+      [
+        -89.63,
+        41.15
+      ],
+      [
+        -89.64,
+        41.16
+      ],
+      [
+        -89.64,
+        41.23
+      ],
+      [
+        -89.7,
+        41.24
+      ],
+      [
+        -89.28,
+        41.59
+      ],
+      [
+        -89.17,
+        41.58
+      ],
+      [
+        -89.16,
+        41.11
+      ],
+      [
+        -89.36,
+        41.1
+      ]
+    ],
+    "centroid": [
+      -89.3603,
+      41.3157
+    ],
+    "tornado_tag": "Radar Indicated",
+    "tornado_damage_threat": "",
+    "thunderstorm_damage_threat": "",
+    "emergency": false,
+    "confirmed_tornado": false,
+    "radar_image": "radar_snapshots/20260420134006_TOR_DVN_0049.png",
+    "radar_crop": {
+      "sx": 6915,
+      "sy": 1487,
+      "sw": 826,
+      "sh": 500
+    },
+    "snapshot_cropped": true
+  },
+  {
+    "type": "TOR",
+    "wfo": "DVN",
+    "office": "DVN",
+    "issued": "2026-04-20 13:41:14 UTC",
+    "hazard_text": "Tornado.",
+    "source_text": "Radar indicated rotation.",
+    "impact_text": "Flying debris will be dangerous to those caught without shelter. Mobile homes will be damaged or destroyed. Damage to roofs, windows, and vehicles will occur. Tree damage is likely.",
+    "office_name": "Quad Cities IA/IL",
+    "etn": "0049",
+    "vtec_action": "NEW",
+    "source_file": "latest_warn.txt",
+    "polygon": [
+      [
+        -89.36,
+        41.1
+      ],
+      [
+        -89.34,
+        41.12
+      ],
+      [
+        -89.33,
+        41.15
+      ],
+      [
+        -89.63,
+        41.15
+      ],
+      [
+        -89.64,
+        41.16
+      ],
+      [
+        -89.64,
+        41.23
+      ],
+      [
+        -89.7,
+        41.24
+      ],
+      [
+        -89.28,
+        41.59
+      ],
+      [
+        -89.17,
+        41.58
+      ],
+      [
+        -89.16,
+        41.11
+      ],
+      [
+        -89.36,
+        41.1
+      ]
+    ],
+    "centroid": [
+      -89.3603,
+      41.3157
+    ],
+    "tornado_tag": "Radar Indicated",
+    "tornado_damage_threat": "",
+    "thunderstorm_damage_threat": "",
+    "emergency": false,
+    "confirmed_tornado": false,
+    "radar_image": "radar_snapshots/20260420134114_TOR_DVN_0049.png",
+    "radar_crop": {
+      "sx": 6956,
+      "sy": 1512,
+      "sw": 743,
+      "sh": 450
     },
     "snapshot_cropped": true
   },
@@ -219,7 +263,7 @@
     "type": "TOR",
     "wfo": "PAH",
     "office": "PAH",
-    "issued": "2026-04-20 04:19:37 UTC",
+    "issued": "2026-04-20 13:43:27 UTC",
     "hazard_text": "Damaging tornado.",
     "source_text": "Radar confirmed tornado.",
     "impact_text": "You are in a life-threatening situation. Flying debris may be deadly to those caught without shelter. Mobile homes will be destroyed. Considerable damage to homes, businesses, and vehicles is likely and complete destruction is possible.",
@@ -282,76 +326,12 @@
     "thunderstorm_damage_threat": "",
     "emergency": false,
     "confirmed_tornado": true,
-    "radar_image": "radar_snapshots/20260420041937_TOR_PAH_0036.png",
+    "radar_image": "radar_snapshots/20260420134327_TOR_PAH_0036.png",
     "radar_crop": {
-      "sx": 7244,
-      "sy": 2490,
-      "sw": 496,
-      "sh": 300
-    },
-    "snapshot_cropped": true
-  },
-  {
-    "type": "SVR",
-    "wfo": "OKX",
-    "office": "OKX",
-    "issued": "2026-04-20 04:19:43 UTC",
-    "hazard_text": "Golf ball size hail and 60 mph wind gusts.",
-    "source_text": "Radar indicated.",
-    "impact_text": "People and animals outdoors will be injured. Expect hail damage to roofs, siding, windows, and vehicles. Expect wind damage to trees and power lines.",
-    "office_name": "New York, NY",
-    "etn": "0021",
-    "vtec_action": "NEW",
-    "source_file": "latest_warn.txt",
-    "polygon": [
-      [
-        -73.2,
-        41.28
-      ],
-      [
-        -73.29,
-        41.11
-      ],
-      [
-        -73.3,
-        41.12
-      ],
-      [
-        -73.34,
-        41.09
-      ],
-      [
-        -73.38,
-        41.05
-      ],
-      [
-        -73.71,
-        41.19
-      ],
-      [
-        -73.66,
-        41.33
-      ],
-      [
-        -73.2,
-        41.28
-      ]
-    ],
-    "centroid": [
-      -73.4587,
-      41.2082
-    ],
-    "tornado_tag": "",
-    "tornado_damage_threat": "",
-    "thunderstorm_damage_threat": "Considerable",
-    "emergency": false,
-    "confirmed_tornado": false,
-    "radar_image": "radar_snapshots/20260420041943_SVR_OKX_0021.png",
-    "radar_crop": {
-      "sx": 10260,
-      "sy": 1608,
-      "sw": 496,
-      "sh": 300
+      "sx": 7120,
+      "sy": 2415,
+      "sw": 743,
+      "sh": 450
     },
     "snapshot_cropped": true
   },
@@ -359,63 +339,75 @@
     "type": "TOR",
     "wfo": "PAH",
     "office": "PAH",
-    "issued": "2026-04-20 04:19:49 UTC",
-    "hazard_text": "Damaging tornado and hail up to three inches in diameter.",
-    "source_text": "Weather spotters confirmed tornado.",
-    "impact_text": "Flying debris will be dangerous to those caught without shelter. Mobile homes will be damaged or destroyed. Damage to roofs, windows, and vehicles will occur. Tree damage is likely.",
+    "issued": "2026-04-20 14:15:59 UTC",
+    "hazard_text": "Damaging tornado.",
+    "source_text": "Radar confirmed tornado.",
+    "impact_text": "You are in a life-threatening situation. Flying debris may be deadly to those caught without shelter. Mobile homes will be destroyed. Considerable damage to homes, businesses, and vehicles is likely and complete destruction is possible.",
     "office_name": "Paducah, KY",
-    "etn": "0121",
+    "etn": "0036",
     "vtec_action": "NEW",
     "source_file": "latest_warn.txt",
     "polygon": [
       [
-        -89.21,
-        36.92
-      ],
-      [
-        -89.22,
-        37.13
-      ],
-      [
-        -88.56,
-        37.19
-      ],
-      [
-        -88.56,
-        37.08
+        -88.81,
+        36.79
       ],
       [
         -88.57,
-        37.07
+        36.94
       ],
       [
-        -88.56,
-        37.06
+        -88.49,
+        36.94
       ],
       [
-        -88.56,
-        36.87
+        -88.49,
+        36.99
       ],
       [
-        -89.21,
-        36.92
+        -88.39,
+        37.05
+      ],
+      [
+        -88.2,
+        36.82
+      ],
+      [
+        -88.35,
+        36.75
+      ],
+      [
+        -88.48,
+        36.75
+      ],
+      [
+        -88.49,
+        36.69
+      ],
+      [
+        -88.81,
+        36.54
+      ],
+      [
+        -88.81,
+        36.79
       ]
     ],
     "centroid": [
-      -88.865,
-      37.0281
+      -88.541,
+      36.8006
     ],
     "tornado_tag": "Observed",
-    "tornado_damage_threat": "",
+    "tornado_damage_threat": "Considerable",
     "thunderstorm_damage_threat": "",
     "emergency": false,
     "confirmed_tornado": true,
-    "radar_image": "radar_snapshots/20260420041949_TOR_PAH_0121.png",
+    "radar_image": "radar_snapshots/20260420141559_TOR_PAH_0036.png",
     "radar_crop": {
-      "sx": 7179,
-      "sy": 2444,
-      "sw": 496,
-      "sh": 300
+      "sx": 7120,
+      "sy": 2415,
+      "sw": 743,
+      "sh": 450
     },
     "snapshot_cropped": true
   },
@@ -423,7 +415,7 @@
     "type": "SVR",
     "wfo": "AKQ",
     "office": "AKQ",
-    "issued": "2026-04-20 04:19:54 UTC",
+    "issued": "2026-04-20 14:16:55 UTC",
     "hazard_text": "70 mph wind gusts and quarter size hail.",
     "source_text": "Radar indicated.",
     "impact_text": "Minor damage to vehicles is possible. Expect considerable tree damage. Wind damage is also likely to mobile homes, roofs, and outbuildings.",
@@ -526,12 +518,120 @@
     "thunderstorm_damage_threat": "",
     "emergency": false,
     "confirmed_tornado": false,
-    "radar_image": "radar_snapshots/20260420041954_SVR_AKQ_0147.png",
+    "radar_image": "radar_snapshots/20260420141655_SVR_AKQ_0147.png",
     "radar_crop": {
-      "sx": 9559,
-      "sy": 2236,
-      "sw": 496,
-      "sh": 300
+      "sx": 9435,
+      "sy": 2161,
+      "sw": 743,
+      "sh": 450
+    },
+    "snapshot_cropped": true
+  },
+  {
+    "type": "TOR",
+    "wfo": "AKQ",
+    "office": "AKQ",
+    "issued": "2026-04-20 14:18:03 UTC",
+    "hazard_text": "Tornado.",
+    "source_text": "Radar indicated rotation.",
+    "impact_text": "Flying debris will be dangerous to those caught without shelter. Mobile homes will be damaged or destroyed. Damage to roofs, windows, and vehicles will occur. Tree damage is likely.",
+    "office_name": "Wakefield, VA",
+    "etn": "0019",
+    "vtec_action": "NEW",
+    "source_file": "latest_warn.txt",
+    "polygon": [
+      [
+        -77.23,
+        38.25
+      ],
+      [
+        -77.23,
+        38.24
+      ],
+      [
+        -77.25,
+        38.23
+      ],
+      [
+        -77.24,
+        38.21
+      ],
+      [
+        -77.25,
+        38.19
+      ],
+      [
+        -77.23,
+        38.19
+      ],
+      [
+        -77.22,
+        38.2
+      ],
+      [
+        -77.18,
+        38.17
+      ],
+      [
+        -77.13,
+        38.17
+      ],
+      [
+        -77.06,
+        38.07
+      ],
+      [
+        -77.44,
+        37.96
+      ],
+      [
+        -77.52,
+        38.07
+      ],
+      [
+        -77.34,
+        38.25
+      ],
+      [
+        -77.31,
+        38.24
+      ],
+      [
+        -77.29,
+        38.24
+      ],
+      [
+        -77.29,
+        38.22
+      ],
+      [
+        -77.28,
+        38.23
+      ],
+      [
+        -77.27,
+        38.25
+      ],
+      [
+        -77.23,
+        38.25
+      ]
+    ],
+    "centroid": [
+      -77.3058,
+      38.1012
+    ],
+    "tornado_tag": "Radar Indicated",
+    "tornado_damage_threat": "",
+    "thunderstorm_damage_threat": "",
+    "emergency": false,
+    "confirmed_tornado": false,
+    "radar_image": "radar_snapshots/20260420141803_TOR_AKQ_0019.png",
+    "radar_crop": {
+      "sx": 9367,
+      "sy": 2155,
+      "sw": 743,
+      "sh": 450
     },
     "snapshot_cropped": true
   },
@@ -539,7 +639,7 @@
     "type": "TOR",
     "wfo": "PAH",
     "office": "PAH",
-    "issued": "2026-04-20 04:22:42 UTC",
+    "issued": "2026-04-20 14:18:31 UTC",
     "hazard_text": "Tornado.",
     "source_text": "Radar indicated rotation.",
     "impact_text": "Flying debris will be dangerous to those caught without shelter. Mobile homes will be damaged or destroyed. Damage to roofs, windows, and vehicles will occur. Tree damage is likely.",
@@ -610,12 +710,12 @@
     "thunderstorm_damage_threat": "",
     "emergency": false,
     "confirmed_tornado": false,
-    "radar_image": "radar_snapshots/20260420042242_TOR_PAH_0047.png",
+    "radar_image": "radar_snapshots/20260420141831_TOR_PAH_0047.png",
     "radar_crop": {
-      "sx": 7191,
-      "sy": 2398,
-      "sw": 496,
-      "sh": 300
+      "sx": 7067,
+      "sy": 2323,
+      "sw": 743,
+      "sh": 450
     },
     "snapshot_cropped": true
   },
@@ -623,7 +723,7 @@
     "type": "TOR",
     "wfo": "PAH",
     "office": "PAH",
-    "issued": "2026-04-20 04:22:48 UTC",
+    "issued": "2026-04-20 14:18:37 UTC",
     "hazard_text": "Deadly tornado.",
     "source_text": "Weather spotters confirmed tornado.",
     "impact_text": "You are in a life-threatening situation. Flying debris may be deadly to those caught without shelter. Mobile homes will be destroyed. Considerable damage to homes, businesses, and vehicles is likely and complete destruction is possible.",
@@ -662,12 +762,12 @@
     "thunderstorm_damage_threat": "",
     "emergency": true,
     "confirmed_tornado": true,
-    "radar_image": "radar_snapshots/20260420042248_TOR_PAH_0038.png",
+    "radar_image": "radar_snapshots/20260420141837_TOR_PAH_0038.png",
     "radar_crop": {
-      "sx": 7220,
-      "sy": 2505,
-      "sw": 496,
-      "sh": 300
+      "sx": 7096,
+      "sy": 2430,
+      "sw": 743,
+      "sh": 450
     },
     "snapshot_cropped": true
   },
@@ -675,7 +775,7 @@
     "type": "SVR",
     "wfo": "CRP",
     "office": "CRP",
-    "issued": "2026-04-20 04:22:53 UTC",
+    "issued": "2026-04-20 14:18:42 UTC",
     "hazard_text": "70 mph wind gusts and penny size hail.",
     "source_text": "Radar indicated.",
     "impact_text": "Expect considerable tree damage. Damage is likely to mobile homes, roofs, and outbuildings.",
@@ -766,12 +866,12 @@
     "thunderstorm_damage_threat": "",
     "emergency": false,
     "confirmed_tornado": false,
-    "radar_image": "radar_snapshots/20260420042253_SVR_CRP_0032.png",
+    "radar_image": "radar_snapshots/20260420141842_SVR_CRP_0032.png",
     "radar_crop": {
-      "sx": 5359,
-      "sy": 4328,
-      "sw": 496,
-      "sh": 300
+      "sx": 5235,
+      "sy": 4253,
+      "sw": 743,
+      "sh": 450
     },
     "snapshot_cropped": true
   },
@@ -779,7 +879,7 @@
     "type": "SVR",
     "wfo": "CRP",
     "office": "CRP",
-    "issued": "2026-04-20 04:23:03 UTC",
+    "issued": "2026-04-20 14:18:52 UTC",
     "hazard_text": "70 mph wind gusts.",
     "source_text": "Radar indicated.",
     "impact_text": "Expect considerable tree damage. Damage is likely to mobile homes, roofs, and outbuildings.",
@@ -826,12 +926,12 @@
     "thunderstorm_damage_threat": "Considerable",
     "emergency": false,
     "confirmed_tornado": false,
-    "radar_image": "radar_snapshots/20260420042303_SVR_CRP_0074.png",
+    "radar_image": "radar_snapshots/20260420141852_SVR_CRP_0074.png",
     "radar_crop": {
-      "sx": 5371,
-      "sy": 4243,
-      "sw": 496,
-      "sh": 300
+      "sx": 5247,
+      "sy": 4168,
+      "sw": 743,
+      "sh": 450
     },
     "snapshot_cropped": true
   },
@@ -839,7 +939,7 @@
     "type": "TOR",
     "wfo": "PAH",
     "office": "PAH",
-    "issued": "2026-04-20 04:23:11 UTC",
+    "issued": "2026-04-20 14:19:00 UTC",
     "hazard_text": "Damaging tornado.",
     "source_text": "Radar confirmed tornado.",
     "impact_text": "Flying debris will be dangerous to those caught without shelter. Mobile homes will be damaged or destroyed. Damage to roofs, windows, and vehicles will occur. Tree damage is likely.",
@@ -878,12 +978,12 @@
     "thunderstorm_damage_threat": "",
     "emergency": false,
     "confirmed_tornado": true,
-    "radar_image": "radar_snapshots/20260420042311_TOR_PAH_0070.png",
+    "radar_image": "radar_snapshots/20260420141900_TOR_PAH_0070.png",
     "radar_crop": {
-      "sx": 7240,
-      "sy": 2504,
-      "sw": 496,
-      "sh": 300
+      "sx": 7116,
+      "sy": 2429,
+      "sw": 743,
+      "sh": 450
     },
     "snapshot_cropped": true
   },
@@ -891,7 +991,7 @@
     "type": "TOR",
     "wfo": "PAH",
     "office": "PAH",
-    "issued": "2026-04-20 04:23:17 UTC",
+    "issued": "2026-04-20 14:19:06 UTC",
     "hazard_text": "Damaging tornado.",
     "source_text": "Radar confirmed tornado.",
     "impact_text": "You are in a life-threatening situation. Flying debris may be deadly to those caught without shelter. Mobile homes will be destroyed. Considerable damage to homes, businesses, and vehicles is likely and complete destruction is possible.",
@@ -954,12 +1054,12 @@
     "thunderstorm_damage_threat": "",
     "emergency": false,
     "confirmed_tornado": true,
-    "radar_image": "radar_snapshots/20260420042317_TOR_PAH_0036.png",
+    "radar_image": "radar_snapshots/20260420141906_TOR_PAH_0036.png",
     "radar_crop": {
-      "sx": 7244,
-      "sy": 2490,
-      "sw": 496,
-      "sh": 300
+      "sx": 7120,
+      "sy": 2415,
+      "sw": 743,
+      "sh": 450
     },
     "snapshot_cropped": true
   },
@@ -967,7 +1067,7 @@
     "type": "SVR",
     "wfo": "OKX",
     "office": "OKX",
-    "issued": "2026-04-20 04:23:23 UTC",
+    "issued": "2026-04-20 14:19:11 UTC",
     "hazard_text": "Golf ball size hail and 60 mph wind gusts.",
     "source_text": "Radar indicated.",
     "impact_text": "People and animals outdoors will be injured. Expect hail damage to roofs, siding, windows, and vehicles. Expect wind damage to trees and power lines.",
@@ -1018,12 +1118,12 @@
     "thunderstorm_damage_threat": "Considerable",
     "emergency": false,
     "confirmed_tornado": false,
-    "radar_image": "radar_snapshots/20260420042323_SVR_OKX_0021.png",
+    "radar_image": "radar_snapshots/20260420141911_SVR_OKX_0021.png",
     "radar_crop": {
-      "sx": 10260,
-      "sy": 1608,
-      "sw": 496,
-      "sh": 300
+      "sx": 10137,
+      "sy": 1533,
+      "sw": 743,
+      "sh": 450
     },
     "snapshot_cropped": true
   },
@@ -1031,7 +1131,7 @@
     "type": "TOR",
     "wfo": "PAH",
     "office": "PAH",
-    "issued": "2026-04-20 04:23:28 UTC",
+    "issued": "2026-04-20 14:19:17 UTC",
     "hazard_text": "Damaging tornado and hail up to three inches in diameter.",
     "source_text": "Weather spotters confirmed tornado.",
     "impact_text": "Flying debris will be dangerous to those caught without shelter. Mobile homes will be damaged or destroyed. Damage to roofs, windows, and vehicles will occur. Tree damage is likely.",
@@ -1082,12 +1182,12 @@
     "thunderstorm_damage_threat": "",
     "emergency": false,
     "confirmed_tornado": true,
-    "radar_image": "radar_snapshots/20260420042328_TOR_PAH_0121.png",
+    "radar_image": "radar_snapshots/20260420141917_TOR_PAH_0121.png",
     "radar_crop": {
-      "sx": 7179,
-      "sy": 2444,
-      "sw": 496,
-      "sh": 300
+      "sx": 7055,
+      "sy": 2369,
+      "sw": 743,
+      "sh": 450
     },
     "snapshot_cropped": true
   },
@@ -1095,7 +1195,7 @@
     "type": "SVR",
     "wfo": "AKQ",
     "office": "AKQ",
-    "issued": "2026-04-20 04:23:34 UTC",
+    "issued": "2026-04-20 14:19:23 UTC",
     "hazard_text": "70 mph wind gusts and quarter size hail.",
     "source_text": "Radar indicated.",
     "impact_text": "Minor damage to vehicles is possible. Expect considerable tree damage. Wind damage is also likely to mobile homes, roofs, and outbuildings.",
@@ -1198,12 +1298,12 @@
     "thunderstorm_damage_threat": "",
     "emergency": false,
     "confirmed_tornado": false,
-    "radar_image": "radar_snapshots/20260420042334_SVR_AKQ_0147.png",
+    "radar_image": "radar_snapshots/20260420141923_SVR_AKQ_0147.png",
     "radar_crop": {
-      "sx": 9559,
-      "sy": 2236,
-      "sw": 496,
-      "sh": 300
+      "sx": 9435,
+      "sy": 2161,
+      "sw": 743,
+      "sh": 450
     },
     "snapshot_cropped": true
   },
@@ -1211,7 +1311,7 @@
     "type": "TOR",
     "wfo": "PAH",
     "office": "PAH",
-    "issued": "2026-04-20 04:23:51 UTC",
+    "issued": "2026-04-20 14:25:21 UTC",
     "hazard_text": "Tornado.",
     "source_text": "Radar indicated rotation.",
     "impact_text": "Flying debris will be dangerous to those caught without shelter. Mobile homes will be damaged or destroyed. Damage to roofs, windows, and vehicles will occur. Tree damage is likely.",
@@ -1282,12 +1382,12 @@
     "thunderstorm_damage_threat": "",
     "emergency": false,
     "confirmed_tornado": false,
-    "radar_image": "radar_snapshots/20260420042351_TOR_PAH_0047.png",
+    "radar_image": "radar_snapshots/20260420142521_TOR_PAH_0047.png",
     "radar_crop": {
-      "sx": 7191,
-      "sy": 2398,
-      "sw": 496,
-      "sh": 300
+      "sx": 7067,
+      "sy": 2323,
+      "sw": 743,
+      "sh": 450
     },
     "snapshot_cropped": true
   },
@@ -1295,7 +1395,7 @@
     "type": "TOR",
     "wfo": "PAH",
     "office": "PAH",
-    "issued": "2026-04-20 04:23:57 UTC",
+    "issued": "2026-04-20 14:25:26 UTC",
     "hazard_text": "Deadly tornado.",
     "source_text": "Weather spotters confirmed tornado.",
     "impact_text": "You are in a life-threatening situation. Flying debris may be deadly to those caught without shelter. Mobile homes will be destroyed. Considerable damage to homes, businesses, and vehicles is likely and complete destruction is possible.",
@@ -1334,12 +1434,12 @@
     "thunderstorm_damage_threat": "",
     "emergency": true,
     "confirmed_tornado": true,
-    "radar_image": "radar_snapshots/20260420042357_TOR_PAH_0038.png",
+    "radar_image": "radar_snapshots/20260420142526_TOR_PAH_0038.png",
     "radar_crop": {
-      "sx": 7220,
-      "sy": 2505,
-      "sw": 496,
-      "sh": 300
+      "sx": 7096,
+      "sy": 2430,
+      "sw": 743,
+      "sh": 450
     },
     "snapshot_cropped": true
   },
@@ -1347,7 +1447,7 @@
     "type": "SVR",
     "wfo": "CRP",
     "office": "CRP",
-    "issued": "2026-04-20 04:24:02 UTC",
+    "issued": "2026-04-20 14:25:32 UTC",
     "hazard_text": "70 mph wind gusts and penny size hail.",
     "source_text": "Radar indicated.",
     "impact_text": "Expect considerable tree damage. Damage is likely to mobile homes, roofs, and outbuildings.",
@@ -1438,12 +1538,12 @@
     "thunderstorm_damage_threat": "",
     "emergency": false,
     "confirmed_tornado": false,
-    "radar_image": "radar_snapshots/20260420042402_SVR_CRP_0032.png",
+    "radar_image": "radar_snapshots/20260420142532_SVR_CRP_0032.png",
     "radar_crop": {
-      "sx": 5359,
-      "sy": 4328,
-      "sw": 496,
-      "sh": 300
+      "sx": 5235,
+      "sy": 4253,
+      "sw": 743,
+      "sh": 450
     },
     "snapshot_cropped": true
   },
@@ -1451,7 +1551,7 @@
     "type": "SVR",
     "wfo": "CRP",
     "office": "CRP",
-    "issued": "2026-04-20 04:24:12 UTC",
+    "issued": "2026-04-20 14:25:42 UTC",
     "hazard_text": "70 mph wind gusts.",
     "source_text": "Radar indicated.",
     "impact_text": "Expect considerable tree damage. Damage is likely to mobile homes, roofs, and outbuildings.",
@@ -1498,12 +1598,12 @@
     "thunderstorm_damage_threat": "Considerable",
     "emergency": false,
     "confirmed_tornado": false,
-    "radar_image": "radar_snapshots/20260420042412_SVR_CRP_0074.png",
+    "radar_image": "radar_snapshots/20260420142542_SVR_CRP_0074.png",
     "radar_crop": {
-      "sx": 5371,
-      "sy": 4243,
-      "sw": 496,
-      "sh": 300
+      "sx": 5247,
+      "sy": 4168,
+      "sw": 743,
+      "sh": 450
     },
     "snapshot_cropped": true
   },
@@ -1511,7 +1611,7 @@
     "type": "TOR",
     "wfo": "PAH",
     "office": "PAH",
-    "issued": "2026-04-20 04:24:20 UTC",
+    "issued": "2026-04-20 14:25:51 UTC",
     "hazard_text": "Damaging tornado.",
     "source_text": "Radar confirmed tornado.",
     "impact_text": "Flying debris will be dangerous to those caught without shelter. Mobile homes will be damaged or destroyed. Damage to roofs, windows, and vehicles will occur. Tree damage is likely.",
@@ -1550,12 +1650,12 @@
     "thunderstorm_damage_threat": "",
     "emergency": false,
     "confirmed_tornado": true,
-    "radar_image": "radar_snapshots/20260420042420_TOR_PAH_0070.png",
+    "radar_image": "radar_snapshots/20260420142551_TOR_PAH_0070.png",
     "radar_crop": {
-      "sx": 7240,
-      "sy": 2504,
-      "sw": 496,
-      "sh": 300
+      "sx": 7116,
+      "sy": 2429,
+      "sw": 743,
+      "sh": 450
     },
     "snapshot_cropped": true
   },
@@ -1563,7 +1663,7 @@
     "type": "TOR",
     "wfo": "PAH",
     "office": "PAH",
-    "issued": "2026-04-20 04:24:26 UTC",
+    "issued": "2026-04-20 14:25:56 UTC",
     "hazard_text": "Damaging tornado.",
     "source_text": "Radar confirmed tornado.",
     "impact_text": "You are in a life-threatening situation. Flying debris may be deadly to those caught without shelter. Mobile homes will be destroyed. Considerable damage to homes, businesses, and vehicles is likely and complete destruction is possible.",
@@ -1626,12 +1726,12 @@
     "thunderstorm_damage_threat": "",
     "emergency": false,
     "confirmed_tornado": true,
-    "radar_image": "radar_snapshots/20260420042426_TOR_PAH_0036.png",
+    "radar_image": "radar_snapshots/20260420142556_TOR_PAH_0036.png",
     "radar_crop": {
-      "sx": 7244,
-      "sy": 2490,
-      "sw": 496,
-      "sh": 300
+      "sx": 7120,
+      "sy": 2415,
+      "sw": 743,
+      "sh": 450
     },
     "snapshot_cropped": true
   },
@@ -1639,7 +1739,7 @@
     "type": "SVR",
     "wfo": "OKX",
     "office": "OKX",
-    "issued": "2026-04-20 04:24:32 UTC",
+    "issued": "2026-04-20 14:26:01 UTC",
     "hazard_text": "Golf ball size hail and 60 mph wind gusts.",
     "source_text": "Radar indicated.",
     "impact_text": "People and animals outdoors will be injured. Expect hail damage to roofs, siding, windows, and vehicles. Expect wind damage to trees and power lines.",
@@ -1690,12 +1790,12 @@
     "thunderstorm_damage_threat": "Considerable",
     "emergency": false,
     "confirmed_tornado": false,
-    "radar_image": "radar_snapshots/20260420042432_SVR_OKX_0021.png",
+    "radar_image": "radar_snapshots/20260420142601_SVR_OKX_0021.png",
     "radar_crop": {
-      "sx": 10260,
-      "sy": 1608,
-      "sw": 496,
-      "sh": 300
+      "sx": 10137,
+      "sy": 1533,
+      "sw": 743,
+      "sh": 450
     },
     "snapshot_cropped": true
   },
@@ -1703,7 +1803,7 @@
     "type": "TOR",
     "wfo": "PAH",
     "office": "PAH",
-    "issued": "2026-04-20 04:24:37 UTC",
+    "issued": "2026-04-20 14:26:07 UTC",
     "hazard_text": "Damaging tornado and hail up to three inches in diameter.",
     "source_text": "Weather spotters confirmed tornado.",
     "impact_text": "Flying debris will be dangerous to those caught without shelter. Mobile homes will be damaged or destroyed. Damage to roofs, windows, and vehicles will occur. Tree damage is likely.",
@@ -1754,12 +1854,12 @@
     "thunderstorm_damage_threat": "",
     "emergency": false,
     "confirmed_tornado": true,
-    "radar_image": "radar_snapshots/20260420042437_TOR_PAH_0121.png",
+    "radar_image": "radar_snapshots/20260420142607_TOR_PAH_0121.png",
     "radar_crop": {
-      "sx": 7179,
-      "sy": 2444,
-      "sw": 496,
-      "sh": 300
+      "sx": 7055,
+      "sy": 2369,
+      "sw": 743,
+      "sh": 450
     },
     "snapshot_cropped": true
   },
@@ -1767,7 +1867,7 @@
     "type": "SVR",
     "wfo": "AKQ",
     "office": "AKQ",
-    "issued": "2026-04-20 04:24:43 UTC",
+    "issued": "2026-04-20 14:26:13 UTC",
     "hazard_text": "70 mph wind gusts and quarter size hail.",
     "source_text": "Radar indicated.",
     "impact_text": "Minor damage to vehicles is possible. Expect considerable tree damage. Wind damage is also likely to mobile homes, roofs, and outbuildings.",
@@ -1870,12 +1970,12 @@
     "thunderstorm_damage_threat": "",
     "emergency": false,
     "confirmed_tornado": false,
-    "radar_image": "radar_snapshots/20260420042443_SVR_AKQ_0147.png",
+    "radar_image": "radar_snapshots/20260420142613_SVR_AKQ_0147.png",
     "radar_crop": {
-      "sx": 9559,
-      "sy": 2236,
-      "sw": 496,
-      "sh": 300
+      "sx": 9435,
+      "sy": 2161,
+      "sw": 743,
+      "sh": 450
     },
     "snapshot_cropped": true
   }
