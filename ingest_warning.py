@@ -51,9 +51,9 @@ COUNTY_DRAW_BUFFER = 50
 # -------------------------------------------------------------------
 # CITY OVERLAY SETTINGS
 # -------------------------------------------------------------------
-CITY_SHP = "/var/www/atlas_html/alerts/shapefiles/DomesticNames.shp"
+CITY_SHP = "/var/www/atlas_html/alerts/shapefiles/us_places_points.shp"
 
-CITY_MAX_LABELS = 20
+CITY_MAX_LABELS = 30
 CITY_DOT_RADIUS = 0.05
 
 CITY_DOT_COLOR = (128, 71, 71, 20)

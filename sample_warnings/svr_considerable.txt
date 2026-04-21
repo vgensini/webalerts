@@ -1,0 +1,71 @@
+292 
+WUUS53 KLOT 030030
+SVRLOT
+ILC037-043-063-089-093-099-197-030115-
+/O.NEW.KLOT.SV.W.0060.260403T0030Z-260403T0115Z/
+
+BULLETIN - IMMEDIATE BROADCAST REQUESTED
+Severe Thunderstorm Warning
+National Weather Service Chicago/Romeoville
+730 PM CDT Thu Apr 2 2026
+
+The National Weather Service in Chicago has issued a
+
+* Severe Thunderstorm Warning for...
+  Kendall County in northeastern Illinois...
+  Northern La Salle County in north central Illinois...
+  Northwestern Will County in northeastern Illinois...
+  Southern De Kalb County in north central Illinois...
+  Northwestern Grundy County in northeastern Illinois...
+  Southern Kane County in northeastern Illinois...
+  Western DuPage County in northeastern Illinois...
+
+* Until 815 PM CDT.
+
+* At 730 PM CDT, severe thunderstorms were located along a line
+  extending from Sandwich to 6 miles northwest of Ottawa, moving
+  northeast at 55 mph.
+
+  HAZARD...70 mph wind gusts and quarter size hail.
+
+  SOURCE...Radar indicated.
+
+  IMPACT...Hail damage to vehicles is expected. Expect considerable 
+           tree damage. Wind damage is also likely to mobile homes, 
+           roofs, and outbuildings.
+
+* Locations impacted include...
+  Aurora, Joliet, Naperville, Bolingbrook, Wheaton, Bartlett, Carol
+  Stream, Romeoville, Plainfield, Hanover Park, St. Charles, Oswego,
+  West Chicago, Batavia, Geneva, Ottawa, Yorkville, Campton Hills,
+  Plano, La Salle, Sandwich, Sheridan, Roselle, Bloomingdale, and
+  Crest Hill.
+
+PRECAUTIONARY/PREPAREDNESS ACTIONS...
+
+Remain alert for a possible tornado! Tornadoes can develop quickly
+from severe thunderstorms. If you spot a tornado go at once into the
+basement or small central room in a sturdy structure.
+
+For your protection move to an interior room on the lowest floor of a
+building.
+
+A Tornado Watch remains in effect until 1100 PM CDT for north central
+and northeastern Illinois.
+
+&&
+
+LAT...LON 4163 8896 4163 8894 4165 8894 4182 8872
+      4199 8812 4151 8812 4133 8904 4155 8906
+TIME...MOT...LOC 0030Z 245DEG 49KT 4165 8864 4144 8889 
+
+TORNADO...POSSIBLE
+THUNDERSTORM DAMAGE THREAT...CONSIDERABLE
+HAIL THREAT...RADAR INDICATED
+MAX HAIL SIZE...1.00 IN
+WIND THREAT...RADAR INDICATED
+MAX WIND GUST...70 MPH
+
+$$
+
+Doom

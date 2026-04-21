@@ -1,0 +1,62 @@
+822 
+WUUS53 KDVN 180146
+SVRDVN
+ILC011-155-180230-
+/O.NEW.KDVN.SV.W.0124.260418T0146Z-260418T0230Z/
+
+BULLETIN - IMMEDIATE BROADCAST REQUESTED
+Severe Thunderstorm Warning
+National Weather Service Quad Cities IA/IL
+846 PM CDT Fri Apr 17 2026
+
+The National Weather Service in the Quad Cities has issued a
+
+* Severe Thunderstorm Warning for...
+  Putnam County in north central Illinois...
+  East central Bureau County in north central Illinois...
+
+* Until 930 PM CDT.
+
+* At 846 PM CDT, a severe thunderstorm was located near Magnolia, or
+  9 miles south of Hennepin, moving northeast at 25 mph.
+
+  HAZARD...60 mph wind gusts.
+
+  SOURCE...Radar indicated.
+
+  IMPACT...Expect damage to roofs, siding, and trees.
+
+* Locations impacted include...
+  Hennepin, Spring Valley, Granville, Ladd, Dalzell, McNabb, Mark,
+  Magnolia, Standard, and Florid.
+
+This includes Interstate 80 in Illinois between mile markers 71 and
+72.
+ 
+PRECAUTIONARY/PREPAREDNESS ACTIONS...
+
+Remain alert for a possible tornado! Tornadoes can develop quickly
+from severe thunderstorms. If you spot a tornado go at once into the
+basement or small central room in a sturdy structure.
+
+For your protection move to an interior room on the lowest floor of a
+sturdy building.
+
+A Tornado Watch remains in effect until 1000 PM CDT for north central
+Illinois.
+
+&&
+
+LAT...LON 4110 8935 4112 8933 4115 8933 4115 8941
+      4140 8917 4111 8916
+TIME...MOT...LOC 0146Z 218DEG 23KT 4113 8925 
+
+TORNADO...POSSIBLE
+HAIL THREAT...RADAR INDICATED
+MAX HAIL SIZE...<.75 IN
+WIND THREAT...RADAR INDICATED
+MAX WIND GUST...60 MPH
+
+$$
+
+Gunkel

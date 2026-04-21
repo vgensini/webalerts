@@ -1110,6 +1110,61 @@ html,body{
     max-height:32vh;
     gap:8px;
   }
+  
+  .radar-sweep-mini{
+  position:relative;
+  display:inline-block;
+  width:18px;
+  height:18px;
+  border-radius:50%;
+  border:1px solid rgba(90,255,140,.34);
+  background:
+    radial-gradient(circle at center, rgba(255,60,60,.95) 0 10%, transparent 11% 100%),
+    radial-gradient(circle at center,
+      transparent 0 43%,
+      rgba(80,255,140,.16) 44% 46%,
+      transparent 47% 69%,
+      rgba(80,255,140,.12) 70% 72%,
+      transparent 73% 100%);
+  box-shadow:
+    0 0 6px rgba(80,255,140,.18),
+    inset 0 0 6px rgba(80,255,140,.10);
+  overflow:hidden;
+  vertical-align:middle;
+}
+
+.radar-sweep-mini::before{
+  content:"";
+  position:absolute;
+  inset:-18%;
+  border-radius:50%;
+  background:conic-gradient(from 0deg,
+    rgba(90,255,140,0.00) 0deg,
+    rgba(90,255,140,0.00) 300deg,
+    rgba(120,255,170,0.30) 325deg,
+    rgba(90,255,140,0.95) 342deg,
+    rgba(90,255,140,0.00) 360deg);
+  animation:radarSpin var(--radar-speed) linear infinite;
+}
+
+.radar-sweep-mini::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:3px;
+  height:3px;
+  border-radius:50%;
+  transform:translate(-50%,-50%);
+  background:#ff2a2a;
+  box-shadow:
+    0 0 4px rgba(255,60,60,.8),
+    0 0 8px rgba(255,60,60,.45);
+}
+
+.radar-sweep-mini.flipped{
+  transform:scaleX(-1);
+}
 
   .history-card{
     padding:9px 10px 10px;
@@ -1156,7 +1211,7 @@ html,body{
       <div id="headline" class="headline">
         <div id="idleBanner" class="idle-banner" style="display:none;">
           <a href="https://www.weather.gov" target="_blank" rel="noopener noreferrer" aria-label="Open weather.gov">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/US-NationalWeatherService-Logo.svg" alt="NWS logo" class="idle-logo nws">
+            <img src="nws_logo.svg" alt="NWS logo" class="idle-logo nws">
           </a>
 
           <div class="radar-sweep" aria-hidden="true"></div>
@@ -1174,17 +1229,17 @@ html,body{
 
   <div id="idleTimeLine" class="idle-time-line"></div>
 
-  <div id="idleScanLine" class="idle-scan-line">
-    <span class="idle-scan-icon search">🔍</span>
-    <span class="idle-scan-text"> - scanning for new warnings -</span>
-	<span class="idle-scan-icon radar">📡</span>
-  </div>
+<div id="idleScanLine" class="idle-scan-line">
+  <span class="idle-scan-icon radar-sweep-mini" aria-hidden="true"></span>
+  <span class="idle-scan-text"> - scanning for new warnings -</span>
+  <span class="idle-scan-icon radar-sweep-mini flipped" aria-hidden="true"></span>
+</div>
 </div>
 
           <div class="radar-sweep" aria-hidden="true"></div>
 
           <a href="https://www.niu.edu" target="_blank" rel="noopener noreferrer" aria-label="Open niu.edu">
-            <img src="niu_alt_logo.png" alt="NIU logo" class="idle-logo niu">
+            <img src="niu_logo.png" alt="NIU logo" class="idle-logo niu">
           </a>
         </div>
         <div id="warningBanner" class="warning-banner" style="display:none;">
@@ -1241,8 +1296,8 @@ const IDLE_IMAGE_URL = 'https://www.spc.noaa.gov/products/activity_loop.gif';
 const SPC_URL = 'https://www.spc.noaa.gov/';
 const POLL_MS = 1000;
 const MIN_DISPLAY_MS = 5000;
-const MAX_DISPLAY_MS = 30000;   // live alerts only
-const PREVIEW_DISPLAY_MS = 5000; // history clicks always 5 sec
+const MAX_DISPLAY_MS = 60000;   // live alerts only
+const PREVIEW_DISPLAY_MS = 10000; // history clicks always 5 sec
 const MAX_HISTORY = 25;
 const MAP_SIZE = 320;
 const IDLE_LOOP_REFRESH_DELAY_SEC = 45;
