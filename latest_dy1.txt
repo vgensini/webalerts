@@ -1,48 +1,77 @@
 
-445 
-ACUS01 KWNS 211240
+474 
+ACUS01 KWNS 281202
 SWODY1
-SPC AC 211239
+SPC AC 281200
 
 Day 1 Convective Outlook  
 NWS Storm Prediction Center Norman OK
-0739 AM CDT Tue Apr 21 2026
+0700 AM CDT Tue Apr 28 2026
 
-Valid 211300Z - 221200Z
+Valid 281300Z - 291200Z
 
-...NO SEVERE THUNDERSTORM AREAS FORECAST...
+...THERE IS AN ENHANCED RISK OF SEVERE THUNDERSTORMS ACROSS PARTS OF
+THE SOUTHERN PLAINS INTO THE LOWER MISSISSIPPI VALLEY AND
+MID-SOUTH...
 
 ...SUMMARY...
-Organized severe thunderstorms are not currently forecast across the
-contiguous United States through tonight.
+Multiple rounds of severe thunderstorms will occur across parts of
+the southern Plains into the lower Mississippi/Tennessee Valleys and
+Southeast through this evening. Very large to giant hail (2-4+
+inches), swaths of severe/damaging winds, and a few tornadoes are
+all possible.
 
-...IL/IN...
-Morning water-vapor imagery shows a subtle disturbance over the mid
-MO Valley, which is forecast to quickly move southeast into the
-southern Great Lakes by early evening.  An associated surface trough
-is forecast to develop from Lower MI into southern WI and northern
-IL by late afternoon.  Despite modest moisture (upper 40s to mid 50s
-deg F surface dewpoints) returning northward into the Cornbelt, cold
-mid-level temperatures (around -16 to -18 deg C at 500 mb) per
-forecast soundings and heating will yield weak instability by
-mid-late afternoon.  Models continue to show isolated to scattered
-storms late today into the evening.  It remains uncertain whether a
-couple of stronger cells will yield a threat of hail beyond a risk
-for small hail.  This activity will likely diminish by mid-late
-evening as it moves southeast into central portions of IL/IN.  
+...Southern Plains into the Lower Mississippi Valley/Southeast...
+With large-scale upper troughing anchored over the Plains and
+central Canada, an embedded mid-level shortwave trough will eject
+eastward across the southern/central Plains to the lower/mid MS
+Valleys by this evening. Rich low-level moisture continues to spread
+northward from TX into southern OK this morning in tandem with a
+low-level jet, and this trend should continue downstream into the
+lower MS Valley through the day as a warm front lifts northward to a
+weak surface low across the Ozarks. Another surface low will remain
+over northwest TX, with a dryline extending southwestward to the Big
+Bend region.
 
-...Central CA...
-Strong cyclonic flow associated with a mid-level low and associated
-trough will move across central CA into the Great Basin during the
-period.  Cold temperatures aloft north of the midlevel jet will
-support weak instability over parts of the central valleys.  Given
-early precipitation and clouds, as well as marginal low-level shear,
-severe storms appear unlikely. However, a few strong storms may
-occur late in the afternoon if sufficient heating occurs behind the
-early day rain.  Small hail appears most probable with the strongest
-cells.
+A strongly unstable airmass exists across the southern Plains to the
+ArkLaTex, along and near a slowly retreating/northward-returning
+warm front. Elevated supercells are ongoing across western north TX.
+This activity is being aided by lift and strong deep-layer shear
+associated with the ejecting mid-level shortwave trough, and
+low-level warm/moist advection. Current expectations are for these
+supercells to continue posing a threat for mainly large to very
+large hail through the rest of the morning as they spread
+east-northeastward across north TX/southern OK. But, eventual
+clustering and a greater damaging wind threat may materialize into
+the afternoon as this convection crosses the front and accesses
+greater instability across AR and the Ozarks.
 
-..Smith/Thompson.. 04/21/2026
+Additional surface-based convective development is forecast near the
+triple point in north-central TX towards the ArkLaTex this
+afternoon, where extreme instability (4000+ J/kg MLCAPE) and very
+strong deep-layer shear (50-60+ kt) will support the potential for
+multiple intense supercells. Very large to giant hail (2-4+ inches)
+may occur with the strongest supercells given the overall very
+favorable environment and presence of steep mid-level lapse rates.
+Some tornado threat may also exist with these supercells, even
+though low-level shear is not forecast to be overly strong.
+
+Numerous to widespread convection across the Mid-South to southern
+Appalachians has generally diminished in intensity this morning. In
+its wake, airmass recovery is anticipated today across the lower MS
+Valley and Mid-South. A convectively reinforced front/outflow
+boundary from the morning thunderstorms should attempt to lift
+northward some through the day, with the greater instability
+forecast across the lower MS Valley where steep mid-level lapse
+rates are in place. Convective evolution across these areas through
+the evening remains unclear, but multiple rounds of supercells and
+multicell clusters capable of producing large hail, scattered to
+numerous damaging winds, and perhaps a few tornadoes appear likely.
+Less instability is forecast to the north of the ongoing convection
+across the TN Valley, but some airmass recovery and severe threat
+still appears possible by late afternoon/early evening.
+
+..Gleason/Jewell.. 04/28/2026
 
 $$
 

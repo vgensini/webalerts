@@ -1,68 +1,65 @@
-063 
-WUUS51 KAKQ 070001
-SVRAKQ
-VAC033-057-159-193-070045-
-/O.NEW.KAKQ.SV.W.0147.260420T0001Z-260420T1630Z/
 
-BULLETIN - IMMEDIATE BROADCAST REQUESTED
+056 
+WUUS54 KLZK 281644
+SVRLZK
+ARC009-101-281745-
+/O.NEW.KLZK.SV.W.0115.260428T1644Z-260428T1745Z/
+
+BULLETIN - EAS ACTIVATION REQUESTED
 Severe Thunderstorm Warning
-National Weather Service Wakefield VA
-801 PM EDT THU JUL 6 2017
+National Weather Service Little Rock AR
+1144 AM CDT Tue Apr 28 2026
 
-The National Weather Service in Wakefield has issued a
+The National Weather Service in Little Rock has issued a
 
 * Severe Thunderstorm Warning for...
-  Northwestern Richmond County in east central Virginia...
-  Northeastern Caroline County in north central Virginia...
-  Westmoreland County in east central Virginia...
-  Northwestern Essex County in east central Virginia...
+  Northern Newton County in north central Arkansas...
+  Southwestern Boone County in north central Arkansas...
 
-* Until 845 PM EDT
+* Until 1245 PM CDT.
 
-* At 758 PM EDT, severe thunderstorms were located along a line
-  extending from near King George to near Port Royal to Bowling
-  Green, moving east at 30 mph.
+* At 1144 AM CDT, a severe thunderstorm was located over Kingston, or
+  10 miles east of Huntsville, moving east at 40 mph.
 
-  HAZARD...70 mph wind gusts and quarter size hail. 
+  HAZARD...Tennis ball size hail and 60 mph wind gusts.
 
-  SOURCE...Radar indicated. 
+  SOURCE...Radar indicated.
 
-  IMPACT...Minor damage to vehicles is possible. Expect considerable 
-           tree damage. Wind damage is also likely to mobile homes, 
-           roofs, and outbuildings. 
+  IMPACT...People and animals outdoors will be injured. Expect hail 
+           damage to roofs, siding, windows, and vehicles. Expect 
+           wind damage to roofs, siding, and trees.
 
 * Locations impacted include...
-  Colonial Beach, Tappahannock, Warsaw, Bowling Green, Montross,
-  Champlain, Port Royal, Newland, Coles Point, Hague, Loretto,
-  Leedstown, Fort A.p. Hill, Beazley, Currioman Landing, Threeway,
-  Hustle, Potomac Beach, Elevon and Supply.
+  Jasper...                         Western Grove...
+  Valley Springs...                 Carver...
+  Erbie...                          Upper Buffalo Wilderness Area...
+  Red Bank...                       Lost Valley State Park...
+  Piercetown...                     Pruitt...
+  Olvey...                          Bass...
+  Marble Falls...                   Yardelle...
+  Gum Springs in Newton County...   Gaither...
+  Ponca...                          Hasty...
+  Boxley...                         Compton...
 
 PRECAUTIONARY/PREPAREDNESS ACTIONS...
 
-For your protection move to an interior room on the lowest floor of a
-building.
+This storm is producing large hail. SEEK SHELTER NOW inside a sturdy
+structure and stay away from windows!
 
-This is a DANGEROUS SITUATION. This storm has a history of producing 
-wind damage across Spotsylvania and Caroline Counties. SEEK SHELTER 
-NOW inside a sturdy structure and stay away from windows! 
-
-Please send your reports of hail and or wind damage...including 
-trees or large limbs downed...by calling NOAA'S National Weather 
-Service in Wakefield at
-...7 5 7...8 9 9...2 4 1 5.
 &&
 
-LAT...LON 3826 7696 3821 7695 3818 7688 3816 7684
-      3817 7676 3815 7661 3810 7659 3800 7664
-      3790 7679 3805 7745 3815 7727 3819 7725
-      3819 7723 3820 7723 3815 7712 3816 7709
-      3814 7707 3818 7705 3826 7705 3828 7698
-TIME...MOT...LOC 2358Z 284DEG 25KT 3822 7713 3812 7719 3803 7734 
+LAT...LON 3619 9294 3590 9294 3595 9348 3596 9347
+      3597 9347 3597 9345 3608 9345 3608 9348
+      3612 9348 3612 9330 3620 9330
+TIME...MOT...LOC 1644Z 272DEG 33KT 3605 9356 
 
-TORNADO...POSSIBLE
-HAIL...1.00IN
-WIND...70MPH
- 
+THUNDERSTORM DAMAGE THREAT...CONSIDERABLE
+HAIL THREAT...RADAR INDICATED
+MAX HAIL SIZE...2.50 IN
+WIND THREAT...RADAR INDICATED
+MAX WIND GUST...60 MPH
+
 $$
 
-SEYMOUR
+Cavanaugh
+

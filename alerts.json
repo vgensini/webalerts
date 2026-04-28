@@ -1,0 +1,1902 @@
+[
+  {
+    "type": "SVR",
+    "wfo": "OUN",
+    "office": "OUN",
+    "issued": "2026-04-28 12:38:00 UTC",
+    "valid_from": "2026-04-28 12:38:00 UTC",
+    "valid_to": "2026-04-28 13:30:00 UTC",
+    "vtec_begin": "260428T1238Z",
+    "vtec_end": "260428T1330Z",
+    "hazard_text": "Golf ball size hail and 60 mph wind gusts.",
+    "source_text": "Radar indicated.",
+    "impact_text": "People and animals outdoors will be injured. Expect hail damage to roofs, siding, windows, and vehicles. Expect wind damage to roofs, siding, and trees.",
+    "office_name": "Norman, OK",
+    "etn": "0330",
+    "vtec_action": "NEW",
+    "source_file": "latest_warn.txt",
+    "polygon": [
+      [
+        -98.96,
+        33.59
+      ],
+      [
+        -99.03,
+        33.86
+      ],
+      [
+        -98.19,
+        34.09
+      ],
+      [
+        -98.13,
+        33.63
+      ],
+      [
+        -98.96,
+        33.59
+      ]
+    ],
+    "centroid": [
+      -98.5429,
+      33.7997
+    ],
+    "tornado_tag": "",
+    "tornado_damage_threat": "",
+    "thunderstorm_damage_threat": "Considerable",
+    "emergency": false,
+    "confirmed_tornado": false,
+    "radar_image": "radar_snapshots/20260428123800_SVR_OUN_0330.png",
+    "radar_crop": {
+      "sx": 5120,
+      "sy": 3015,
+      "sw": 743,
+      "sh": 450
+    },
+    "snapshot_cropped": true
+  },
+  {
+    "type": "SVR",
+    "wfo": "OUN",
+    "office": "OUN",
+    "issued": "2026-04-28 13:10:00 UTC",
+    "valid_from": "2026-04-28 13:10:00 UTC",
+    "valid_to": "2026-04-28 14:00:00 UTC",
+    "vtec_begin": "260428T1310Z",
+    "vtec_end": "260428T1400Z",
+    "hazard_text": "60 mph wind gusts and quarter size hail.",
+    "source_text": "Radar indicated.",
+    "impact_text": "Hail damage to vehicles is expected. Expect wind damage to roofs, siding, and trees.",
+    "office_name": "Norman, OK",
+    "etn": "0331",
+    "vtec_action": "NEW",
+    "source_file": "latest_warn.txt",
+    "polygon": [
+      [
+        -98.69,
+        33.49
+      ],
+      [
+        -98.69,
+        33.61
+      ],
+      [
+        -97.98,
+        33.64
+      ],
+      [
+        -97.98,
+        33.47
+      ],
+      [
+        -98.42,
+        33.47
+      ],
+      [
+        -98.42,
+        33.45
+      ],
+      [
+        -98.69,
+        33.49
+      ]
+    ],
+    "centroid": [
+      -98.3213,
+      33.5476
+    ],
+    "tornado_tag": "",
+    "tornado_damage_threat": "",
+    "thunderstorm_damage_threat": "",
+    "emergency": false,
+    "confirmed_tornado": false,
+    "radar_image": "radar_snapshots/20260428131000_SVR_OUN_0331.png",
+    "radar_crop": {
+      "sx": 5164,
+      "sy": 3065,
+      "sw": 743,
+      "sh": 450
+    },
+    "snapshot_cropped": true
+  },
+  {
+    "type": "SVR",
+    "wfo": "OUN",
+    "office": "OUN",
+    "issued": "2026-04-28 13:25:00 UTC",
+    "valid_from": "2026-04-28 13:25:00 UTC",
+    "valid_to": "2026-04-28 14:15:00 UTC",
+    "vtec_begin": "260428T1325Z",
+    "vtec_end": "260428T1415Z",
+    "hazard_text": "Golf ball size hail and 70 mph wind gusts.",
+    "source_text": "Radar indicated.",
+    "impact_text": "People and animals outdoors will be injured. Expect hail damage to roofs, siding, windows, and vehicles. Expect considerable tree damage. Wind damage is also likely to mobile homes, roofs, and outbuildings.",
+    "office_name": "Norman, OK",
+    "etn": "0332",
+    "vtec_action": "NEW",
+    "source_file": "latest_warn.txt",
+    "polygon": [
+      [
+        -98.47,
+        33.55
+      ],
+      [
+        -98.36,
+        34.02
+      ],
+      [
+        -97.47,
+        34.19
+      ],
+      [
+        -97.52,
+        33.91
+      ],
+      [
+        -97.59,
+        33.9
+      ],
+      [
+        -97.59,
+        33.95
+      ],
+      [
+        -97.67,
+        33.99
+      ],
+      [
+        -97.73,
+        33.94
+      ],
+      [
+        -97.76,
+        33.93
+      ],
+      [
+        -97.78,
+        33.89
+      ],
+      [
+        -97.8,
+        33.9
+      ],
+      [
+        -97.83,
+        33.86
+      ],
+      [
+        -97.87,
+        33.85
+      ],
+      [
+        -97.98,
+        33.89
+      ],
+      [
+        -97.98,
+        33.5
+      ],
+      [
+        -98.47,
+        33.55
+      ]
+    ],
+    "centroid": [
+      -98.0433,
+      33.8584
+    ],
+    "tornado_tag": "",
+    "tornado_damage_threat": "",
+    "thunderstorm_damage_threat": "Considerable",
+    "emergency": false,
+    "confirmed_tornado": false,
+    "radar_image": "radar_snapshots/20260428132500_SVR_OUN_0332.png",
+    "radar_crop": {
+      "sx": 5220,
+      "sy": 3003,
+      "sw": 743,
+      "sh": 450
+    },
+    "snapshot_cropped": true
+  },
+  {
+    "type": "SVR",
+    "wfo": "FWD",
+    "office": "FWD",
+    "issued": "2026-04-28 13:31:00 UTC",
+    "valid_from": "2026-04-28 13:31:00 UTC",
+    "valid_to": "2026-04-28 14:30:00 UTC",
+    "vtec_begin": "260428T1331Z",
+    "vtec_end": "260428T1430Z",
+    "hazard_text": "Golf ball size hail and 70 mph wind gusts.",
+    "source_text": "Radar indicated.",
+    "impact_text": "People and animals outdoors will be injured. Expect hail damage to roofs, siding, windows, and vehicles. Expect considerable tree damage. Wind damage is also likely to mobile homes, roofs, and outbuildings.",
+    "office_name": "Fort Worth, TX",
+    "etn": "0105",
+    "vtec_action": "NEW",
+    "source_file": "latest_warn.txt",
+    "polygon": [
+      [
+        -97.59,
+        33.95
+      ],
+      [
+        -97.58,
+        33.9
+      ],
+      [
+        -97.49,
+        33.92
+      ],
+      [
+        -97.46,
+        33.91
+      ],
+      [
+        -97.46,
+        33.84
+      ],
+      [
+        -97.43,
+        33.82
+      ],
+      [
+        -97.37,
+        33.82
+      ],
+      [
+        -97.33,
+        33.88
+      ],
+      [
+        -97.33,
+        33.86
+      ],
+      [
+        -97.31,
+        33.89
+      ],
+      [
+        -97.26,
+        33.86
+      ],
+      [
+        -97.23,
+        33.92
+      ],
+      [
+        -97.18,
+        33.89
+      ],
+      [
+        -97.36,
+        33.51
+      ],
+      [
+        -97.98,
+        33.5
+      ],
+      [
+        -97.98,
+        33.89
+      ],
+      [
+        -97.85,
+        33.85
+      ],
+      [
+        -97.65,
+        33.99
+      ],
+      [
+        -97.59,
+        33.95
+      ]
+    ],
+    "centroid": [
+      -97.6285,
+      33.7107
+    ],
+    "tornado_tag": "",
+    "tornado_damage_threat": "",
+    "thunderstorm_damage_threat": "Considerable",
+    "emergency": false,
+    "confirmed_tornado": false,
+    "radar_image": "radar_snapshots/20260428133100_SVR_FWD_0105.png",
+    "radar_crop": {
+      "sx": 5303,
+      "sy": 3033,
+      "sw": 743,
+      "sh": 450
+    },
+    "snapshot_cropped": true
+  },
+  {
+    "type": "SVR",
+    "wfo": "OUN",
+    "office": "OUN",
+    "issued": "2026-04-28 14:10:00 UTC",
+    "valid_from": "2026-04-28 14:10:00 UTC",
+    "valid_to": "2026-04-28 15:00:00 UTC",
+    "vtec_begin": "260428T1410Z",
+    "vtec_end": "260428T1500Z",
+    "hazard_text": "60 mph wind gusts and quarter size hail.",
+    "source_text": "Radar indicated.",
+    "impact_text": "Hail damage to vehicles is expected. Expect wind damage to roofs, siding, and trees.",
+    "office_name": "Norman, OK",
+    "etn": "0333",
+    "vtec_action": "NEW",
+    "source_file": "latest_warn.txt",
+    "polygon": [
+      [
+        -97.59,
+        34.2
+      ],
+      [
+        -97.68,
+        34.34
+      ],
+      [
+        -97.09,
+        34.7
+      ],
+      [
+        -96.89,
+        34.4
+      ],
+      [
+        -97.59,
+        34.2
+      ]
+    ],
+    "centroid": [
+      -97.273,
+      34.427
+    ],
+    "tornado_tag": "",
+    "tornado_damage_threat": "",
+    "thunderstorm_damage_threat": "",
+    "emergency": false,
+    "confirmed_tornado": false,
+    "radar_image": "radar_snapshots/20260428141000_SVR_OUN_0333.png",
+    "radar_crop": {
+      "sx": 5374,
+      "sy": 2890,
+      "sw": 743,
+      "sh": 450
+    },
+    "snapshot_cropped": true
+  },
+  {
+    "type": "SVR",
+    "wfo": "OUN",
+    "office": "OUN",
+    "issued": "2026-04-28 14:13:00 UTC",
+    "valid_from": "2026-04-28 14:13:00 UTC",
+    "valid_to": "2026-04-28 15:00:00 UTC",
+    "vtec_begin": "260428T1413Z",
+    "vtec_end": "260428T1500Z",
+    "hazard_text": "60 mph wind gusts and quarter size hail.",
+    "source_text": "Radar indicated.",
+    "impact_text": "Hail damage to vehicles is expected. Expect wind damage to roofs, siding, and trees.",
+    "office_name": "Norman, OK",
+    "etn": "0334",
+    "vtec_action": "NEW",
+    "source_file": "latest_warn.txt",
+    "polygon": [
+      [
+        -97.19,
+        33.76
+      ],
+      [
+        -97.17,
+        33.85
+      ],
+      [
+        -97.21,
+        33.92
+      ],
+      [
+        -97.26,
+        33.86
+      ],
+      [
+        -97.33,
+        33.88
+      ],
+      [
+        -97.43,
+        33.82
+      ],
+      [
+        -97.47,
+        33.91
+      ],
+      [
+        -97.59,
+        33.9
+      ],
+      [
+        -97.65,
+        33.99
+      ],
+      [
+        -97.64,
+        34.03
+      ],
+      [
+        -96.76,
+        34.16
+      ],
+      [
+        -96.84,
+        33.85
+      ],
+      [
+        -96.85,
+        33.85
+      ],
+      [
+        -96.91,
+        33.95
+      ],
+      [
+        -96.92,
+        33.96
+      ],
+      [
+        -97.0,
+        33.95
+      ],
+      [
+        -97.03,
+        33.84
+      ],
+      [
+        -97.09,
+        33.85
+      ],
+      [
+        -97.05,
+        33.82
+      ],
+      [
+        -97.12,
+        33.72
+      ],
+      [
+        -97.19,
+        33.76
+      ]
+    ],
+    "centroid": [
+      -97.1738,
+      33.9794
+    ],
+    "tornado_tag": "",
+    "tornado_damage_threat": "",
+    "thunderstorm_damage_threat": "",
+    "emergency": false,
+    "confirmed_tornado": false,
+    "radar_image": "radar_snapshots/20260428141300_SVR_OUN_0334.png",
+    "radar_crop": {
+      "sx": 5394,
+      "sy": 2979,
+      "sw": 743,
+      "sh": 450
+    },
+    "snapshot_cropped": true
+  },
+  {
+    "type": "SVR",
+    "wfo": "FWD",
+    "office": "FWD",
+    "issued": "2026-04-28 14:26:00 UTC",
+    "valid_from": "2026-04-28 14:26:00 UTC",
+    "valid_to": "2026-04-28 15:30:00 UTC",
+    "vtec_begin": "260428T1426Z",
+    "vtec_end": "260428T1530Z",
+    "hazard_text": "60 mph wind gusts and half dollar size hail.",
+    "source_text": "Radar indicated.",
+    "impact_text": "Hail damage to vehicles is expected. Expect wind damage to roofs, siding, and trees.",
+    "office_name": "Fort Worth, TX",
+    "etn": "0106",
+    "vtec_action": "NEW",
+    "source_file": "latest_warn.txt",
+    "polygon": [
+      [
+        -96.88,
+        33.87
+      ],
+      [
+        -96.76,
+        33.82
+      ],
+      [
+        -96.66,
+        33.92
+      ],
+      [
+        -96.55,
+        33.82
+      ],
+      [
+        -96.57,
+        33.57
+      ],
+      [
+        -97.6,
+        33.58
+      ],
+      [
+        -97.59,
+        33.91
+      ],
+      [
+        -97.46,
+        33.9
+      ],
+      [
+        -97.46,
+        33.83
+      ],
+      [
+        -97.38,
+        33.82
+      ],
+      [
+        -97.33,
+        33.88
+      ],
+      [
+        -97.33,
+        33.86
+      ],
+      [
+        -97.21,
+        33.92
+      ],
+      [
+        -97.19,
+        33.76
+      ],
+      [
+        -97.11,
+        33.72
+      ],
+      [
+        -97.05,
+        33.82
+      ],
+      [
+        -97.09,
+        33.85
+      ],
+      [
+        -97.01,
+        33.85
+      ],
+      [
+        -96.99,
+        33.95
+      ],
+      [
+        -96.92,
+        33.96
+      ],
+      [
+        -96.88,
+        33.87
+      ]
+    ],
+    "centroid": [
+      -97.0735,
+      33.7239
+    ],
+    "tornado_tag": "",
+    "tornado_damage_threat": "",
+    "thunderstorm_damage_threat": "",
+    "emergency": false,
+    "confirmed_tornado": false,
+    "radar_image": "radar_snapshots/20260428142600_SVR_FWD_0106.png",
+    "radar_crop": {
+      "sx": 5414,
+      "sy": 3030,
+      "sw": 743,
+      "sh": 450
+    },
+    "snapshot_cropped": true
+  },
+  {
+    "type": "SVR",
+    "wfo": "OUN",
+    "office": "OUN",
+    "issued": "2026-04-28 14:38:00 UTC",
+    "valid_from": "2026-04-28 14:38:00 UTC",
+    "valid_to": "2026-04-28 15:30:00 UTC",
+    "vtec_begin": "260428T1438Z",
+    "vtec_end": "260428T1530Z",
+    "hazard_text": "Ping pong ball size hail and 60 mph wind gusts.",
+    "source_text": "Radar indicated.",
+    "impact_text": "People and animals outdoors will be injured. Expect hail damage to roofs, siding, windows, and vehicles. Expect wind damage to roofs, siding, and trees.",
+    "office_name": "Norman, OK",
+    "etn": "0335",
+    "vtec_action": "NEW",
+    "source_file": "latest_warn.txt",
+    "polygon": [
+      [
+        -97.03,
+        34.38
+      ],
+      [
+        -97.19,
+        34.61
+      ],
+      [
+        -96.41,
+        35.12
+      ],
+      [
+        -96.11,
+        34.64
+      ],
+      [
+        -97.03,
+        34.38
+      ]
+    ],
+    "centroid": [
+      -96.637,
+      34.71
+    ],
+    "tornado_tag": "",
+    "tornado_damage_threat": "",
+    "thunderstorm_damage_threat": "",
+    "emergency": false,
+    "confirmed_tornado": false,
+    "radar_image": "radar_snapshots/20260428143800_SVR_OUN_0335.png",
+    "radar_crop": {
+      "sx": 5501,
+      "sy": 2833,
+      "sw": 743,
+      "sh": 450
+    },
+    "snapshot_cropped": true
+  },
+  {
+    "type": "SVR",
+    "wfo": "TSA",
+    "office": "TSA",
+    "issued": "2026-04-28 14:51:00 UTC",
+    "valid_from": "2026-04-28 14:51:00 UTC",
+    "valid_to": "2026-04-28 15:30:00 UTC",
+    "vtec_begin": "260428T1451Z",
+    "vtec_end": "260428T1530Z",
+    "hazard_text": "Half dollar size hail.",
+    "source_text": "Radar indicated.",
+    "impact_text": "Damage to vehicles is expected.",
+    "office_name": "Tulsa, OK",
+    "etn": "0165",
+    "vtec_action": "NEW",
+    "source_file": "latest_warn.txt",
+    "polygon": [
+      [
+        -94.25,
+        36.21
+      ],
+      [
+        -94.33,
+        36.22
+      ],
+      [
+        -94.34,
+        36.17
+      ],
+      [
+        -94.84,
+        36.18
+      ],
+      [
+        -94.87,
+        36.3
+      ],
+      [
+        -94.33,
+        36.48
+      ],
+      [
+        -94.25,
+        36.21
+      ]
+    ],
+    "centroid": [
+      -94.5347,
+      36.2913
+    ],
+    "tornado_tag": "",
+    "tornado_damage_threat": "",
+    "thunderstorm_damage_threat": "",
+    "emergency": false,
+    "confirmed_tornado": false,
+    "radar_image": "radar_snapshots/20260428145100_SVR_TSA_0165.png",
+    "radar_crop": {
+      "sx": 5921,
+      "sy": 2517,
+      "sw": 743,
+      "sh": 450
+    },
+    "snapshot_cropped": true
+  },
+  {
+    "type": "SVR",
+    "wfo": "TSA",
+    "office": "TSA",
+    "issued": "2026-04-28 14:52:00 UTC",
+    "valid_from": "2026-04-28 14:52:00 UTC",
+    "valid_to": "2026-04-28 15:30:00 UTC",
+    "vtec_begin": "260428T1452Z",
+    "vtec_end": "260428T1530Z",
+    "hazard_text": "Quarter size hail.",
+    "source_text": "Radar indicated.",
+    "impact_text": "Damage to vehicles is expected.",
+    "office_name": "Tulsa, OK",
+    "etn": "0166",
+    "vtec_action": "NEW",
+    "source_file": "latest_warn.txt",
+    "polygon": [
+      [
+        -94.14,
+        36.03
+      ],
+      [
+        -94.75,
+        36.06
+      ],
+      [
+        -94.77,
+        36.16
+      ],
+      [
+        -94.56,
+        36.16
+      ],
+      [
+        -94.57,
+        36.22
+      ],
+      [
+        -94.23,
+        36.32
+      ],
+      [
+        -94.14,
+        36.03
+      ]
+    ],
+    "centroid": [
+      -94.4135,
+      36.1457
+    ],
+    "tornado_tag": "",
+    "tornado_damage_threat": "",
+    "thunderstorm_damage_threat": "",
+    "emergency": false,
+    "confirmed_tornado": false,
+    "radar_image": "radar_snapshots/20260428145200_SVR_TSA_0166.png",
+    "radar_crop": {
+      "sx": 5946,
+      "sy": 2546,
+      "sw": 743,
+      "sh": 450
+    },
+    "snapshot_cropped": true
+  },
+  {
+    "type": "SVR",
+    "wfo": "OUN",
+    "office": "OUN",
+    "issued": "2026-04-28 14:54:00 UTC",
+    "valid_from": "2026-04-28 14:54:00 UTC",
+    "valid_to": "2026-04-28 15:45:00 UTC",
+    "vtec_begin": "260428T1454Z",
+    "vtec_end": "260428T1545Z",
+    "hazard_text": "Ping pong ball size hail and 60 mph wind gusts.",
+    "source_text": "Radar indicated.",
+    "impact_text": "People and animals outdoors will be injured. Expect hail damage to roofs, siding, windows, and vehicles. Expect wind damage to roofs, siding, and trees.",
+    "office_name": "Norman, OK",
+    "etn": "0336",
+    "vtec_action": "NEW",
+    "source_file": "latest_warn.txt",
+    "polygon": [
+      [
+        -96.05,
+        33.84
+      ],
+      [
+        -96.15,
+        33.84
+      ],
+      [
+        -96.2,
+        33.75
+      ],
+      [
+        -96.29,
+        33.77
+      ],
+      [
+        -96.32,
+        33.7
+      ],
+      [
+        -96.43,
+        33.78
+      ],
+      [
+        -96.62,
+        33.84
+      ],
+      [
+        -96.59,
+        33.89
+      ],
+      [
+        -96.66,
+        33.92
+      ],
+      [
+        -96.71,
+        33.83
+      ],
+      [
+        -96.81,
+        33.87
+      ],
+      [
+        -96.86,
+        33.85
+      ],
+      [
+        -96.92,
+        33.96
+      ],
+      [
+        -97.0,
+        33.95
+      ],
+      [
+        -97.03,
+        33.84
+      ],
+      [
+        -97.09,
+        33.85
+      ],
+      [
+        -97.05,
+        33.82
+      ],
+      [
+        -97.13,
+        33.72
+      ],
+      [
+        -97.13,
+        34.03
+      ],
+      [
+        -96.04,
+        34.16
+      ],
+      [
+        -96.05,
+        33.84
+      ]
+    ],
+    "centroid": [
+      -96.5064,
+      33.9566
+    ],
+    "tornado_tag": "",
+    "tornado_damage_threat": "",
+    "thunderstorm_damage_threat": "",
+    "emergency": false,
+    "confirmed_tornado": false,
+    "radar_image": "radar_snapshots/20260428145400_SVR_OUN_0336.png",
+    "radar_crop": {
+      "sx": 5527,
+      "sy": 2984,
+      "sw": 743,
+      "sh": 450
+    },
+    "snapshot_cropped": true
+  },
+  {
+    "type": "SVR",
+    "wfo": "OUN",
+    "office": "OUN",
+    "issued": "2026-04-28 14:59:00 UTC",
+    "valid_from": "2026-04-28 14:59:00 UTC",
+    "valid_to": "2026-04-28 15:45:00 UTC",
+    "vtec_begin": "260428T1459Z",
+    "vtec_end": "260428T1545Z",
+    "hazard_text": "60 mph wind gusts and quarter size hail.",
+    "source_text": "Radar indicated.",
+    "impact_text": "Hail damage to vehicles is expected. Expect wind damage to roofs, siding, and trees.",
+    "office_name": "Norman, OK",
+    "etn": "0337",
+    "vtec_action": "NEW",
+    "source_file": "latest_warn.txt",
+    "polygon": [
+      [
+        -97.29,
+        35.09
+      ],
+      [
+        -97.41,
+        35.23
+      ],
+      [
+        -97.18,
+        35.38
+      ],
+      [
+        -97.14,
+        35.38
+      ],
+      [
+        -97.14,
+        35.4
+      ],
+      [
+        -96.8,
+        35.62
+      ],
+      [
+        -96.61,
+        35.37
+      ],
+      [
+        -97.29,
+        35.09
+      ]
+    ],
+    "centroid": [
+      -96.9993,
+      35.3422
+    ],
+    "tornado_tag": "",
+    "tornado_damage_threat": "",
+    "thunderstorm_damage_threat": "",
+    "emergency": false,
+    "confirmed_tornado": false,
+    "radar_image": "radar_snapshots/20260428145900_SVR_OUN_0337.png",
+    "radar_crop": {
+      "sx": 5428,
+      "sy": 2707,
+      "sw": 743,
+      "sh": 450
+    },
+    "snapshot_cropped": true
+  },
+  {
+    "type": "SVR",
+    "wfo": "TSA",
+    "office": "TSA",
+    "issued": "2026-04-28 15:26:00 UTC",
+    "valid_from": "2026-04-28 15:26:00 UTC",
+    "valid_to": "2026-04-28 16:15:00 UTC",
+    "vtec_begin": "260428T1526Z",
+    "vtec_end": "260428T1615Z",
+    "hazard_text": "Golf ball size hail.",
+    "source_text": "Radar indicated.",
+    "impact_text": "People and animals outdoors will be injured. Expect damage to roofs, siding, windows, and vehicles.",
+    "office_name": "Tulsa, OK",
+    "etn": "0167",
+    "vtec_action": "NEW",
+    "source_file": "latest_warn.txt",
+    "polygon": [
+      [
+        -93.93,
+        36.12
+      ],
+      [
+        -93.94,
+        36.11
+      ],
+      [
+        -94.38,
+        36.12
+      ],
+      [
+        -94.41,
+        36.27
+      ],
+      [
+        -93.97,
+        36.39
+      ],
+      [
+        -93.92,
+        36.14
+      ],
+      [
+        -93.93,
+        36.12
+      ]
+    ],
+    "centroid": [
+      -94.1463,
+      36.2255
+    ],
+    "tornado_tag": "",
+    "tornado_damage_threat": "",
+    "thunderstorm_damage_threat": "Considerable",
+    "emergency": false,
+    "confirmed_tornado": false,
+    "radar_image": "radar_snapshots/20260428152600_SVR_TSA_0167.png",
+    "radar_crop": {
+      "sx": 5999,
+      "sy": 2530,
+      "sw": 743,
+      "sh": 450
+    },
+    "snapshot_cropped": true
+  },
+  {
+    "type": "SVR",
+    "wfo": "BMX",
+    "office": "BMX",
+    "issued": "2026-04-28 15:29:00 UTC",
+    "valid_from": "2026-04-28 15:29:00 UTC",
+    "valid_to": "2026-04-28 16:00:00 UTC",
+    "vtec_begin": "260428T1529Z",
+    "vtec_end": "260428T1600Z",
+    "hazard_text": "Quarter size hail.",
+    "source_text": "Radar indicated.",
+    "impact_text": "Damage to vehicles is expected.",
+    "office_name": "Birmingham, AL",
+    "etn": "0048",
+    "vtec_action": "NEW",
+    "source_file": "latest_warn.txt",
+    "polygon": [
+      [
+        -88.22,
+        33.72
+      ],
+      [
+        -88.17,
+        33.82
+      ],
+      [
+        -87.81,
+        33.82
+      ],
+      [
+        -87.83,
+        33.64
+      ],
+      [
+        -88.22,
+        33.72
+      ]
+    ],
+    "centroid": [
+      -87.9912,
+      33.7467
+    ],
+    "tornado_tag": "",
+    "tornado_damage_threat": "",
+    "thunderstorm_damage_threat": "",
+    "emergency": false,
+    "confirmed_tornado": false,
+    "radar_image": "radar_snapshots/20260428152900_SVR_BMX_0048.png",
+    "radar_crop": {
+      "sx": 7230,
+      "sy": 3026,
+      "sw": 743,
+      "sh": 450
+    },
+    "snapshot_cropped": true
+  },
+  {
+    "type": "SVR",
+    "wfo": "SGF",
+    "office": "SGF",
+    "issued": "2026-04-28 15:42:00 UTC",
+    "valid_from": "2026-04-28 15:42:00 UTC",
+    "valid_to": "2026-04-28 16:30:00 UTC",
+    "vtec_begin": "260428T1542Z",
+    "vtec_end": "260428T1630Z",
+    "hazard_text": "Golf ball size hail.",
+    "source_text": "Radar indicated.",
+    "impact_text": "People and animals outdoors will be injured. Expect damage to roofs, siding, windows, and vehicles.",
+    "office_name": "Springfield, MO",
+    "etn": "0184",
+    "vtec_action": "NEW",
+    "source_file": "latest_warn.txt",
+    "polygon": [
+      [
+        -94.12,
+        36.5
+      ],
+      [
+        -94.2,
+        36.66
+      ],
+      [
+        -94.1,
+        36.87
+      ],
+      [
+        -93.68,
+        36.77
+      ],
+      [
+        -93.72,
+        36.5
+      ],
+      [
+        -94.12,
+        36.5
+      ]
+    ],
+    "centroid": [
+      -93.9399,
+      36.6646
+    ],
+    "tornado_tag": "",
+    "tornado_damage_threat": "",
+    "thunderstorm_damage_threat": "Considerable",
+    "emergency": false,
+    "confirmed_tornado": false,
+    "radar_image": "radar_snapshots/20260428154200_SVR_SGF_0184.png",
+    "radar_crop": {
+      "sx": 6040,
+      "sy": 2442,
+      "sw": 743,
+      "sh": 450
+    },
+    "snapshot_cropped": true
+  },
+  {
+    "type": "SVR",
+    "wfo": "OUN",
+    "office": "OUN",
+    "issued": "2026-04-28 15:44:00 UTC",
+    "valid_from": "2026-04-28 15:44:00 UTC",
+    "valid_to": "2026-04-28 16:30:00 UTC",
+    "vtec_begin": "260428T1544Z",
+    "vtec_end": "260428T1630Z",
+    "hazard_text": "60 mph wind gusts and quarter size hail.",
+    "source_text": "Radar indicated.",
+    "impact_text": "Hail damage to vehicles is expected. Expect wind damage to roofs, siding, and trees.",
+    "office_name": "Norman, OK",
+    "etn": "0338",
+    "vtec_action": "NEW",
+    "source_file": "latest_warn.txt",
+    "polygon": [
+      [
+        -95.98,
+        34.16
+      ],
+      [
+        -95.96,
+        34.15
+      ],
+      [
+        -95.94,
+        34.12
+      ],
+      [
+        -95.94,
+        33.94
+      ],
+      [
+        -95.92,
+        33.92
+      ],
+      [
+        -95.88,
+        33.92
+      ],
+      [
+        -95.87,
+        33.89
+      ],
+      [
+        -96.36,
+        33.83
+      ],
+      [
+        -96.44,
+        34.12
+      ],
+      [
+        -95.78,
+        34.38
+      ],
+      [
+        -95.78,
+        34.16
+      ],
+      [
+        -95.98,
+        34.16
+      ]
+    ],
+    "centroid": [
+      -96.1109,
+      34.0755
+    ],
+    "tornado_tag": "",
+    "tornado_damage_threat": "",
+    "thunderstorm_damage_threat": "",
+    "emergency": false,
+    "confirmed_tornado": false,
+    "radar_image": "radar_snapshots/20260428154400_SVR_OUN_0338.png",
+    "radar_crop": {
+      "sx": 5606,
+      "sy": 2960,
+      "sw": 743,
+      "sh": 450
+    },
+    "snapshot_cropped": true
+  },
+  {
+    "type": "SVR",
+    "wfo": "TSA",
+    "office": "TSA",
+    "issued": "2026-04-28 15:51:00 UTC",
+    "valid_from": "2026-04-28 15:51:00 UTC",
+    "valid_to": "2026-04-28 16:30:00 UTC",
+    "vtec_begin": "260428T1551Z",
+    "vtec_end": "260428T1630Z",
+    "hazard_text": "Quarter size hail.",
+    "source_text": "Radar indicated.",
+    "impact_text": "Damage to vehicles is expected.",
+    "office_name": "Tulsa, OK",
+    "etn": "0168",
+    "vtec_action": "NEW",
+    "source_file": "latest_warn.txt",
+    "polygon": [
+      [
+        -93.59,
+        36.07
+      ],
+      [
+        -94.22,
+        35.94
+      ],
+      [
+        -94.25,
+        36.13
+      ],
+      [
+        -94.07,
+        36.21
+      ],
+      [
+        -93.61,
+        36.45
+      ],
+      [
+        -93.59,
+        36.07
+      ]
+    ],
+    "centroid": [
+      -93.8824,
+      36.1586
+    ],
+    "tornado_tag": "",
+    "tornado_damage_threat": "",
+    "thunderstorm_damage_threat": "",
+    "emergency": false,
+    "confirmed_tornado": false,
+    "radar_image": "radar_snapshots/20260428155100_SVR_TSA_0168.png",
+    "radar_crop": {
+      "sx": 6052,
+      "sy": 2543,
+      "sw": 743,
+      "sh": 450
+    },
+    "snapshot_cropped": true
+  },
+  {
+    "type": "SVR",
+    "wfo": "BMX",
+    "office": "BMX",
+    "issued": "2026-04-28 15:51:00 UTC",
+    "valid_from": "2026-04-28 15:51:00 UTC",
+    "valid_to": "2026-04-28 16:30:00 UTC",
+    "vtec_begin": "260428T1551Z",
+    "vtec_end": "260428T1630Z",
+    "hazard_text": "Quarter size hail.",
+    "source_text": "Radar indicated.",
+    "impact_text": "Damage to vehicles is expected.",
+    "office_name": "Birmingham, AL",
+    "etn": "0049",
+    "vtec_action": "NEW",
+    "source_file": "latest_warn.txt",
+    "polygon": [
+      [
+        -88.2,
+        34.13
+      ],
+      [
+        -87.8,
+        34.21
+      ],
+      [
+        -87.76,
+        33.96
+      ],
+      [
+        -88.22,
+        33.94
+      ],
+      [
+        -88.2,
+        34.13
+      ]
+    ],
+    "centroid": [
+      -87.984,
+      34.0588
+    ],
+    "tornado_tag": "",
+    "tornado_damage_threat": "",
+    "thunderstorm_damage_threat": "",
+    "emergency": false,
+    "confirmed_tornado": false,
+    "radar_image": "radar_snapshots/20260428155100_SVR_BMX_0049.png",
+    "radar_crop": {
+      "sx": 7231,
+      "sy": 2963,
+      "sw": 743,
+      "sh": 450
+    },
+    "snapshot_cropped": true
+  },
+  {
+    "type": "SVR",
+    "wfo": "TSA",
+    "office": "TSA",
+    "issued": "2026-04-28 16:06:00 UTC",
+    "valid_from": "2026-04-28 16:06:00 UTC",
+    "valid_to": "2026-04-28 16:45:00 UTC",
+    "vtec_begin": "260428T1606Z",
+    "vtec_end": "260428T1645Z",
+    "hazard_text": "Golf ball size hail.",
+    "source_text": "Trained weather spotters.",
+    "impact_text": "People and animals outdoors will be injured. Expect damage to roofs, siding, windows, and vehicles.",
+    "office_name": "Tulsa, OK",
+    "etn": "0169",
+    "vtec_action": "NEW",
+    "source_file": "latest_warn.txt",
+    "polygon": [
+      [
+        -94.02,
+        36.17
+      ],
+      [
+        -94.04,
+        36.33
+      ],
+      [
+        -93.46,
+        36.43
+      ],
+      [
+        -93.42,
+        36.14
+      ],
+      [
+        -94.02,
+        36.17
+      ]
+    ],
+    "centroid": [
+      -93.7065,
+      36.2691
+    ],
+    "tornado_tag": "",
+    "tornado_damage_threat": "",
+    "thunderstorm_damage_threat": "Considerable",
+    "emergency": false,
+    "confirmed_tornado": false,
+    "radar_image": "radar_snapshots/20260428160600_SVR_TSA_0169.png",
+    "radar_crop": {
+      "sx": 6087,
+      "sy": 2521,
+      "sw": 743,
+      "sh": 450
+    },
+    "snapshot_cropped": true
+  },
+  {
+    "type": "SVR",
+    "wfo": "SGF",
+    "office": "SGF",
+    "issued": "2026-04-28 16:06:00 UTC",
+    "valid_from": "2026-04-28 16:06:00 UTC",
+    "valid_to": "2026-04-28 16:45:00 UTC",
+    "vtec_begin": "260428T1606Z",
+    "vtec_end": "260428T1645Z",
+    "hazard_text": "Two inch hail.",
+    "source_text": "Radar indicated.",
+    "impact_text": "People and animals outdoors will be injured. Expect damage to roofs, siding, windows, and vehicles.",
+    "office_name": "Springfield, MO",
+    "etn": "0185",
+    "vtec_action": "NEW",
+    "source_file": "latest_warn.txt",
+    "polygon": [
+      [
+        -94.06,
+        36.85
+      ],
+      [
+        -94.06,
+        37.25
+      ],
+      [
+        -94.05,
+        37.27
+      ],
+      [
+        -93.6,
+        37.14
+      ],
+      [
+        -93.6,
+        37.1
+      ],
+      [
+        -93.42,
+        37.09
+      ],
+      [
+        -93.59,
+        36.6
+      ],
+      [
+        -94.06,
+        36.85
+      ]
+    ],
+    "centroid": [
+      -93.7711,
+      36.9558
+    ],
+    "tornado_tag": "",
+    "tornado_damage_threat": "",
+    "thunderstorm_damage_threat": "Considerable",
+    "emergency": false,
+    "confirmed_tornado": false,
+    "radar_image": "radar_snapshots/20260428160600_SVR_SGF_0185.png",
+    "radar_crop": {
+      "sx": 6074,
+      "sy": 2384,
+      "sw": 743,
+      "sh": 450
+    },
+    "snapshot_cropped": true
+  },
+  {
+    "type": "SVR",
+    "wfo": "BMX",
+    "office": "BMX",
+    "issued": "2026-04-28 16:22:00 UTC",
+    "valid_from": "2026-04-28 16:22:00 UTC",
+    "valid_to": "2026-04-28 17:15:00 UTC",
+    "vtec_begin": "260428T1622Z",
+    "vtec_end": "260428T1715Z",
+    "hazard_text": "Half dollar size hail.",
+    "source_text": "Radar indicated.",
+    "impact_text": "Damage to vehicles is expected.",
+    "office_name": "Birmingham, AL",
+    "etn": "0050",
+    "vtec_action": "NEW",
+    "source_file": "latest_warn.txt",
+    "polygon": [
+      [
+        -87.82,
+        34.02
+      ],
+      [
+        -87.86,
+        34.16
+      ],
+      [
+        -87.44,
+        34.29
+      ],
+      [
+        -87.35,
+        34.06
+      ],
+      [
+        -87.82,
+        34.02
+      ]
+    ],
+    "centroid": [
+      -87.5986,
+      34.1355
+    ],
+    "tornado_tag": "",
+    "tornado_damage_threat": "",
+    "thunderstorm_damage_threat": "",
+    "emergency": false,
+    "confirmed_tornado": false,
+    "radar_image": "radar_snapshots/20260428162200_SVR_BMX_0050.png",
+    "radar_crop": {
+      "sx": 7309,
+      "sy": 2948,
+      "sw": 743,
+      "sh": 450
+    },
+    "snapshot_cropped": true
+  },
+  {
+    "type": "SVR",
+    "wfo": "TSA",
+    "office": "TSA",
+    "issued": "2026-04-28 16:23:00 UTC",
+    "valid_from": "2026-04-28 16:23:00 UTC",
+    "valid_to": "2026-04-28 17:15:00 UTC",
+    "vtec_begin": "260428T1623Z",
+    "vtec_end": "260428T1715Z",
+    "hazard_text": "Tennis ball size hail and 60 mph wind gusts.",
+    "source_text": "Radar indicated.",
+    "impact_text": "People and animals outdoors will be injured. Expect hail damage to roofs, siding, windows, and vehicles. Expect wind damage to roofs, siding, and trees.",
+    "office_name": "Tulsa, OK",
+    "etn": "0170",
+    "vtec_action": "NEW",
+    "source_file": "latest_warn.txt",
+    "polygon": [
+      [
+        -93.49,
+        35.95
+      ],
+      [
+        -93.49,
+        35.93
+      ],
+      [
+        -93.51,
+        35.92
+      ],
+      [
+        -93.51,
+        35.91
+      ],
+      [
+        -93.95,
+        35.96
+      ],
+      [
+        -93.94,
+        36.1
+      ],
+      [
+        -93.92,
+        36.15
+      ],
+      [
+        -93.45,
+        36.21
+      ],
+      [
+        -93.45,
+        36.12
+      ],
+      [
+        -93.48,
+        36.12
+      ],
+      [
+        -93.48,
+        36.08
+      ],
+      [
+        -93.45,
+        36.08
+      ],
+      [
+        -93.45,
+        35.97
+      ],
+      [
+        -93.49,
+        35.95
+      ]
+    ],
+    "centroid": [
+      -93.6825,
+      36.0566
+    ],
+    "tornado_tag": "",
+    "tornado_damage_threat": "",
+    "thunderstorm_damage_threat": "Considerable",
+    "emergency": false,
+    "confirmed_tornado": false,
+    "radar_image": "radar_snapshots/20260428162300_SVR_TSA_0170.png",
+    "radar_crop": {
+      "sx": 6092,
+      "sy": 2564,
+      "sw": 743,
+      "sh": 450
+    },
+    "snapshot_cropped": true
+  },
+  {
+    "type": "SVR",
+    "wfo": "SGF",
+    "office": "SGF",
+    "issued": "2026-04-28 16:31:00 UTC",
+    "valid_from": "2026-04-28 16:31:00 UTC",
+    "valid_to": "2026-04-28 17:15:00 UTC",
+    "vtec_begin": "260428T1631Z",
+    "vtec_end": "260428T1715Z",
+    "hazard_text": "Baseball size hail.",
+    "source_text": "Public.",
+    "impact_text": "People and animals outdoors will be severely injured. Expect shattered windows, extensive damage to roofs, siding, and vehicles.",
+    "office_name": "Springfield, MO",
+    "etn": "0186",
+    "vtec_action": "NEW",
+    "source_file": "latest_warn.txt",
+    "polygon": [
+      [
+        -93.87,
+        37.21
+      ],
+      [
+        -93.74,
+        37.5
+      ],
+      [
+        -93.18,
+        37.44
+      ],
+      [
+        -93.18,
+        37.42
+      ],
+      [
+        -93.08,
+        37.41
+      ],
+      [
+        -93.08,
+        37.37
+      ],
+      [
+        -93.39,
+        37.02
+      ],
+      [
+        -93.87,
+        37.21
+      ]
+    ],
+    "centroid": [
+      -93.4888,
+      37.2884
+    ],
+    "tornado_tag": "",
+    "tornado_damage_threat": "",
+    "thunderstorm_damage_threat": "Destructive",
+    "emergency": false,
+    "confirmed_tornado": false,
+    "radar_image": "radar_snapshots/20260428163100_SVR_SGF_0186.png",
+    "radar_crop": {
+      "sx": 6131,
+      "sy": 2317,
+      "sw": 743,
+      "sh": 450
+    },
+    "snapshot_cropped": true
+  },
+  {
+    "type": "SVR",
+    "wfo": "SHV",
+    "office": "SHV",
+    "issued": "2026-04-28 16:32:00 UTC",
+    "valid_from": "2026-04-28 16:32:00 UTC",
+    "valid_to": "2026-04-28 17:30:00 UTC",
+    "vtec_begin": "260428T1632Z",
+    "vtec_end": "260428T1730Z",
+    "hazard_text": "60 mph wind gusts and quarter size hail.",
+    "source_text": "Radar indicated.",
+    "impact_text": "Hail damage to vehicles is expected. Expect wind damage to roofs, siding, and trees.",
+    "office_name": "Shreveport, LA",
+    "etn": "0101",
+    "vtec_action": "NEW",
+    "source_file": "latest_warn.txt",
+    "polygon": [
+      [
+        -95.3,
+        33.8
+      ],
+      [
+        -95.31,
+        33.88
+      ],
+      [
+        -95.28,
+        33.88
+      ],
+      [
+        -95.29,
+        33.9
+      ],
+      [
+        -95.27,
+        33.91
+      ],
+      [
+        -95.27,
+        33.89
+      ],
+      [
+        -95.26,
+        33.89
+      ],
+      [
+        -95.25,
+        33.93
+      ],
+      [
+        -95.23,
+        33.96
+      ],
+      [
+        -95.16,
+        33.94
+      ],
+      [
+        -95.16,
+        34.14
+      ],
+      [
+        -94.66,
+        34.42
+      ],
+      [
+        -94.47,
+        34.25
+      ],
+      [
+        -94.51,
+        34.02
+      ],
+      [
+        -95.3,
+        33.8
+      ]
+    ],
+    "centroid": [
+      -94.8446,
+      34.1047
+    ],
+    "tornado_tag": "",
+    "tornado_damage_threat": "",
+    "thunderstorm_damage_threat": "",
+    "emergency": false,
+    "confirmed_tornado": false,
+    "radar_image": "radar_snapshots/20260428163200_SVR_SHV_0101.png",
+    "radar_crop": {
+      "sx": 5859,
+      "sy": 2954,
+      "sw": 743,
+      "sh": 450
+    },
+    "snapshot_cropped": true
+  },
+  {
+    "type": "SVR",
+    "wfo": "LZK",
+    "office": "LZK",
+    "issued": "2026-04-28 16:44:00 UTC",
+    "valid_from": "2026-04-28 16:44:00 UTC",
+    "valid_to": "2026-04-28 17:45:00 UTC",
+    "vtec_begin": "260428T1644Z",
+    "vtec_end": "260428T1745Z",
+    "hazard_text": "Tennis ball size hail and 60 mph wind gusts.",
+    "source_text": "Radar indicated.",
+    "impact_text": "People and animals outdoors will be injured. Expect hail damage to roofs, siding, windows, and vehicles. Expect wind damage to roofs, siding, and trees.",
+    "office_name": "Little Rock, AR",
+    "etn": "0115",
+    "vtec_action": "NEW",
+    "source_file": "latest_warn.txt",
+    "polygon": [
+      [
+        -92.94,
+        36.19
+      ],
+      [
+        -92.94,
+        35.9
+      ],
+      [
+        -93.48,
+        35.95
+      ],
+      [
+        -93.47,
+        35.96
+      ],
+      [
+        -93.47,
+        35.97
+      ],
+      [
+        -93.45,
+        35.97
+      ],
+      [
+        -93.45,
+        36.08
+      ],
+      [
+        -93.48,
+        36.08
+      ],
+      [
+        -93.48,
+        36.12
+      ],
+      [
+        -93.3,
+        36.12
+      ],
+      [
+        -93.3,
+        36.2
+      ],
+      [
+        -92.94,
+        36.19
+      ]
+    ],
+    "centroid": [
+      -93.1757,
+      36.0504
+    ],
+    "tornado_tag": "",
+    "tornado_damage_threat": "",
+    "thunderstorm_damage_threat": "Considerable",
+    "emergency": false,
+    "confirmed_tornado": false,
+    "radar_image": "radar_snapshots/20260428164400_SVR_LZK_0115.png",
+    "radar_crop": {
+      "sx": 6193,
+      "sy": 2565,
+      "sw": 743,
+      "sh": 450
+    },
+    "snapshot_cropped": true
+  }
+]
